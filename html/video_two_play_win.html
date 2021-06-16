@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/play.css"/>
+	<script type="text/javascript" src="../script/ik2021.js"></script>	
+</head>
+<body>
+
+    <header class="aui-bar aui-bar-nav" id="aui-header" style="background: linear-gradient(to right,#f370af 0,#5515ee  100%);">
+        <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+            <span class="aui-iconfont aui-icon-left" style="color:#FFF"></span>
+        </a>
+        <div id="title" class="aui-title">播放 TWO</div>
+		
+		
+		        <a class="aui-btn aui-pull-right" tapmode onclick="toShezhi()">
+            <span class="aui-iconfont aui-icon-gear" style="color:#FFF"></span>
+        </a>
+		<a id=dlna tapmode onclick="toup()" class="" style="color: #FFFF00;">
+        <img src="../image/touping.png" class="dlna" />
+        <b style="float:right;line-height:55px;font-size:0.5rem;">
+		<marquee><strong><span style="color:#EE33EE;font-size:10px;"></span></strong></marquee>
+		</b>
+    </a>
+    </header> 
+	
+
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/date.min.js"></script>
+<script type="text/javascript">
+
+/////  初始化执行   S /////
+/////  apiready  一打开就执行的 函数
+  apiready = function(){
+  
+			  
+  api.setKeepScreenOn({
+    keepOn: true
+});
+
+
+
+  api.parseTapmode();
+	if(localStorage.getItem('tpswitch')==1){
+    var dlna = $api.byId('dlna');
+     dlna.style = "display:block";	
+	}  
+  var header = $api.byId('aui-header');
+  $api.fixStatusBar(header);  
+  var headerPos = $api.offset(header);
+  var body_h = $api.offset($api.dom('body')).h;
+   
+   
+   
+
+  title.innerHTML = api.pageParam.title; 
+		
+    api.openFrame({
+        name: 'video_two_play_frm',
+        url: 'video_two_play_frm.html',
+        bounces: false,    //禁止下拉
+        rect: {
+            x: 0,  
+            y: headerPos.h,
+            w: 'auto',
+            h: 'auto'
+        },
+
+        pageParam:{video:api.pageParam.video,title:api.pageParam.title}
+    })
+
+
+  }
+
+/////  初始化执行   E /////
+
+
+
+    
+    function toShezhi(){
+
+
+        api.openWin({
+            name: 'shezhi_win',
+            url: 'shezhi_win.html', 
+        });
+
+		//打开页面时 关闭当前页
+		api.addEventListener({
+         name:'viewdisappear'
+     },function(){
+         api.closeWin({
+              name:api.winName
+         });
+     });
+
+    }
+
+		function toup() {
+		//如果 投屏设备连接状态 已经连接
+            api.openFrame({
+                name: 'touping_popup',
+                url: 'widget://html/mask/touping_popup1.html',
+                bounces: false,
+                allowEdit: true,
+                bgColor: 'rgba(0,0,0,0.8)',
+                rect: {
+                    x: 0,
+                    y: 0,
+                    w: api.winWidth,
+                    h: api.winHeight
+                },
+                animation: {
+                    type: 'fade',
+                    subType: 'from_top'
+                },
+                pageParam: {
+                    JieXiOkUrl: api.pageParam.video,
+                    video_name: api.pageParam.title
+                }
+            })
+
+		}
+
+
+
+
+
+//////////////////////   返回按钮  方法   closeWin    S //////////////////////
+  function closeWin(){
+    api.setScreenOrientation({
+        orientation: 'portrait_up'
+    });
+      api.closeWin({
+      });
+  }
+//////////////////////   返回按钮  方法   closeWin    E //////////////////////
+
+
+</script>
+</html>

@@ -1,0 +1,27 @@
+.new-min-quan{width:100%;    padding: 0 3% 3% 3%;}
+.new-min-quan ul{padding: 0;}
+.new-min-quan ul li{ width:100%; overflow:hidden; height:80px; margin-bottom:10px}
+.new-min-quan ul li .left{ float:left; width:70%;height:80px; background:#fff; overflow:hidden; border-top-left-radius:8px;border-bottom-left-radius:8px; position:relative}
+.new-min-quan ul li .left .rtdian{ position:absolute;right:0px;top:0px; width:16px; height:16px; background:url(../Ryanimg/gokalog/yuan.png) no-repeat; background-size:16px 16px; background-position:8px -8px}
+.new-min-quan ul li .left .rbdian{ position:absolute;right:0px;bottom:0px; width:16px; height:16px; background:url(../Ryanimg/gokalog/yuan.png) no-repeat; background-size:16px 16px; background-position:8px 8px}
+
+.new-min-quan ul li .left .s{ position: absolute; /* right: 10px;*/ bottom: 0px; width: 23px; background-color: #ff1679; background-size: 16px 16px; background-position: 8px -8px;  color: #fff; text-align: center; height: 20px; line-height: 21px; border-radius: 0 8px 0 8px; font-size: 13px;}
+.new-min-quan ul li .left .c{ position: absolute; right: 10px; bottom: 0px; width: 35px; background-color: #ddd; background-size: 16px 16px; background-position: 8px 8px; color: #fff; text-align: center; height: 20px; line-height: 21px; border-radius: 5px 5px 0 0 ; font-size: 13px;}
+
+.new-min-quan ul li .right{ float:right; width:30%;height:80px;overflow:hidden;border-top-right-radius:8px;border-bottom-right-radius:8px;position:relative}
+.new-min-quan ul li .bg1{background:#999;}
+.new-min-quan ul li .bg0{background-image: -webkit-gradient(linear,left top,right top,from(#ff5e3e),to(#ff1679)); background-image: -webkit-linear-gradient(left,#ff5e3e,#ff1679); background-image: -moz-linear-gradient(left,#ff5e3e,#ff1679); background-image: linear-gradient(to right,#f370af,#a241cf); background-color: #ff1679;}
+.new-min-quan ul li .right .ltdian{ position:absolute;left:0px;top:0px; width:16px; height:16px; background:url(../Ryanimg/gokalog/yuan.png) no-repeat; background-size:16px 16px; background-position:-8px -8px}
+.new-min-quan ul li .right .lbdian{ position:absolute;left:0px;bottom:0px; width:16px; height:16px; background:url(../Ryanimg/gokalog/yuan.png) no-repeat; background-size:16px 16px; background-position:-8px 8px}
+.new-min-quan ul li .right .padding{ margin:5px; overflow:hidden}
+.new-min-quan ul li .right .price{color:#fff; font-size:12px; text-align:center;padding-top:10px; padding-bottom:5px;}
+.new-min-quan ul li .right .price i{ font-style:normal; font-size:24px;}
+.new-min-quan ul li .right .btn{width:60px;height:23px; margin:0 auto}
+.new-min-quan ul li .right .btn button{ padding:1px; margin:0px; border:none; width:60px;height:23px; line-height:23px; border-radius:12px; font-size:13px;}
+.new-min-quan ul li .right .btn .use0{background:#FFF;color:#c857c0;}
+.new-min-quan ul li .right .btn .use1{background:#FFF;color:#999;}
+.new-min-quan ul li .left .tit{ margin:10px; overflow:hidden}
+.new-min-quan ul li .left .tit{width:100%; font-size:14px;white-space:nowrap;overflow : hidden;text-overflow: ellipsis; padding-top:10px;margin-left: 30px;}
+.new-min-quan ul li .left .tit p{ font-size:12px}
+.new-min-quan ul li .left img{ float:left; width:70px; height:70px; margin-right:5px; margin-left:5px;}
+

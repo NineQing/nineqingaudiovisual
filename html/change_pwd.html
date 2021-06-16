@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title> 修改密码 </title>
+	<script type="text/javascript" src="../Ryanjs/login/style.js"></script>
+        <link href="../Ryancss/login_public.css" rel="stylesheet" type="text/css"/>
+        <link href="../Ryancss/login_style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<style>
+
+
+ .aui-btn-default {
+    float: right;
+    position: absolute;
+    right: 0px;
+    top: 39px;
+    z-index: 10002;
+    color: #ffffff;
+    background: none;
+    border: none;
+    margin-top: -35px;
+    width: 100px;
+    height: 40px;
+}
+ .aui-flex-border {
+    border-radius: 50px;
+    padding: 0;
+    background: #f4f3f3;
+	
+} 
+	   
+	.aui-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+	
+	margin: 0 auto; 
+    width: 90%;
+
+}
+
+
+.aui-flex-box {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+
+.aui-flex-box input {
+    border: none;
+    background: none;
+    font-size: 0.85rem;
+    padding-left: 1.4rem;
+    width: 100%;
+}
+
+
+.aui-button-once button {
+    background-image: linear-gradient(to bottom,#a442ce,#b84dc7);
+    background-color: #a241cf;
+    box-shadow: 0 0 19px #dd7fe6;
+    color: #fff;
+    font-size: 0.4rem;
+    padding: 0.1rem 0.2rem;
+    border-radius: 20px;
+    border: none;
+    position: absolute;
+    margin-top: -13%;
+    right: 70px;
+}  
+
+</style>
+<body>
+<div class="main_login">
+
+    <div class="tit">
+        <span class="active_tit">修改密码</span>
+        <span class="sp2" tapmode onclick="closeWin()" > << 返回</span>
+        <div class="clear"></div>
+    </div>
+
+    <div class="main_box">
+
+        <div class="box_con box_reg">
+                <div class="con_bg">
+              <!--      <span class="first_sp"><input  id="username" type="tel"  minlength="11" maxlength="11" placeholder="输入手机号码" ></span>  -->
+<!--  <span class="first_sp" style="display :none;" id="display-block-dxyz"> <input id="yzcode" type="text" autocomplete="off" placeholder="短信验证码" /></span>
+                            <div class="aui-button-once" id="btn1" onclick="getCode()">
+                                <button>获取</button>
+                            </div>  -->
+                    <span class="second_sp thrid_sp"><input  id="password" type="password" placeholder="请输入新密码"/></span>
+                    <span class="second_sp thrid_sp"><input  id="password_reg"  type="password" placeholder="请再次输入密码"/></span>
+                </div>
+                <a  onclick="toReg()" class="log_btn reg_btn">修改密码</a> 
+   
+        </div>
+    </div>
+	
+	
+    <div class="footer_pic">        
+
+        <img src="data:image/png;base64,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" class="pic1"/>
+  </div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    var api_url = localStorage.getItem('api_url');
+    var onoff = true;
+    var code_data = '';	
+    apiready = function () {
+      api.parseTapmode();  
+      var header = $api.byId('aui-header');
+      $api.fixStatusBar(header);
+      var headerPos = $api.offset(header);
+      var body_h = $api.offset($api.dom('body')).h;
+
+      var username = $api.byId('username');    //获取用户
+      username.value = localStorage.getItem('user_name');
+	  
+    <!-- if(localStorage.getItem('dxzce') == '0'){ -->
+
+    <!-- }else{ -->
+
+        <!-- var obj = document.getElementById("display-block-dxyz"); -->
+        <!-- obj.setAttribute("style", "display :block;"); -->
+
+
+    <!-- } -->
+		
+	  
+    }
+	
+	
+	
+    function closeWin(){
+        api.closeWin({
+        });
+    }
+
+
+    function toReg(){
+	
+	
+      var password = $api.val($api.byId('password'));
+	  var password_reg = $api.val($api.byId('password_reg'));
+      var username = localStorage.getItem('username');
+      var yzcode = $api.val($api.byId('yzcode'));
+      var user_id = localStorage.getItem('user_id');
+      var lao_pswd = localStorage.getItem('password');
+	  
+      <!-- if(localStorage.getItem('dxzce') == '1'){ -->
+	  	  			<!-- if (yzcode == '') { -->
+				<!-- api.alert({ -->
+					<!-- title: '警告！~', -->
+					<!-- msg: '请输入验证码', -->
+				<!-- }); -->
+				<!-- return; -->
+			<!-- } -->
+	  <!-- } -->
+      if(password == ''){
+
+		
+							api.toast({
+							msg: '请输入新密码',
+							duration: 5000,
+							location : 'middle' 
+						});	
+				
+        return;
+      }
+
+      if(password_reg == ''){
+
+		
+							api.toast({
+							msg: '请再次输入密码',
+							duration: 5000,
+							location : 'middle' 
+						});	
+				
+        return;
+      }
+
+
+      if(password.length < 5){
+	  
+							api.toast({
+							msg: '请输入5位以上密码',
+							duration: 5000,
+							location : 'middle' 
+						});			
+			  
+
+        return;
+      }
+	  
+		  if ($api.byId('password').value != $api.byId('password_reg').value) {
+                $api.byId('password_reg').focus();
+                api.toast({
+                    msg : '两次密码不一致，请检查!',
+					duration: 5000,
+					location : 'middle' 
+                });
+                return;
+                 }  
+	  
+	  
+      <!-- if(localStorage.getItem('dxzce') == '1'){ -->
+	  
+			<!-- var moduleSMSSDK = api.require('smssdk'); -->
+			<!-- var param = { -->
+				<!-- zone: '86', -->
+				<!-- phoneNumber: username, -->
+				<!-- code: yzcode -->
+			<!-- }; -->
+    <!-- moduleSMSSDK.commitCode(param, function(ret, err) {	 -->
+	<!-- if (err !== null && err !== undefined && err !== '') { -->
+					<!-- // 错误消息示例：{"msg":"Template not exist.","code":484} -->
+		  <!-- api.toast({ -->
+           <!-- msg : '验证码错误', -->
+			<!-- duration: 5000, -->
+			<!-- location : 'middle' -->
+          <!-- }); -->
+					<!-- return; -->
+				<!-- }else{ -->
+				      <!-- api.ajax({ -->
+          <!-- url: api_url+'/login/login/repass.html', -->
+          <!-- method: 'get', -->
+          <!-- data: { -->
+              <!-- values: { -->
+                  <!-- username:localStorage.getItem('user_name'), -->
+                  <!-- uid:localStorage.getItem('user_id'), -->
+                  <!-- password:password, -->
+                  <!-- key: 'nineqingnetwork' -->
+              <!-- } -->
+          <!-- } -->
+      <!-- },function(ret, err){ -->
+          <!-- if (ret) { -->
+		  
+				<!-- if (ret.code == 0) { -->
+	  
+							<!-- api.toast({ -->
+							<!-- msg: ret.msg, -->
+							<!-- duration: 5000, -->
+							<!-- location : 'middle'  -->
+						<!-- });			 -->
+			  	  			  
+			  
+			  <!-- }else if(ret.code == 1)  { -->
+                <!-- localStorage.setItem('password',password); -->
+				
+				
+				
+
+							<!-- api.toast({ -->
+							<!-- msg: '修改成功 请重新登录！', -->
+							<!-- duration: 3000, -->
+							<!-- location : 'middle'  -->
+						<!-- });		 -->
+
+
+
+
+				<!-- setTimeout("delayed()",1000);  //延迟执行 关闭 -->
+			   
+			   
+			   
+              <!-- } -->
+          <!-- } else { -->
+
+			
+							<!-- api.toast({ -->
+							<!-- msg: '网络错误！', -->
+							<!-- duration: 5000, -->
+							<!-- location : 'middle'  -->
+						<!-- });			 -->
+			  	  			  				
+			
+          <!-- } -->
+      <!-- });} -->
+
+	<!-- });	 -->
+	  
+	  
+	  <!-- }	   -->
+
+      api.ajax({
+          url: api_url+'/login/login/repass.html',
+          method: 'get',
+          data: {
+              values: {
+                  username:localStorage.getItem('user_name'),
+                  uid:localStorage.getItem('user_id'),
+                  password:password,
+                  key: 'nineqingnetwork'
+              }
+          }
+      },function(ret, err){
+          if (ret) {
+		  
+				if (ret.code == 0) {
+	  
+							api.toast({
+							msg: ret.msg,
+							duration: 5000,
+							location : 'middle' 
+						});			
+			  	  			  
+			  
+			  }else if(ret.code == 1)  {
+                localStorage.setItem('password',password);
+				
+				
+				
+
+							api.toast({
+							msg: '修改成功 请重新登录！',
+							duration: 3000,
+							location : 'middle' 
+						});		
+
+
+
+
+				setTimeout("delayed()",1000);  //延迟执行 关闭
+			   
+			   
+			   
+              }
+          } else {
+
+			
+							api.toast({
+							msg: '网络错误！',
+							duration: 5000,
+							location : 'middle' 
+						});			
+			  	  			  				
+			
+          }
+      });
+	  
+ 
+	}
+
+
+
+		//延时执行
+	    function delayed(){	
+		/*
+                api.sendEvent({
+                  name: 'outLogin',
+                  extra: {
+                  }
+                });
+				  
+                  api.closeWin();
+				  
+				 */ 
+				  
+		  //退出登录
+
+    api.sendEvent({
+      name: 'newLoingdata',
+      extra: {
+      }
+    });
+	
+    localStorage.setItem('user_id','');
+    localStorage.setItem('user_name','');
+    localStorage.setItem('user_time','');
+
+    api.closeWin({
+    });
+
+		  
+				  
+				  
+
+				}
+
+
+
+  function closeWin(){
+      api.closeWin({
+      });
+  }
+  
+
+
+
+
+
+	//获取验证码
+		function getCode() {
+			var yzcode = $api.val($api.byId('yzcode'));
+			var btn1 = $api.byId('btn1');
+			var username = $api.val($api.byId('username'));
+			localStorage.setItem('reg_name', username);
+			if (!onoff) {
+				return;
+			}
+			onoff = false;
+
+			if (username == '') {
+				api.alert({
+					title: '警告！',
+					msg: '请输入手机号码',
+				});
+				onoff = true;
+				return;
+			}
+			if (username.length != 11) {
+				api.alert({
+					title: '警告！',
+					msg: '请输入11位手机号码',
+				});
+				onoff = true;
+				return;
+			}
+			var moduleSMSSDK = api.require('smssdk');
+			var param = {
+				zone: '86',
+				phoneNumber: username,
+				tempCode: ''
+			};
+			moduleSMSSDK.getTextCode(param, function(ret, err) {
+				if (err !== null && err !== undefined && err !== '') {
+					// 错误消息示例：{"msg":"Template not exist.","code":484}
+					alert("Error:\n" + JSON.stringify(err));
+				} else {
+					// 正常消息示例：{"smart":false}
+					api.toast({
+						msg: '发送成功',
+						duration: 1000,
+						location: 'middle'
+					});
+					var nuw = 60;
+					var timer = setInterval(function() {
+						nuw--;
+                if (nuw < 1) {
+                  btn1.innerHTML = '<button>获取</button>';
+                  clearInterval(timer);
+                  onoff = true;
+                }else {
+                  btn1.innerHTML = '<button>'+nuw+'s</button>';
+                }
+					}, 1000)
+				}
+			});
+
+
+		}
+
+
+    function openWin(name){
+          var delay = 0;
+          if(api.systemType != 'ios'){
+              delay = 300;
+          }
+          api.openWin({
+              name: ''+name+'',
+              url: ''+name+'.html',
+              bounces:false,
+              delay: delay,
+              slidBackEnabled:true,
+              vScrollBarEnabled:false
+          });
+      }
+</script>
+</html>
+
+
+
+
+
+
+
+
+

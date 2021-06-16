@@ -1,0 +1,1780 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>商品分类</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="../Ryancss/frame1.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+  <section class="aui-flexView">
+            <section class="aui-scrollView">
+                <div class="m-scrolltab" data-ydui-scrolltab>
+                    <div class="scrolltab-nav">
+					
+                        <a class="scrolltab-item">
+                            <div class="scrolltab-title">为你推荐</div>
+                        </a>
+                        <a class="scrolltab-item">
+                            <div class="scrolltab-title">全网 VIP</div>
+                        </a>
+					  <!--	<a class="scrolltab-item">
+                            <div class="scrolltab-title">直播专题</div>
+                        </a>-->
+                        <a class="scrolltab-item">
+                            <div class="scrolltab-title">T V 直播</div>
+                        </a>
+
+                        <a class="scrolltab-item">
+                            <div class="scrolltab-title">游戏直播</div>
+                        </a>
+						
+                     <!--   <a class="scrolltab-item">
+                            <div class="scrolltab-title">大片推荐</div>
+                        </a>-->
+						
+
+						<a class="scrolltab-item-division"  > 
+							<div class="aui-product"></div> 
+						</a>
+						
+						 <a class="scrolltab-item-ad"  > 
+							<div class="aui-product">
+								<h2>- - 推广信息 - -</h2>
+							</div>
+						</a>
+						
+
+						
+						
+
+						
+					<span id ="Category_left_list">
+					
+					<!--左侧文字广告-->
+						<script type="text/x-dot-template" id="Category_left_template">
+						
+							{{~ it.msg : value : index }}
+									<a tapmode onclick="toBanner('{{= value. linkurl }}')" class="scrolltab-item-ad" >
+									
+										  <div class="scrolltab-title" style=" margin: 0 10px 0 10px; "> {{= value. name }}</div>
+					
+									</a>
+							{{~}}
+
+						</script>
+					
+                   <!--     <a  tapmode onclick="toArtical()" class="scrolltab-item-ad"> 
+                            <div class="scrolltab-title">预留广告位 1 </div> 
+                        </a>
+					<a  tapmode onclick="toArtical()" class="scrolltab-item-ad"> 
+                            <div class="scrolltab-title" style=" margin: 0 10px 0 10px; ">预留123广告位 1 </div> 
+                        </a>
+					 <a  tapmode onclick="toArtical()" class="scrolltab-item-ad"> 
+                            <div class="scrolltab-title"><marquee  behavior = "alternate" scrollamount=1> 一个简单滚动例子 </marquee ></div> 
+                        </a>
+					--> 
+					
+					</span>
+					
+					
+
+                    </div>
+                    <div class="scrolltab-content">
+                        <div class="scrolltab-content-item">
+                            <h2 style="padding-bottom: 15px;padding-top: 10px;"></h2>
+                            <div>
+                                <div class="aui-ad-head clearfix" id ="Category_top_pic_list">
+								
+								
+									<script type="text/x-dot-template" id="Category_top_pic_template">
+									
+										{{~ it.msg : value : index }}
+												<a tapmode onclick="toBanner('{{= value. linkurl }}')"> 
+												
+												<img  src="http://m.nineqing.com/{{= value. picurl }}" >	
+												 
+												</a>
+										{{~}}
+
+									</script>
+
+													<!--   <img src="http://m.nineqing.com/{{= value. picurl }}">  --->
+													<!--  <img  onerror="this.src='http://img.mp.sohu.com/upload/20170720/278d054eda994279a5e033aae5f8afd8_th.png'" src="http://img.mp.sohu.com/upload/20170720/278d054eda994279a5e033aae5f8afd8_th.png"  data-echo="http://m.nineqing.com/{{= value. picurl }}">	
+												  --->
+								
+									
+                                </div>
+                                <a class="aui-flex-box" href="javascript:;">
+                                    <div class="aui-flex-box-bd">为你推荐</div>
+                                    <span  id="Category_right_list">
+									
+									<script type="text/x-dot-template" id="Category_right_template"> 
+									
+										{{~ it.msg : value : index }}
+										
+										<div class="aui-flex-box-fr" tapmode onclick="toBanner('{{= value. linkurl }}')">	{{= value. name }}</div>
+					
+										{{~}}
+									</script>
+									
+									</span>
+                                </a> 
+                                <div class="aui-flex-links" id="Category_recommend_list">
+								
+									<script type="text/x-dot-template" id="Category_recommend_template"> 
+									
+										{{~ it.msg : value : index }}
+										
+					                    <a tapmode onclick="toBanner('{{= value. linkurl }}')" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="http://m.nineqing.com/{{= value. picurl }}"> 
+                                        </div>
+                                        <div class="aui-flex-links-text">{{= value. name }}</div>
+                                    </a>
+									
+									
+										{{~}}
+									</script>
+								<!--
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt=""> 
+                                        </div>
+                                        <div class="aui-flex-links-text">推荐位</div>
+                                    </a>
+									
+								-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="scrolltab-content-item">
+                            <h2>全网 V I P</h2> 
+                            <div>
+
+                							
+                                <div class="aui-class-ad-img"   id="Category_banner_ad_list">
+								
+								        	<script type="text/x-dot-template" id="Category_banner_ad_template">
+												{{~ it.msg : value : index }}
+								
+													<a tapmode onclick="toBanner('{{= value. linkurl }}')"> 
+														<img src="http://m.nineqing.com/{{= value. picurl }}">
+													</a>
+												{{~}}
+											</script>
+
+                                </div>
+								
+								<div class="aui-flex-links"   id="Movies_list">
+										 
+                    <!--              <a  onclick="openLive('{{= value. linkurl }}')" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img-vip">
+                                            <img src="http://m.nineqing.com/public/uploads/20190326/d9a0859f4cf733dc2a481c0c75ae3828.png" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-vlist_Nine-text">{{= value. name }}</div>
+                                    </a>
+		 -->
+
+        	<script type="text/x-dot-template" id="Movies_template">
+		{{~ it.msg : value : index }}
+
+                                  <a  onclick="openMovies('{{= value. linkurl }}')" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img-vip">
+                                            <img src="http://m.nineqing.com/{{= value. picurl }}" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-vlist_Nine-text">{{= value. name }}</div>
+                                    </a>
+		
+		{{~}}
+	</script>	
+									
+                                </div>
+                            </div>
+                        </div>						
+						
+						
+						
+						
+						
+						<!--
+
+                        <div class="scrolltab-content-item"> 
+                            <h2>电视TV直播专题</h2>
+                            <div>
+
+
+                                <div class="aui-flex-links"   id="TvListJh_list">
+                                 
+									<script type="text/x-dot-template" id="TvListJh_template">
+									{{~ it.msg : value : index }}
+
+															  <a  onclick="openTvWin('{{= value. url }}')" class="aui-flex-links-item">
+																	<div class="aui-flex-links-img">
+																		<img src="http://m.nineqing.com{{= value. img }}" alt="">
+																	</div>
+																	<div class="aui-flex-links-vlist_Nine-text">{{= value. title }}</div>
+																</a>
+									
+									{{~}}
+								</script>	
+
+                                </div>
+
+                            </div>
+                        </div>
+						
+						-->
+						
+						
+						
+						
+                        <div class="scrolltab-content-item">
+
+						
+                            <h2>全球电视TV直播</h2>
+                            <div>
+
+<!--
+								<div class="aui-class-ad-img-tvjuhe"   id="TvListJh_list">
+	
+								        	<script type="text/x-dot-template" id="TvListJh_template">
+												{{~ it.msg : value : index }}
+								
+													<a tapmode onclick="openTvWin('{{= value. url }}')">
+														<img src="http://m.nineqing.com/{{= value. img }}">
+													</a>
+												{{~}}
+											</script>
+
+                                </div>
+
+
+-->
+
+                                <div class="aui-class-ad-img"> <!--直播专题集合-->
+						
+													<a onClick="toTvSpecial()" > 
+														<img src="data:image/gif;base64,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">
+													</a>
+	
+
+                                </div>
+
+
+
+
+
+
+
+
+                                <div class="aui-flex-links"   id="TvList_list">
+                                 
+									<script type="text/x-dot-template" id="TvList_template">
+									{{~ it.msg : value : index }}
+
+															  <a  onclick="openTv('{{= value. url }}','{{= value. title }}')" class="aui-flex-links-item">
+																	<div class="aui-flex-links-img">
+																		<img src="http://m.nineqing.com{{= value. img }}" alt="">
+																	</div>
+																	<div class="aui-flex-links-vlist_Nine-text">{{= value. title }}</div>
+																</a>
+									
+									{{~}}
+								</script>	
+
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						
+						
+						
+
+                      <!--  <div class="scrolltab-content-item">
+                            <h2>美女写真</h2>
+                            <div>
+
+                                <div class="aui-flex-links">
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">早春新品</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">连衣裙</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">衬衫</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">T恤</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">牛仔裤</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">卫衣</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">针织衫</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">牛仔外套</div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-flex-links-item">
+                                        <div class="aui-flex-links-img">
+                                            <img src="../Ryanimg/frame1/pd-001.jpg" alt="">
+                                        </div>
+                                        <div class="aui-flex-links-text">自营女装</div>
+                                    </a>
+	
+									
+                                </div>
+                            </div>
+                        </div>  -->
+
+                        <div class="scrolltab-content-item">
+                            <h2>游戏直播</h2>
+                            <div>
+
+                                <div class="aui-flex-links" id="Game_list">
+       
+
+										<script type="text/x-dot-template" id="Game_template">
+										{{~ it : value : index }}
+
+											
+									<a onclick="openGameWin('{{= value. id }}')" class="aui-flex-links-item" >
+                                        <div class="aui-flex-links-vlist_Nine-img">
+                                            <img src="{{= value. img }}" >
+                                        </div>
+                                        <div class="aui-flex-links-text">{{= value. name }}</div>
+                                    </a>
+
+										{{~}}
+										</script>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						
+						
+												
+						<!--
+                        <div class="scrolltab-content-item">
+                            <h2>近期热门大片</h2>
+                            <div>
+							
+
+
+
+
+
+								
+								 <div class="aui-flex-links"  id="Vlist_list">
+
+									<script type="text/x-dot-template" id="Vlist_template">
+								{{~ it.msg : value : index }}
+
+														  <a  onclick="openWin('{{= value. url }}')" class="aui-flex-links-item">
+																<div class="aui-flex-links-vlist_Nine-img">
+																	<img src="http://m.nineqing.com{{= value. img }}" alt="">
+																</div>
+																<div class="aui-flex-links-vlist_Nine-text">{{= value. title }}</div>
+															</a>
+								
+								{{~}}
+							</script>	
+
+                                </div>
+                            </div>
+                        </div>
+						 -->
+						
+						
+						
+						
+						
+						
+                    </div>
+                </div>
+            </section>
+        </section>
+		
+    </body>
+	
+		<script type="text/javascript" src="../Ryanjs/frame1/jquery.min.js"></script>
+		<script type="text/javascript" src="../Ryanjs/frame1/scrollTab.js"></script> 
+	
+
+	
+	
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+  var i = 1;
+		/////  初始化执行   S /////
+		/////  apiready  一打开就执行的 函数
+
+		apiready = function() {
+
+			GetGameList();   //获取游戏直播
+	//		GetVlist(); //获取电影列表
+			getTvList(); //获取电视直播列表
+	//		getTvListJh(); //获取电视直播列表 集合
+			getMovies();  //获取全网影视
+			
+			getCategory_left();  //获取左侧文字广告
+
+			getCategory_top_pic();  //获取顶部广告图标
+			
+			getCategory_right();  //获取右侧文字广告
+			
+			getCategory_recommend();  //获取分类推荐
+			
+			getCategory_banner_ad();  //获取分类横幅
+
+
+
+		}
+		/////  初始化执行   E /////
+
+		
+			//////////////////////    全网影视图标获取  方法  getMovies  S  //////////////////////
+		function getMovies() {
+		
+			var Movies_list = $api.byId('Movies_list');
+			var Movies_template = $api.byId('Movies_template');
+			api.ajax({
+				url: api_url+'/login/login/getMovies.html', 
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Movies_template.text);
+					Movies_list.innerHTML = pagefn(ret);
+					api.hideProgress();
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+		}
+		
+		//////////////////////    全网影视图标获取  方法  getMovies  E  //////////////////////
+	
+		
+		
+		
+	//////////////////////   获取电影推荐列表  方法   GetVlist    S //////////////////////
+		function GetVlist() {
+
+			api.showProgress({
+				title: '加载中...',
+				modal: false
+			});
+			var Vlist_list = $api.byId('Vlist_list');
+			var Vlist_template = $api.byId('Vlist_template');
+			api.ajax({
+					url: api_url+'/login/login/vlist_Nine.html', 
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Vlist_template.text);
+					Vlist_list.innerHTML = pagefn(ret);
+					api.hideProgress();
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+
+		}
+		//////////////////////   获取电影推荐列表  方法   GetVlist    E  //////////////////////
+
+
+
+
+//////////////////////   获取电视TV直播列表  方法   getList    S ////////// 单//////////// 
+  function getTvList(){
+/*
+		 api.showProgress({
+			  title: '加载中',
+			  modal: false
+		 });
+	*/
+	
+	
+    var TvList_list = $api.byId('TvList_list');
+    var TvList_template = $api.byId('TvList_template');
+    api.ajax({
+       	url: api_url+'/login/login/tvlist.html',
+        method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+    },function(ret, err){
+        if (ret) {
+          //alert( JSON.stringify( ret ) );
+          var pagefn = doT.template(TvList_template.text);
+          TvList_list.innerHTML = pagefn(ret);
+          api.hideProgress();
+        } else {
+          api.hideProgress();
+            //alert( JSON.stringify( err ) );
+        }
+    });
+
+
+  }
+
+//////////////////////   获取电视TV直播列表  方法   getList    E //////////////////////
+
+
+//////////////////////   获取游戏列表  方法   getList    S //////////////////////
+  function GetGameList(){
+  //  i = 1;
+    var Game_list = $api.byId('Game_list');
+    var Game_template = $api.byId('Game_template');
+    api.ajax({
+       	url: api_url+'/api/gamezhibo.php',
+        method: 'get',
+        data: {
+            values: {
+                lx: 'hqpt',
+                ys:1
+            }
+        }
+    },function(ret, err){
+        if (ret) {
+            //alert( JSON.stringify( ret ) );
+            var pagefn = doT.template(Game_template.text);
+            Game_list.innerHTML = pagefn(ret);
+         //   showData();
+        } else {
+            //alert( JSON.stringify( err ) );
+        }
+    });
+
+
+  }
+
+//////////////////////   获取游戏列表  方法   getList    E //////////////////////
+
+
+
+
+
+
+//////////////////////    打开游戏列表  方法  openGameWin  S  //////////////////////	
+  function openGameWin(name){
+  
+  
+    var time = localStorage.getItem('user_time');
+    var user_id = localStorage.getItem('user_id');
+    var username = localStorage.getItem('user_name');
+    var timestamp = Date.parse(new Date())/1000;
+    if(user_id<1){
+   /*   api.alert({
+          title: '温馨提示',
+          msg: '请先登陆后使用',
+	  */
+      api.openWin({    
+
+          name: 'login',
+          url: './login.html',
+          delay: 300,
+	//	    });
+					
+				bounces: false,
+				slidBackEnabled: true,
+				bgColor: '#000',
+				animation: {
+					type: "reveal", //动画类型（详见动画类型常量） 
+					subType: "from_right", //动画子类型（详见动画子类型常量）
+					duration: 400
+				},
+				vScrollBarEnabled: false
+						
+						
+      });
+      return;
+
+    }
+
+    if (time>timestamp) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",1000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+
+		api.hideProgress();
+                                         var delay = 0;
+                                         if(api.systemType != 'ios'){
+                                             delay = 300;
+                                         }
+                                         api.openWin({
+                                            name: 'game_zhubo_list_win',
+                                            url: 'game_zhubo_list_win.html',
+                                             bounces:false,
+                                             delay: delay,
+                                             slidBackEnabled:true,
+                                             vScrollBarEnabled:false,
+                                             pageParam:{id:name}
+                                         });
+
+
+
+
+    }else if (time == -1) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",2000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+		api.hideProgress();
+
+                                         var delay = 0;
+                                         if(api.systemType != 'ios'){
+                                             delay = 300;
+                                         }
+                                         api.openWin({
+                                            name: 'game_zhubo_list_win',
+                                            url: 'game_zhubo_list_win.html',
+                                             bounces:false,
+                                             delay: delay,
+                                             slidBackEnabled:true,
+                                             vScrollBarEnabled:false,
+                                             pageParam:{id:name}
+                                         });
+
+
+
+	}else if (time<timestamp){
+
+
+
+			VipExpiredHint();   //会员过期提示
+		  
+    }
+
+  }
+
+
+
+//////////////////////    打开游戏列表 方法  openGameWin  S  //////////////////////	
+
+
+
+
+
+
+
+//////////////////////    分类左侧文字  方法  getCategory_left  S  //////////////////////
+		function getCategory_left(){ 
+		
+			var Category_left_list = $api.byId('Category_left_list');
+			var Category_left_template = $api.byId('Category_left_template');
+			api.ajax({
+				url: api_url+'/login/login/category_left.html',    // 调用数量限制
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Category_left_template.text);
+					Category_left_list.innerHTML = pagefn(ret);
+					api.hideProgress();
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+		}
+		
+//////////////////////    分类左侧文字  方法  getCategory_left  E  //////////////////////	
+
+
+
+//////////////////////    分类顶部图片  方法  getCategory_top_pic  S  //////////////////////
+		function getCategory_top_pic() {
+		
+			var Category_top_pic_list = $api.byId('Category_top_pic_list');
+			var Category_top_pic_template = $api.byId('Category_top_pic_template');
+			api.ajax({
+				url: api_url+'/login/login/category_top_pic.html',    // 调用数量限制
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Category_top_pic_template.text);
+					Category_top_pic_list.innerHTML = pagefn(ret);
+					
+					api.hideProgress();
+
+                      
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+		}
+		
+//////////////////////    分类顶部图片  方法  getCategory_top_pic  E  //////////////////////	
+
+
+//////////////////////    分类右侧文字  方法  getCategory_right  S  //////////////////////
+		function getCategory_right() {
+		
+			var Category_right_list = $api.byId('Category_right_list');
+			var Category_right_template = $api.byId('Category_right_template');
+			api.ajax({
+				url: api_url+'/login/login/category_right.html',    // 调用数量限制
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Category_right_template.text);
+					Category_right_list.innerHTML = pagefn(ret);
+					api.hideProgress();
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+		}
+		
+//////////////////////    分类右侧文字  方法  getCategory_right  E  //////////////////////	
+
+
+
+
+//////////////////////    分类推荐  方法  getCategory_recommend  S  //////////////////////
+		function getCategory_recommend() {
+		
+			var Category_recommend_list = $api.byId('Category_recommend_list');
+			var Category_recommend_template = $api.byId('Category_recommend_template');
+			api.ajax({
+				url: api_url+'/login/login/category_recommend.html',    // 调用数量限制
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Category_recommend_template.text);
+					Category_recommend_list.innerHTML = pagefn(ret);
+					api.hideProgress();
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+		}
+		
+//////////////////////    分类推荐  方法  getCategory_recommend  E  //////////////////////	
+
+
+
+//////////////////////    分类横幅  方法  getCategory_banner_ad  S  //////////////////////
+		function getCategory_banner_ad() {
+		
+			var Category_banner_ad_list = $api.byId('Category_banner_ad_list');
+			var Category_banner_ad_template = $api.byId('Category_banner_ad_template');
+			api.ajax({
+				url: api_url+'/login/login/category_banner_ad.html',    // 调用数量限制
+				method: 'get',              
+				data: {
+                  values: {
+			key: 'nineqingnetwork',   //安全码
+                  }
+              }
+			}, function(ret, err) {
+				if(ret) {
+					//alert( JSON.stringify( ret ) );
+					var pagefn = doT.template(Category_banner_ad_template.text);
+					Category_banner_ad_list.innerHTML = pagefn(ret);
+					api.hideProgress();
+
+				} else {
+					api.hideProgress();
+					//alert( JSON.stringify( err ) );
+				}
+			});
+		}
+		
+//////////////////////    分类推荐  方法  getCategory_banner_ad  E  //////////////////////	
+
+
+
+
+//////////////////////    全网VIP打开  方法  openMovies  S  //////////////////////	
+function openMovies(url,jxurl,ping){
+  
+  
+    var time = localStorage.getItem('user_time');
+    var user_id = localStorage.getItem('user_id');
+    var username = localStorage.getItem('user_name');
+    var timestamp = Date.parse(new Date())/1000;
+    if(user_id<1){
+   /*   api.alert({
+          title: '温馨提示',
+          msg: '请先登陆后使用',
+	  */
+      api.openWin({    
+
+          name: 'login',
+          url: './login.html',
+          delay: 300,
+	//	    });
+					
+											
+						
+				bounces: false,
+				slidBackEnabled: true,
+				bgColor: '#000',
+				animation: {
+					type: "reveal", //动画类型（详见动画类型常量） 
+					subType: "from_right", //动画子类型（详见动画子类型常量）
+					duration: 400
+				},
+				vScrollBarEnabled: false
+						
+						
+      });
+      return;
+
+    }
+
+    if (time>timestamp) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",1000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+      if (url!='') {
+	  
+	  
+		api.hideProgress();
+	  
+	  
+	  			var tencent_x5 = localStorage.getItem('tencent_x5');  
+				var cxurl = url;   
+	  
+	  				if(tencent_x5.indexOf(cxurl) >= 0 )  {  
+						  
+					api.openWin({
+						name: 'tencent_x5',
+						url: './tencent_x5.html',
+						delay: 800,
+						pageParam:{url:url,jxurl:jxurl,ping:ping},
+						bgColor: 'rgba(0,0,0,0)'
+					});
+					
+				}else{
+				
+				
+					api.openWin({
+						name: 'video_win',
+						url: './video_win.html',
+						delay: 800,
+						pageParam:{url:url,jxurl:jxurl,ping:ping},
+						bgColor: 'rgba(0,0,0,0)'
+					});
+					
+				}
+		
+      }else {
+	  
+		api.hideProgress();
+		
+                    api.toast({
+                        msg:'维护中',
+						duration: 1000,
+						location : 'middle' 
+                    })
+      }
+
+
+    }else if (time == -1) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",2000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+      if (url!='') {
+	  
+	  
+	  
+		api.hideProgress();
+		
+		
+		  			var tencent_x5 = localStorage.getItem('tencent_x5');  
+					var cxurl = url;   
+	  
+	  				if(tencent_x5.indexOf(cxurl) >= 0 )  {  
+						  
+					api.openWin({
+						name: 'tencent_x5',
+						url: './tencent_x5.html',
+						delay: 800,
+						pageParam:{url:url,jxurl:jxurl,ping:ping},
+						bgColor: 'rgba(0,0,0,0)'
+					});
+					
+				}else{
+					
+		
+		
+					api.openWin({
+						name: 'video_win',
+						url: './video_win.html',
+						delay: 800,
+						pageParam:{url:url,jxurl:jxurl,ping:ping},
+						bgColor: 'rgba(0,0,0,0)',
+										bounces: false,
+							slidBackEnabled: true,
+							bgColor: '#000',
+							animation: {
+								type: "fade", //动画类型（详见动画类型常量） 
+								subType: "from_top", //动画子类型（详见动画子类型常量）
+							//	duration: 400
+							},
+							vScrollBarEnabled: false
+					});
+					
+				}	
+					
+      }else {
+
+					api.hideProgress();
+		
+                    api.toast({
+                        msg:'维护中',
+						duration: 1000,
+						location : 'middle' 
+                    })
+      }
+
+
+    }else if (time<timestamp){
+
+
+
+			VipExpiredHint();   //会员过期提示
+		  
+    }
+
+  }
+
+
+
+//////////////////////    全网VIP打开  方法  openMovies  E  //////////////////////	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////    TV 集合  方法  toTvSpecial  S  //////////////////////	
+function toTvSpecial(){
+  
+  
+    var time = localStorage.getItem('user_time');
+    var user_id = localStorage.getItem('user_id');
+    var username = localStorage.getItem('user_name');
+    var timestamp = Date.parse(new Date())/1000;
+    if(user_id<1){
+   /*   api.alert({
+          title: '温馨提示',
+          msg: '请先登陆后使用',
+	  */
+      api.openWin({    
+
+          name: 'login',
+          url: './login.html',
+          delay: 300,
+	//	    });
+					
+				bounces: false,
+				slidBackEnabled: true,
+				bgColor: '#000',
+				animation: {
+					type: "reveal", //动画类型（详见动画类型常量） 
+					subType: "from_right", //动画子类型（详见动画子类型常量）
+					duration: 400
+				},
+				vScrollBarEnabled: false
+						
+						
+      });
+      return;
+
+    }
+
+    if (time>timestamp) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",1000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+
+		api.hideProgress();
+
+
+					api.openWin({
+						name: 'tv_special_win',
+						url: 'tv_special_win.html'
+					});
+
+
+
+    }else if (time == -1) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",2000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+		api.hideProgress();
+
+
+					api.openWin({
+						name: 'tv_special_win',
+						url: 'tv_special_win.html'
+					});
+
+
+	}else if (time<timestamp){
+
+
+
+			VipExpiredHint();   //会员过期提示
+		  
+    }
+
+  }
+
+
+
+//////////////////////    TV 集合  方法  toTvSpecial  S  //////////////////////	
+
+
+
+
+
+
+
+//////////////////////    全球 TV  方法  openTV  S  //////////////////////	
+function openTv(url,name) {
+  
+  
+    var time = localStorage.getItem('user_time');
+    var user_id = localStorage.getItem('user_id');
+    var username = localStorage.getItem('user_name');
+    var timestamp = Date.parse(new Date())/1000;
+    if(user_id<1){
+   /*   api.alert({
+          title: '温馨提示',
+          msg: '请先登陆后使用',
+	  */
+      api.openWin({    
+
+          name: 'login',
+          url: './login.html',
+          delay: 300,
+	//	    });
+					
+				bounces: false,
+				slidBackEnabled: true,
+				bgColor: '#000',
+				animation: {
+					type: "reveal", //动画类型（详见动画类型常量） 
+					subType: "from_right", //动画子类型（详见动画子类型常量）
+					duration: 400
+				},
+				vScrollBarEnabled: false
+						
+						
+      });
+      return;
+
+    }
+
+    if (time>timestamp) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",1000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+
+		api.hideProgress();
+
+
+	                                                                                             var delay = 0;
+                                                                                             if(api.systemType != 'ios'){
+                                                                                                 delay = 300;
+                                                                                             }
+                                                                                             api.openWin({
+                                                                                                 name: 'video_play_win',
+                                                                                                 url: 'video_play_win.html',
+                                                                                                 bounces:false,
+                                                                                                 delay: delay,
+                                                                                                 slidBackEnabled:true,
+                                                                                                 vScrollBarEnabled:false,
+																								pageParam:{video:url,title:name}
+                                                                                            });
+ /*     api.addEventListener({
+         name:'viewdisappear'
+     },function(){
+         api.closeWin({
+              name:api.winName
+         });
+     });
+
+*/
+
+
+
+    }else if (time == -1) {
+      api.showProgress({
+          title: 'VIP登录中...',
+          modal: false
+      });
+      setTimeout("playRadio();",2000);
+      var delay = 0;
+      if(api.systemType != 'ios'){
+          delay = 300;
+      }
+		api.hideProgress();
+
+
+                                                                                             var delay = 0;
+                                                                                             if(api.systemType != 'ios'){
+                                                                                                 delay = 300;
+                                                                                             }
+                                                                                             api.openWin({
+                                                                                                 name: 'video_play_win',
+                                                                                                 url: 'video_play_win.html',
+                                                                                                 bounces:false,
+                                                                                                 delay: delay,
+                                                                                                 slidBackEnabled:true,
+                                                                                                 vScrollBarEnabled:false,
+																								pageParam:{video:url,title:name}
+                                                                                            });
+ /*     api.addEventListener({
+         name:'viewdisappear'
+     },function(){
+         api.closeWin({
+              name:api.winName
+         });
+     });
+
+*/
+
+
+	}else if (time<timestamp){
+
+
+
+			VipExpiredHint();   //会员过期提示
+		  
+    }
+
+  }
+
+
+
+//////////////////////    全球 TV  方法  openTV  S  //////////////////////	
+
+
+
+
+
+
+
+
+
+
+/*
+		//////////////////////   打开推荐影片播放页  方法         S //////////////////////
+		function openWin(name) {
+
+			////获取数据
+			var time = localStorage.getItem('user_time');
+			var user_id = localStorage.getItem('user_id');
+			var username = localStorage.getItem('user_name');
+			var timestamp = Date.parse(new Date()) / 1000;
+
+			///判断是否登录
+			if(user_id == 0) {
+
+				api.toast({
+					msg: '还没登陆！',
+					duration: 1000, 
+                location : 'middle' 
+				});
+
+				api.openWin({
+					name: 'login',
+					url: './login.html',
+					delay: 300,
+											
+						
+				bounces: false,
+				slidBackEnabled: true,
+				bgColor: '#000',
+				animation: {
+					type: "reveal", //动画类型（详见动画类型常量） 
+					subType: "from_top", //动画子类型（详见动画子类型常量）
+					duration: 400
+				},
+				vScrollBarEnabled: false
+						
+					
+					
+				});
+				return;
+
+			}
+
+			//判断是否会员
+			if(time > timestamp) {
+				//网络连接判断S
+
+				api.ajax({
+					url: api_url + '/login/login/banben.html',
+					method: 'get'
+				}, function(ret, err) {
+					if(ret) {
+
+						//网络正常   跳转
+
+
+						//        setTimeout("playRadio();",1000);
+						var delay = 0;
+						if(api.systemType != 'ios') {
+							delay = 300;
+						}
+						api.openWin({
+							name: 'vplay_win',
+							url: 'vplay_win.html',
+							bounces: false,
+							delay: delay,
+							slidBackEnabled: true,
+							vScrollBarEnabled: false,
+							pageParam: {
+								video: name
+							}
+						});
+
+					} else {
+
+						//网络连接失败 进行提示
+							api.toast({
+							msg: '网络连接异常',
+							duration: 2000,
+							location : 'middle' 
+							});	
+		
+
+					}
+
+				});
+				//网络连接判断E
+
+			} else if(time == -1) { //判断是否永久会员
+				//网络连接判断S
+
+				api.ajax({
+					url: api_url + '/login/login/banben.html',
+					method: 'get'
+				}, function(ret, err) {
+					if(ret) {
+
+						//网络正常   跳转
+
+
+						//   setTimeout("playRadio();",2000);
+						var delay = 0;
+						if(api.systemType != 'ios') {
+							delay = 300;
+						}
+						api.openWin({
+							name: 'vplay_win',
+							url: 'vplay_win.html',
+							bounces: false,
+							delay: delay,
+							slidBackEnabled: true,
+							vScrollBarEnabled: false, 
+							pageParam: {
+								video: name
+							}
+						});
+
+					} else {
+
+						//网络连接失败 进行提示
+							api.toast({
+							msg: '网络连接异常',
+							duration: 2000,
+							location : 'middle' 
+							});	
+		
+
+					}
+
+				});
+				//网络连接判断E
+
+			} else if(time < timestamp) {
+				VipExpiredHint(); //会员过期弹窗提示
+			}
+
+		}
+
+		//////////////////////   打开推荐影片播放页  方法        E //////////////////////
+
+*/
+
+
+
+
+  function closeWin(){
+      api.closeWin({
+      });
+  }
+  
+  
+  
+    function toShezhi(url){
+
+
+        api.openWin({
+            name: 'shezhi_win',
+            url: 'shezhi_win.html', 
+        });
+
+    }
+
+
+    function toArtical(url){
+
+
+        api.openWin({
+            name: 'artical_win',
+            url: 'artical_win.html', 
+        });
+
+    }
+
+
+
+
+
+
+
+  //访问轮播地址
+ 
+  function toBanner(url){
+
+    if (url == '') {
+
+	//如果后台填写的跳转链接为空 则无任何操作
+
+    }else{
+	
+	
+	/*
+				var str = url ;
+
+				if(str.indexOf("widget://")>-1){   //如果包含 widget://  则执行内部页面跳转
+
+
+								var str = url;
+								var Internal_jump = str.split("widget://html/").join("");
+								console.log(Internal_jump);    // 剔除 widget://html/ 后把结果给 Internal_jump
+								
+								
+					　　		api.openWin({
+								name: 'Internal_jump',
+								url: Internal_jump
+								}); 		
+
+*/
+
+/* 
+
+设置中心  widget://html/shezhi_win.html
+我的佣金  widget://html/yongjin_win.html
+佣金明细  widget://html/yongjinlog_win.html
+私人视频  widget://html/video_secret_win.html
+升级会员  widget://html/upgrade_vip_win.html
+直播专题  widget://html/tv_special_win.html
+我的团队  widget://html/tuandui_win.html
+提现记录  widget://html/tixianlog_win.html
+邀请好友  widget://html/share_win.html
+搜索页面  widget://html/search_win.html
+观看记录  widget://html/look_record_win.html
+我的积分  widget://html/jifen_win.html
+帮助中心  widget://html/help_win.html
+我的激活码  widget://html/gokalog_win.html
+游戏直播间  widget://html/game_zhubo_list_win.html
+公告列表  widget://html/artical_win.html
+专属客服  widget://html/setup/customer_service_win.html
+
+
+
+
+*/
+
+				if(url == '设置中心'){
+					
+					api.openWin({
+						name: 'shezhi_win',
+						url: 'widget://html/shezhi_win.html',
+						delay: 300
+					});		
+
+				}else if(url == '我的佣金'){
+					
+					api.openWin({
+						name: 'yongjin_win',
+						url: 'widget://html/yongjin_win.html',
+						delay: 300
+					});		
+				}else if(url == '佣金明细'){
+					
+					api.openWin({
+						name: 'yongjinlog_win',
+						url: 'widget://html/yongjinlog_win.html',
+						delay: 300
+					});		
+				}else if(url == '私人视频'){
+					
+					api.openWin({
+						name: 'video_secret_win',
+						url: 'widget://html/video_secret_win.html',
+						delay: 300
+					});		
+				}else if(url == '升级会员'){
+					
+					api.openWin({
+						name: 'upgrade_vip_win',
+						url: 'widget://html/upgrade_vip_win.html',
+						delay: 300
+					});		
+				}else if(url == '直播专题'){
+					
+					api.openWin({
+						name: 'tv_special_win',
+						url: 'widget://html/tv_special_win.html',
+						delay: 300
+					});		
+				}else if(url == '我的团队'){
+					
+					api.openWin({
+						name: 'tuandui_win',
+						url: 'widget://html/tuandui_win.html',
+						delay: 300
+					});		
+				}else if(url == '提现记录'){
+					
+					api.openWin({
+						name: 'tixianlog_win',
+						url: 'widget://html/tixianlog_win.html',
+						delay: 300
+					});		
+				}else if(url == '邀请好友'){
+					
+					api.openWin({
+						name: 'share_win',
+						url: 'widget://html/share_win.html',
+						delay: 300
+					});		
+				}else if(url == '搜索页面'){
+					
+					api.openWin({
+						name: 'search_win',
+						url: 'widget://html/search_win.html',
+						delay: 300
+					});		
+				}else if(url == '观看记录'){
+					
+					api.openWin({
+						name: 'look_record_win',
+						url: 'widget://html/look_record_win.html',
+						delay: 300
+					});		
+				}else if(url == '我的积分'){
+					
+					api.openWin({
+						name: 'jifen_win',
+						url: 'widget://html/jifen_win.html',
+						delay: 300
+					});		
+				}else if(url == '帮助中心'){
+					
+					api.openWin({
+						name: 'help_win',
+						url: 'widget://html/help_win.html',
+						delay: 300
+					});		
+				}else if(url == '我的激活码'){
+					
+					api.openWin({
+						name: 'gokalog_win',
+						url: 'widget://html/gokalog_win.html',
+						delay: 300
+					});		
+				}else if(url == '游戏直播间'){
+					
+					api.openWin({
+						name: 'game_zhubo_list_win',
+						url: 'widget://html/game_zhubo_list_win.html',
+						delay: 300
+					});		
+				}else if(url == '公告列表'){
+					
+					api.openWin({
+						name: 'artical_win',
+						url: 'widget://html/artical_win.html',
+						delay: 300
+					});		
+				}else if(url == '专属客服'){
+					
+					api.openWin({
+						name: 'customer_service_win',
+						url: 'widget://html/setup/customer_service_win.html',
+						delay: 300
+					});		
+
+
+				}else{       // 否则执行正常H5页面跳转
+				
+							//	api.toast({
+							//	msg: url
+							//	});
+			
+			
+			
+			                api.openWin({
+                            name: 'h5',
+                            url: './h5.html',
+                            pageParam: {
+                                 url: url
+								}
+                             });
+
+			
+				}
+	
+			
+			
+	}
+  }
+
+
+
+
+
+
+ //  会员过期 弹窗提示
+ function VipExpiredHint(){
+ 
+	var dialogBox = api.require('dialogBox');
+	dialogBox.alert({
+	tapClose:true,			//允许点击遮罩关闭弹窗
+    texts: {  
+        title: '操作失败',
+        content: '您的超级会员已过期',   //调用后台设置内容
+        leftBtnTitle: '等下',
+        rightBtnTitle: '升级'
+    },
+    styles: {
+			bg: '#fff',
+			w: 300,
+			corner:10,
+			title: {
+				marginT: 20,
+				icon: 'widget://Ryanimg/frame0/rrrr.png',
+				iconSize: 20,
+				titleSize: 14,
+				titleColor: '#999'
+			},
+			content: { 
+				marginT: 20,       //（可选项）数字类型；内容文本顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：20
+				marginB: 20,       //（可选项）数字类型；内容文本底端与 left/right 顶端的距离，如果 left/right 都不存在，则是到对话框底端的距离；默认：20
+				color: '#999',
+				size: 14 
+			},
+			left: {
+				marginB: 30,
+				marginL: 30,
+				w: 100,
+				h: 35,
+				corner: 2,
+				bg: '#eeeeee',
+				color: '#999',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+				size: 12
+			},
+			right: {
+				marginB: 30,
+				marginL: 40,
+				w: 100,
+				h: 35,
+				corner: 2,
+				bg: '#ff1679',
+				color: '#fff',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+				size: 12
+			}
+			
+			
+		
+		}
+	}, function(ret) {
+						
+																			
+					if (ret.eventType == 'left') {
+						var dialogBox = api.require('dialogBox');
+						dialogBox.close({
+							dialogName: 'alert'
+						});
+					} else if(ret.eventType == 'right') {
+																			
+						api.openWin({
+						name: 'upgrade_vip_win',
+						url: './upgrade_vip_win.html',
+						delay: 300
+					});
+																					     
+							    
+						var dialogBox = api.require('dialogBox');
+						dialogBox.close({
+						dialogName: 'alert'
+						});
+																					
+					}
+				});
+ 
+ }
+ 
+
+
+
+
+
+
+
+
+</script>
+	
+</html>

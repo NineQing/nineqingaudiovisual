@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" /> 
+</head>
+<body>
+    <header class="aui-bar aui-bar-nav" id="aui-header" style="background: linear-gradient(to right,#f370af 0,#5515ee 100%);">
+        <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+            <span class="aui-iconfont aui-icon-left" style="color:#FFF"></span>
+        </a>
+        <div id="title" class="aui-title">邀请好友</div>
+		
+		
+		        <a class="aui-btn aui-pull-right" tapmode onclick="toShezhi()">
+            <span class="aui-iconfont aui-icon-gear" style="color:#FFF"></span>
+        </a>
+		
+		
+		        <a class="aui-btn aui-pull-right" tapmode onclick="toArtical()">
+            <span class="aui-iconfont aui-icon-comment" style="color:#FFF"></span>
+        </a>
+		
+    </header> 
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+
+    var api_url = localStorage.getItem('api_url');
+
+  apiready = function(){
+
+    api.parseTapmode();
+    var header = $api.byId('aui-header');
+    $api.fixStatusBar(header);
+    var headerPos = $api.offset(header);
+    var body_h = $api.offset($api.dom('body')).h;
+	
+	
+	
+	
+	
+			
+
+							if(localStorage.getItem('app_working_mode') =='1'){        //如果工作模式为返佣
+											
+
+													api.openFrame({
+													name: 'share_frm',
+													url: 'share_frm.html',
+													bounces: false,
+													rect: {
+														x: 0,
+														y: headerPos.h,
+														w: 'auto',
+														h: 'auto'
+													},
+													
+													pageParam:{}
+												})
+
+							}else{
+							
+							 
+
+													api.openFrame({
+													name: 'share_d_frm',
+													url: 'share_d_frm.html',
+													bounces: false,
+													rect: {
+														x: 0,
+														y: headerPos.h,
+														w: 'auto',
+														h: 'auto'
+													},
+													
+													pageParam:{}
+												})							
+							
+							
+							} 
+							
+
+
+
+
+  }
+
+
+  function closeWin(){
+      api.closeWin({
+      });
+  }
+  
+  
+  
+      function toShezhi(url){
+
+
+        api.openWin({
+            name: 'shezhi_win',
+            url: 'shezhi_win.html', 
+        });
+		
+		
+			//打开页面时 关闭当前页
+		api.addEventListener({
+         name:'viewdisappear'
+     },function(){
+         api.closeWin({
+              name:api.winName
+         });
+     });	
+		
+
+    }
+
+
+    function toArtical(url){
+
+
+        api.openWin({
+            name: 'artical_win',
+            url: 'artical_win.html', 
+        });
+
+    }
+
+
+
+
+</script>
+</html>

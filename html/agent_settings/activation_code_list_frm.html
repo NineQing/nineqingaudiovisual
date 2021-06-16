@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>激活码列表 - frm</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="../../Ryancss/gokalog.css" rel="stylesheet" type="text/css"/>
+        <link href="../../Ryancss/gokalog_mui.min.css" rel="stylesheet" type="text/css"/>
+		<style>
+		.operate-btn {
+			width: 92%;
+			margin-top: 20px;
+			height: 40px;
+			margin-left: 4%;
+		}
+		
+		.operate-btn button {
+			width: 45%;
+			outline: none;
+			border: 0;
+			height: 40px;
+			border-radius: 5px;
+			float: left;
+		} 
+		
+		.operate-btn-email {
+			width: 92%;
+			margin-top: 20px;
+			height: 40px;
+			margin-left: 4%;
+		}
+		
+		.operate-btn-email button {
+			width: 100%;
+			outline: none;
+			border: 0;
+			height: 40px;
+			border-radius: 5px;
+			float: left;
+		} 
+		
+		.attention {
+			background: -webkit-linear-gradient(left, #f77062, #fe5196);
+			background: -o-linear-gradient(right, #f77062, #fe5196);
+			background: -moz-linear-gradient(right, #f77062, #fe5196);
+			background: linear-gradient(to right, #f77062, #fe5196);
+			color: #ffffff;
+		}
+		
+		.operate-btn .news {
+			float: right;
+			background-color: #ffffff;
+			box-shadow: #e6e6e6 0 2px 0;
+		}
+		
+		
+		</style>
+    </head>
+    <body>
+
+		<div class="operate-btn-email"  onclick="go_agent_activation_code_email()" > 
+			<button class="news">发送至我的邮箱</button>
+		</div>
+	
+		<div class="mui-content new-min-quan">
+
+            <ul id="activation_code_list"> 
+<!--
+				  	<li>
+               	<div class="left">
+                     <div class="rtdian"></div><div class="rbdian"></div>
+                    <div class="padding">
+                   	<div class="tit">VIP激活码：<em>5123123123</em><p>5551515 </p></div>
+                  </div>
+                 </div>
+              		<div class="right bg0">
+                    <div class="ltdian"></div><div class="lbdian"></div>
+                   <div class="padding">
+                   	<div class="price">5123123</div>
+                        <div class="btn"><button class="use0"  tapmode onclick="loginOff('+data[i].dianka+')" >去使用</button></div>
+                    </div>
+                    </div>
+                </li>
+
+
+				  	<li>
+               	<div class="left">
+                     <div class="s">赠</div>
+					 <div class="c">复制</div>
+					 
+                    <div class="padding">
+                   	<div class="tit">VIP激活码：<em>5123123123</em><p>5551515 </p></div>
+                  </div>
+                 </div>
+              		<div class="right bg1">
+                    <div class="ltdian"></div><div class="lbdian"></div>
+                   <div class="padding">
+                   	<div class="price">5123123</div>
+                        <div class="btn"><button class="use1"  tapmode onclick="loginOff('+data[i].dianka+')" >去使用</button></div>
+                    </div>
+                    </div>
+                </li>
+
+
+
+-->
+
+
+
+				
+            </ul>
+		</div>
+
+
+
+    </body>  
+	
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	var api_url = localStorage.getItem('api_url');
+
+	apiready = function(){
+		
+
+		
+	/*	
+				api.showProgress({
+				    title: '正在加载',
+				    text: '请稍等',
+				    modal: false
+				});
+				
+ 	*/	
+
+		GetData();
+   
+						// 网络状态
+		api.addEventListener({
+			name:'offline'
+		}, function(ret, err){        
+
+			api.toast({
+			msg : '网络连接异常',
+			duration : 5000,
+			location : 'middle' 
+			});
+
+		});
+		
+
+		api.addEventListener({
+			name:'online'
+		}, function(ret, err){        
+		
+			  api.toast({
+			  msg : '已经连接网络',
+			  duration : 2000,
+			  location : 'middle' 
+			  });
+				  
+			//获取数据
+			   GetData();
+
+				  
+		});	
+					
+	}
+	
+	
+
+
+    
+function GetData(){
+
+		api.ajax({
+            url: api_url+'/agent/agent/agent_activation_code_list.html',
+			method: 'get',
+			data: {
+				values: {
+				
+					key: 'nineqingnetwork',   //安全码
+					uid: localStorage.getItem('user_id'), 
+					time: localStorage.getItem('activation_code_query_time')
+				}
+			}
+		}, function(ret, err) {
+		
+			if(ret) {
+
+				var activation_code_list_frm = $api.byId('activation_code_list');//提现记录列表
+				
+				localStorage.setItem('activation_code_list_copy',ret.msg['activation_code_list']);   //激活码列表写入本地
+				
+				data = ret.msg['activation_code_list'];
+				
+				
+			/////////////会员过期时间获取  方法  formatDateTime  S   ////////////
+		function formatDateTime(timeStamp) {
+			var date = new Date();
+			date.setTime(timeStamp * 1000);
+			var y = date.getFullYear();
+			var m = date.getMonth() + 1;
+			m = m < 10 ? ('0' + m) : m;
+			var d = date.getDate();
+			d = d < 10 ? ('0' + d) : d;
+			var h = date.getHours();
+			h = h < 10 ? ('0' + h) : h;
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			minute = minute < 10 ? ('0' + minute) : minute;
+			second = second < 10 ? ('0' + second) : second;
+			return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second ;
+		};
+
+		/////////////会员过期时间获取  方法  formatDateTime  E   ////////////
+	
+					
+				
+				for(var i=0;i<data.length;i++){ 
+						
+				var time = data[i].ctime;   //先 艹
+				var s1 = formatDateTime(time);
+				var timestamp = Date.parse(new Date()) / 1000; 
+				
+				
+				
+				//使用状态
+				var isUse = data[i].y;
+				if (isUse == 1 ) {
+				
+					var Use = '已用';
+					var coss =  'rtdian';
+					var cosc =  'rbdian';
+					var coss_text =  '';
+					var cosc_text =  '';
+				
+				} else{
+				
+					var Use = '使用';
+					var coss =  's';
+					var cosc =  'c';
+					var coss_text =  '赠';
+					var cosc_text =  '复制';
+				}
+				
+				
+				var html= '        	<li>'+
+              ' 	<div class="left">'+
+              '       <div class="'+coss+'"  onclick="giveuid('+'\''+data[i].dianka+'\''+')">'+coss_text+'</div><div class="'+cosc+'"  onclick="copy('+'\''+data[i].dianka+'\''+')">'+cosc_text+'</div>'+
+              '      <div class="padding">'+
+              '     	<div class="tit">VIP激活码：<em>'+data[i].dianka+'</em><p>'+s1+' </p></div>'+
+              '    </div>'+
+              '   </div>'+
+              '		<div class="right bg'+data[i].y+'">'+
+              '      <div class="ltdian"></div><div class="lbdian"></div>'+
+              '      <div class="padding">'+
+              '      	<div class="price">'+data[i].name+'</div>'+
+              '          <div class="btn"><button class="use'+data[i].y+'"  onclick="loginOff('+'\''+data[i].dianka+'\''+')" > '+Use+'</button></div>'+
+              '      </div>'+
+              '      </div>'+
+             '   </li>';
+							
+							
+							
+					$api.append(activation_code_list_frm,html);
+				}
+				
+				
+				
+				
+					api.hideProgress(); 
+				
+				
+			}
+			
+
+
+			
+			
+			
+			
+			
+
+		}); 
+
+   
+   /////判断是否已有 提现申请
+
+
+
+
+}
+
+
+
+ //充值点卡
+    function loginOff(kami){
+ //     var kami = $api.val($api.byId('kami'));
+	  
+
+
+        api.showProgress({
+            title: '验证中',
+            text: '请稍等',
+            modal: false
+        });
+		
+		
+		
+        api.ajax({
+            url: api_url+'/login/login/activation_code.html',
+            method: 'get',
+            data: {
+                values: {
+                    uid: localStorage.getItem('user_id'),
+					dianka: kami ,
+					key: 'nineqingnetwork'   //安全码
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+                if (ret.code == 0) {
+				api.hideProgress(); 
+				
+				
+				/*
+                 api.alert({
+                      title: '哎呀~',
+                      msg: ret.msg,
+                  });
+				  */
+				  
+				api.toast({
+                  msg: ret.msg,
+                  duration: 5000,
+				 location : 'middle' 
+              });
+				  
+				  
+                  return;
+                }else if (ret.code == 1) {
+				api.hideProgress(); 
+				
+					  
+				api.toast({
+                  msg: '充值成功',
+                  duration: 1000,
+				 location : 'middle' 
+              });
+				  			
+              /*    api.alert({
+                      title: '恭喜!',
+                      msg: '充值成功',
+                  });
+				 */ 
+				  
+				  
+                  localStorage.setItem('user_time',ret.lasttime);
+
+				   setTimeout("delayed()",1000);  //延迟执行 关闭
+
+
+                }
+
+            } else {
+              api.hideProgress();
+			  
+			  	api.toast({
+                  msg: '网络连接异常',
+                  duration: 5000,
+				 location : 'middle' 
+              });
+			  /*
+              api.alert({
+                  title: '糟糕~',
+                  msg: '网络似乎有点问题',
+              });
+			  
+			  */
+            }
+        });
+
+    
+    }
+
+
+
+
+																		
+																			
+	
+function giveuid(kami){
+	
+	var dialogBox = api.require('dialogBox');
+dialogBox.input({
+    keyboardType: 'default',
+	tapClose:true,
+    texts: {
+        title: '提示：赠送成功后无法撤回', 
+        placeholder: '输入接收人UID',
+        leftBtnTitle: '算了',
+        rightBtnTitle: '赠送'
+    },
+    styles: {
+        bg: '#fff',
+        corner: 20,
+        w: 300,
+        h: 130,
+        title: {
+            h: 30,
+            alignment: 'center',
+            size: 12,
+            color: '#888',
+            marginT:10, 
+        },
+        input: {
+        h: 35,                  //（可选项）数字类型；输入框区域高度；默认：20
+        bg: '#fff', 
+        alignment: 'center',    //（可选项）字符串类型；输入框文字显示位置；取值范围：center、left、right 
+        marginT: 1,             //（可选项）数字类型；输入框顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：居中显示
+        marginLeft: 50,             //（可选项）数字类型；输入框的左边距；默认：10
+        marginRight: 50,             //（可选项）数字类型；输入框的右边距；默认：10
+        textSize: 14,           //（可选项）数字类型；输入文本框文本字体大小；默认：14
+        textColor: '#f85e5f' ,      //（可选项）字符串类型；输入文本框文本字体颜色，支持#、rgb、rgba；默认：#000
+        borderColor:'#fff', //（可选项）字符串类型；输入文本框的边框颜色，支持#、rgb、rgba；默认：#000
+        verticalCenter:true,         //（可选项）布尔类型；是否上下居中；默认：false；该参数暂仅支持 android
+        borderWidth:1 //（可选项）数字类型；输入文本框的边框宽度；默认：0
+        },
+		dividingLine: {             //（可选项）JSON对象；按钮与输入框之间的分割线的配置
+		width: 0.5,              //（可选项）数字类型；分割线粗细；默认：0.5
+		color: '#fff'          //（可选项）字符串类型；分割线颜色，支持rgb、rgba、#；默认：#696969
+		},
+		left: { //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+	//	marginB: 30, //（可选项）数字类型；左边按钮的下边距；默认：7
+	//	marginL: 30, //（可选项）数字类型；左边按钮的左边距；默认：20
+		marginL: 10,            //（可选项）数字类型；左边按钮的左边距；默认：10
+		w: 50, //（可选项）数字类型；左边按钮的宽；默认：130
+		h: 40, //（可选项）数字类型；左边按钮的高；默认：35
+		corner: 10, //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+	//	bg: '#eaeaea',  //（可选项）字符串类型；左边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+		color: '#888', //（可选项）字符串类型；左边按钮标题字体颜色，支持rgb，rgba、#；默认：'#007FFF'
+		size: 12 //（可选项）数字类型；左边按钮标题字体大小；默认：12
+		},
+		right: { //（可选项）JSON 对象；右边按钮样式配置，不传则不显示右边按钮
+	//	marginB: 30, //（可选项）数字类型；右边按钮的下边距；默认：7
+	//	arginL: 40, //（可选项）数字类型；右边按钮左边距；默认：10
+		marginR: 10,            //（可选项）数字类型；右边按钮的右边距；默认：10
+		w: 50, //（可选项）数字类型；右边按钮的宽；默认：130
+		h: 40, //（可选项）数字类型；右边按钮的高；默认：35 
+		corner: 10, //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+//		bg: '#f85e5f', //（可选项）字符串类型；右边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+		color: '#f85e5f', //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+		size: 12 //（可选项）数字类型；右边按钮标题字体大小；默认：12
+		} ,
+		horizontalLine:{  
+    color:'rgba(245,245,245,0)', //（可选项）字符串类型；左右按钮上边横线的颜色，支持rgb、rgba、#；默认：'rgba(245,245,245,0)'
+    height:1                //（可选项）数字类型；左右边按钮横线的高度；默认：0     
+    },
+    verticalLine:{
+        color:'rgba(245,245,245,0)', //（可选项）字符串类型；左右按钮中间竖线的颜色，支持rgb、rgba、#；默认：'rgba(245,245,245,0)'
+      width:1                 //（可选项）数字类型；左右边按钮竖线的高度；默认：0  
+
+    }
+    }
+	
+	
+		}, function(ret) {
+		
+		//获取输入值
+		var giveuid = ret.text
+
+
+    if (ret.eventType == 'right') {
+
+			if(giveuid == '' ){
+			
+						api.toast({
+						  msg: '请输入接收人UID',
+						  duration: 5000,
+						 location : 'middle' 
+					  });
+			
+			}else{
+					//传递开始赠送
+					give(kami,giveuid);
+			}
+
+
+		//关闭窗口
+        var dialogBox = api.require('dialogBox');
+        dialogBox.close({
+            dialogName: 'input'
+        });
+
+    }
+
+    if (ret.eventType == 'left') {
+		//关闭窗口
+        var dialogBox = api.require('dialogBox');
+        dialogBox.close({
+            dialogName: 'input'
+        });
+    }
+});
+			
+    }			
+			
+			
+			
+			
+
+			
+
+ //赠送激活码
+    function give(kami,giveuid){
+ //     var kami = $api.val($api.byId('kami'));
+	  
+
+
+        api.showProgress({
+            title: '验证中',
+            text: '请稍等',
+            modal: false
+        });
+		
+		
+		
+        api.ajax({
+            url: api_url+'/login/login/give_activation_code.html',
+            method: 'get',
+            data: {
+                values: {
+                    uid: localStorage.getItem('user_id'),
+                    giveuid: giveuid,
+					dianka: kami ,
+					key: 'nineqingnetwork'   //安全码
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+                if (ret.code == 0) {
+				api.hideProgress(); 
+				
+				api.toast({
+                  msg: ret.msg,
+                  duration: 5000,
+				 location : 'middle' 
+              });
+
+                  return;
+                }else if (ret.code == 1) {
+				api.hideProgress(); 
+				
+					  
+				api.toast({
+                  msg: ret.msg,
+                  duration: 1000,
+				 location : 'middle' 
+              });
+				  	
+				  
+				  				   setTimeout("delayed()",1000);  //延迟执行 关闭		 
+                }
+
+            } else {
+              api.hideProgress();
+			  
+			  	api.toast({
+                  msg: '网络连接异常',
+                  duration: 5000,
+				 location : 'middle' 
+              });
+			  /*
+              api.alert({
+                  title: '糟糕~',
+                  msg: '网络似乎有点问题',
+              });
+			  
+			  */
+            }
+        });
+
+    
+    }
+
+
+
+
+
+
+ //复制激活码
+    function copy(kami){
+ //     var kami = $api.val($api.byId('kami'));
+	  
+
+
+
+		var clipBoard = api.require('clipBoard');
+			clipBoard.set({
+			value: kami
+			}, function(ret, err) {
+				if(ret) {
+					api.toast({
+					msg: '激活码：'+kami+' 已复制',
+					duration: 5000,
+					location : 'middle' 
+				});
+				var dialogBox = api.require('dialogBox');
+				dialogBox.close({
+					dialogName: 'alert'
+				});
+				} else {
+
+				}
+			});
+
+    
+    }
+
+
+
+
+ //激活码 - 邮件发送
+    function go_agent_activation_code_email(){
+	
+	
+		api.showProgress({
+		    title: '正在处理',
+		    text: '请稍等',
+			modal: false
+		});
+
+		api.ajax({
+            url: api_url+'/agent/agent/agent_activation_code_email.html',
+			method: 'get',
+			data: {
+				values: {
+				
+					key: 'nineqingnetwork',   //安全码
+					uid: localStorage.getItem('user_id'), 
+					time: localStorage.getItem('activation_code_query_time')
+				}
+			}
+		}, function(ret, err) {
+		
+			if(ret){
+
+                if (ret.code == 1) {
+				
+					api.toast({
+					   msg: ret.msg,
+					   duration: 5000,
+					   location : 'middle' 
+					});
+				
+				}else{
+				
+					api.toast({
+					   msg: ret.msg,
+					   duration: 5000,
+					   location : 'middle' 
+					});
+					
+				}
+				
+				  api.hideProgress();
+				
+			}else{
+				
+				  api.toast({
+					  msg: '网络连接异常',
+					  duration: 5000,
+					 location : 'middle' 
+				  });
+			
+				  api.hideProgress();
+				  
+			}
+			
+
+
+			
+			
+			
+
+		}); 
+
+   
+    
+    }
+
+
+
+
+
+		//延时执行
+	    function delayed(){	
+		
+                  api.sendEvent({
+                    name: 'newLoingdata',
+                    extra: {
+                    }
+                  });
+				  
+                  api.closeWin();
+
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+	
+	
+	
+</html>

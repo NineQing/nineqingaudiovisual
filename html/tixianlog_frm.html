@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>提现记录</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="../Ryancss/tixianlog.css" rel="stylesheet" type="text/css"/>
+		<style>
+		.guanbijilu{
+	   display :none ;
+	   }
+	   
+		</style>
+    </head>
+    <body>
+
+        <section class="aui-flexView">
+
+			
+            <section class="aui-scrollView">
+			
+					<div class="aui-envelopes-box" id="tixianlist">    	<!--提现记录-->
+				
+				
+				
+				
+				
+				
+										<div class="aui-flex aui-flex-bottom"> 
+											<div class="aui-flex-box"> 
+												<p>可提现余额</p> 
+											</div> 
+											<div class="aui-flex-arrow"  id="sign" ><!--可提现余额--></div> 
+										</div> 
+										
+										<div class="aui-flex"> 
+											<div class="aui-flex-box"> 
+												
+											</div> 
+											<div class="aui-flex-arrow" id="tixiancishu" ><!--提现次数-->
+											
+											</div> 
+										</div> 
+										
+										
+					<div id="istixianno"> <!--如果没有记录-->	
+									
+										<div  id="guanbijilu">  <!--如果没有审核就隐藏-->
+											<a class="aui-evn-box" > 
+												<div class="aui-evn-head-tixianzhong"></div> 
+												<div class="aui-evn-head-item"> 
+													<div class="aui-flex"> 
+														<div class="aui-flex-rate"> 
+															<h2><em id="txje">￥0</em><em>.00</em></h2>
+														</div> 
+														<div class="aui-flex-box"> 
+															<div class="aui-flex"> 
+																	<div class="aui-flex-box">   </div> 
+																<div class="aui-flex-arrow">审核中</div> 
+															</div> 
+														</div> 
+													</div> 
+												</div> 
+											</a>
+										</div> 
+
+
+
+		<!--		<a href="javascript:;" class="aui-evn-box"> 
+									<div class="aui-evn-head"></div> 
+									<div class="aui-evn-head-item"> 
+										<div class="aui-flex aui-flex-text"> 
+											<div class="aui-flex-rate"> 
+												<h2><em>￥</em>4123<em>.00</em></h2> 
+											</div> 
+											<div class="aui-flex-box"> 
+												<p style=" text-align: right; ">150714-555555</p> 
+											</div> 
+									</div> 
+										<div class="aui-flex aui-flex-top"> 
+											<div class="aui-flex-box"> 
+												<p>时间：123123123</p> 
+											</div> 
+											<div class="aui-flex-arrow">提现成功</div> 
+										</div> 
+									</div> 
+								</a>	
+
+
+-->
+
+
+
+
+
+
+				
+				 </div> 
+				
+				
+				
+				
+				
+                </div>
+		
+			
+            </section>
+        </section>
+
+    </body>
+	
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/ikmovie.js"></script>	
+<script type="text/javascript">
+	var api_url = localStorage.getItem('api_url');
+	var ikmovie="";
+	apiready = function(){
+		
+		
+		
+		
+	/*	
+				api.showProgress({
+				    title: '正在加载',
+				    text: '请稍等',
+				    modal: false
+				});
+				
+ 	*/
+ 	
+	api.ajax({
+        url: api_url+'/login/login/sign.html',
+        method: 'get',
+		dataType: 'text',
+        data: {
+            values: {
+				key: 'nineqingnetwork',   //安全码
+                uid: localStorage.getItem('user_id')
+            }
+        }
+    },function(ret, err){
+        if (ret) { 
+                                                                ret=json(ret);	
+            var sign = $api.byId('sign');
+            var txje = $api.byId('txje');
+            sign.innerHTML = '¥ '+ret.msg['money'];    //可用余额
+            txje.innerHTML = '¥ '+ret.msg['txje'];    //提现冻结余额
+
+			
+			
+           	if (ret.msg['txje'] > '0'){
+			
+			
+							/*
+									api.toast({
+									msg: '有提现',
+									duration: 3000
+									});
+						*/	
+
+            }else if (ret.msg['txje']  == '0'){
+             
+            			
+				/*
+								api.toast({
+									msg: '没有提现',
+									duration: 3000
+									});
+					*/			
+									
+								//	istixianno.innerHTML =  '<img src="../Ryanimg/tuandui/istuanduino.png" style="width:100%;display:inline-block;border-radius:5px;margin-top: .5rem;">  ';  
+								//	document.getElementById('tixiancishu_audio_no').play();   //没有提现记录     
+										
+
+									
+							guanbijilu();	
+   
+
+            }
+
+    
+			
+			
+
+        } else {
+          api.hideProgress();
+          /*
+            alert('网络错误');
+        */
+            api.toast({
+                msg: '网络错误',
+                duration: 5000
+            });
+
+
+        }
+    });
+   
+   
+   
+   
+		extract_cash();   //执行   审核判断
+		
+	}
+	
+	
+
+
+    
+function extract_cash() {   //判断是否有审核
+
+
+
+
+
+
+
+		api.ajax({
+			url: api_url + '/login/login/tixianlog.html',
+			method: 'get',
+			data: {
+				values: {
+					uid: localStorage.getItem('user_id')
+				}
+			}
+		}, function(ret, err) {
+		
+		api.hideProgress(); 
+			if(ret) {
+			
+			
+			
+									var tixiancishu = $api.byId('tixiancishu');//团队人数
+									tixiancishu.innerHTML ='已成功提现' + ret.msg['tixiancishu']+'笔';
+									
+					if(ret.msg['tixiancishu'] == "0" ) {
+					
+					
+					}else{
+					
+									/*
+									api.toast({
+									msg: '已经有很多很多',
+									duration: 3000
+									});
+									*/
+					//				tixiancishu.innerHTML ='共计提现' + ret.msg['tixiancishu']+'笔';
+					
+					}
+				
+				
+				
+				
+				
+				
+				
+				
+				var tixianlog_frm = $api.byId('tixianlist');//提现记录列表
+				
+				
+				data = ret.msg['tixianlist'];
+				
+				
+			/////////////会员过期时间获取  方法  formatDateTime  S   ////////////
+		function formatDateTime(timeStamp) {
+			var date = new Date();
+			date.setTime(timeStamp * 1000);
+			var y = date.getFullYear();
+			var m = date.getMonth() + 1;
+			m = m < 10 ? ('0' + m) : m;
+			var d = date.getDate();
+			d = d < 10 ? ('0' + d) : d;
+			var h = date.getHours();
+			h = h < 10 ? ('0' + h) : h;
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			minute = minute < 10 ? ('0' + minute) : minute;
+			second = second < 10 ? ('0' + second) : second;
+			return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second ;
+		};
+
+		/////////////会员过期时间获取  方法  formatDateTime  E   ////////////
+	
+					
+				
+				for(var i=0;i<data.length;i++){ 
+						
+				var tixiantime = data[i].time;   //先 艹
+				var s1 = formatDateTime(tixiantime);
+				var timestamp = Date.parse(new Date()) / 1000;
+				
+				//使用状态
+				var istxOk = data[i].status;
+				if (istxOk == 3 ) {
+				
+					var Txok = '驳回';
+					var ys = 'style="color: #f00;"';
+				
+				} else if (istxOk == 0 ) {
+				
+					var Txok = '提现成功';
+				}
+				
+				
+				var html='	<a href="javascript:;" class="aui-evn-box"> '+
+							'		<div class="aui-evn-head"></div> '+
+							'		<div class="aui-evn-head-item"> '+
+							'			<div class="aui-flex aui-flex-text"> '+
+							'				<div class="aui-flex-rate"> '+
+							'					<h2><em>￥</em>'+data[i].jine+'<em>.00</em></h2> '+
+							'				</div> '+
+							'				<div class="aui-flex-box"> '+
+							'					<p  style=" text-align: right; ">51020714-'+data[i].id+'</p> '+
+							'				</div> '+
+							'			</div> '+
+							'			<div class="aui-flex aui-flex-top"> '+
+							'				<div class="aui-flex-box"> '+
+							'					<p>时间：'+s1+'</p> '+
+							'				</div> '+
+							'				<div class="aui-flex-arrow" '+ ys +' >'+Txok+'</div> '+
+							'			</div> '+
+							'		</div> '+
+							'	</a>	';
+							
+							
+							
+					$api.append(tixianlog_frm,html);
+				}
+				
+				
+			}
+			
+
+
+			
+			
+			
+			
+			
+
+		}); 
+
+   
+   /////判断是否已有 提现申请
+
+
+
+
+}
+
+
+
+
+
+
+
+    
+function guanbijilu() {
+  var obj = document.getElementById("guanbijilu");
+  obj.setAttribute("class", "guanbijilu");
+}
+
+
+
+
+
+
+
+
+</script>
+	
+	
+	
+</html>

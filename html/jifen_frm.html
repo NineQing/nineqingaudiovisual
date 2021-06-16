@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>当前积分 - frm</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../Ryancss/wodejifen.css"/>
+</head>
+<body>
+
+
+
+ <section class="aui-scrollView">
+                <div class="aui-finance-box">
+                    <div class="aui-finance-fun">
+                        <div class="aui-finance-fun-hd">
+                            <h2>剩余积分</h2>
+                            <h3  id="sign">0</h3>
+                            <h4  id="Proportion"><!--积分兑换比例--></h4>
+                        </div>
+                        <div class="aui-finance-fun-bd">
+                            <div class="dot">
+                                <div class="dot2">
+                                    <div class="dot3" tapmode onclick="exchange(1)">兑换会员</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+   <!--             <a href="javascript:;" class="aui-well-item">
+                    <div class="aui-well-item-hd">—— 更多 ——</div>
+                </a>
+-->
+				
+				
+				
+				
+				
+				<div style="overflow: hidden; position: relative; padding: 10px 5px 0;">
+				
+				
+				
+                    <a   onclick="exchange(7)" style="width: 48%;float: left;padding: 10px;margin: 0 1% 2% 1%;background: #fff;border-radius: 5px;    box-shadow: 0px 0px 5px 0 #ececec;">
+                        <div style="height: auto; width: 100%; overflow: hidden; background-image: -webkit-gradient(linear,left top,bottom top,from(#f99ecc),to(#d672c7)); /* background-image: -webkit-linear-gradient(left,#f99ecc,#d672c7); */ background-image: -moz-linear-gradient(left,#f99ecc,#d672c7); /* background-image: linear-gradient(to bottom,#f16fb0,#5d1aeb); */ background-color: #ffffff; text-align: center; color: #bbaeb4; padding: 0.5rem 0; border-radius: 5px;">
+                            <h2 style="font-size: 1rem; "><em style="font-style: normal; font-weight: normal; font-size: 0.5rem;">价值 ￥</em><b id="vip1"></b></h2>
+                            <h3 style="font-size: 0.5rem; font-weight: normal; border-bottom: 1px dashed #e8e8e8; width: 80%; padding-bottom: 0.3rem; margin: 0 auto;">7 天 超级VIP</h3>
+                            <h4 style="font-size: 0.7rem; font-weight: normal; margin-top: 0.5rem;" id="vip1jifen"><!--多少积分兑换--></h4>
+                        </div>
+
+                    </a>
+					
+					
+					
+	                    <a   onclick="exchange(30)"  style="width: 48%;float: left;padding: 10px;margin: 0 1% 2% 1%;background: #fff;border-radius: 5px;box-shadow: 0px 0px 5px 0 #ececec;">
+                        <div style="height: auto; width: 100%; overflow: hidden; background-image: -webkit-gradient(linear,left top,bottom top,from(#f99ecc),to(#d672c7)); /* background-image: -webkit-linear-gradient(left,#f99ecc,#d672c7); */ background-image: -moz-linear-gradient(left,#f99ecc,#d672c7); /* background-image: linear-gradient(to bottom,#f16fb0,#5d1aeb); */ background-color: #ffffff; text-align: center; color: #bbaeb4; padding: 0.5rem 0; border-radius: 5px;">
+                           <h2 style="font-size: 1rem;"><em style="font-style: normal; font-weight: normal; font-size: 0.5rem;">价值 ￥</em><b id="vip2"></b></h2>
+                            <h3 style="font-size: 0.5rem; font-weight: normal; border-bottom: 1px dashed #e8e8e8; width: 80%; padding-bottom: 0.3rem; margin: 0 auto;">30 天 超级VIP</h3>
+                            <h4 style="font-size: 0.7rem; font-weight: normal; margin-top: 0.5rem;" id="vip2jifen"><!--多少积分兑换--></h4>
+                        </div>
+
+                    </a>
+					
+					
+									
+	                    <a   onclick="exchange(90)"  style="width: 48%;float: left;padding: 10px;margin: 0 1% 2% 1%;background: #fff;border-radius: 5px;box-shadow: 0px 0px 5px 0 #ececec;">
+                        <div style="height: auto; width: 100%; overflow: hidden; background-image: -webkit-gradient(linear,left top,bottom top,from(#f99ecc),to(#d672c7)); /* background-image: -webkit-linear-gradient(left,#f99ecc,#d672c7); */ background-image: -moz-linear-gradient(left,#f99ecc,#d672c7); /* background-image: linear-gradient(to bottom,#f16fb0,#5d1aeb); */ background-color: #ffffff; text-align: center; color: #bbaeb4; padding: 0.5rem 0; border-radius: 5px;">
+                            <h2 style="font-size: 1rem;"><em style="font-style: normal; font-weight: normal; font-size: 0.5rem;">价值 ￥</em><b id="vip3"></b></h2>
+                            <h3 style="font-size: 0.5rem; font-weight: normal; border-bottom: 1px dashed #e8e8e8; width: 80%; padding-bottom: 0.3rem; margin: 0 auto;">90 天 超级VIP</h3>
+                            <h4 style="font-size: 0.7rem; font-weight: normal; margin-top: 0.5rem;" id="vip3jifen"><!--多少积分兑换--></h4>
+                        </div>
+
+                    </a>
+					
+					
+									
+	                    <a   onclick="exchange(180)"  style="width: 48%;float: left;padding: 10px;margin: 0 1% 2% 1%;background: #fff;border-radius: 5px;box-shadow: 0px 0px 5px 0 #ececec;">
+                        <div style="height: auto; width: 100%; overflow: hidden; background-image: -webkit-gradient(linear,left top,bottom top,from(#f99ecc),to(#d672c7)); /* background-image: -webkit-linear-gradient(left,#f99ecc,#d672c7); */ background-image: -moz-linear-gradient(left,#f99ecc,#d672c7); /* background-image: linear-gradient(to bottom,#f16fb0,#5d1aeb); */ background-color: #ffffff; text-align: center; color: #bbaeb4; padding: 0.5rem 0; border-radius: 5px;">
+                           <h2 style="font-size: 1rem; "><em style="font-style: normal; font-weight: normal; font-size: 0.5rem;">价值 ￥</em><b id="vip4"></b></h2>
+                            <h3 style="font-size: 0.5rem; font-weight: normal; border-bottom: 1px dashed #e8e8e8; width: 80%; padding-bottom: 0.3rem; margin: 0 auto;">180 天 超级VIP</h3>
+                            <h4 style="font-size: 0.7rem; font-weight: normal; margin-top: 0.5rem;" id="vip4jifen"><!--多少积分兑换--></h4>
+                        </div>
+
+                    </a>
+					
+					
+									
+					
+					
+					
+
+</div>
+				
+				
+		       <a class="aui-well-item">
+                    <div class="aui-well-item-hd">—— 未完待续 ——</div>
+                </a>		
+				
+				
+				
+				
+				
+				
+				
+            </section>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/auitab.js" ></script>
+<script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+
+  apiready = function(){
+
+    api.parseTapmode();
+		
+	/*	
+				api.showProgress({
+				    title: '正在加载',
+				    text: '请稍等',
+				    modal: false
+				});
+				
+ 	*/
+
+	getdata();  //获取数据
+							// 网络状态
+		api.addEventListener({
+			name:'offline'
+		}, function(ret, err){        
+
+			api.toast({
+			msg : '网络连接异常',
+			duration : 5000,
+			location : 'middle' 
+			});
+
+			  
+
+		});
+
+		api.addEventListener({
+			name:'online'
+		}, function(ret, err){        
+		
+			  api.toast({
+			  msg : '已经连接网络',
+			  duration : 2000,
+			  location : 'middle' 
+			  });
+				  
+	getdata();  //获取数据
+
+				  
+		});	
+  }
+  
+  
+  
+  
+  
+  	 
+	//获取数据
+  function getdata(){
+      api.ajax({
+          url: api_url+'/login/login/Get_price.html',
+          method: 'get',
+          data: {
+              values: {
+					uid: localStorage.getItem('user_id'),
+					key: 'nineqingnetwork'   //安全码
+              }
+          }
+      },function(ret, err){
+          if (ret) {
+				if (ret.code == 1) {
+				
+				
+				  localStorage.setItem('user_time',ret.msg['time']);   //重新获取时间
+			  
+				  Proportion.innerHTML = ret.msg['Proportion']+'积分即可兑换1天会员';		
+				  Proportion = ret.msg['Proportion'];
+
+				  sign.innerHTML = ret.msg['sign'];		
+				
+              //  var vip1 = $api.byId('vip1'); 
+                vip1.innerHTML = ret.msg['vip1'];
+				vip1jifen.innerHTML = 7*ret.msg['Proportion']+' 积分兑换';    //9折
+				
+
+              //  var vip2 = $api.byId('vip2');
+                vip2.innerHTML = ret.msg['vip2'];
+				vip2jifen.innerHTML = 30*ret.msg['Proportion']+' 积分兑换';   //8折
+				
+				
+
+              //  var vip3 = $api.byId('vip3');
+                vip3.innerHTML = ret.msg['vip3'];
+				vip3jifen.innerHTML = 90*ret.msg['Proportion']+' 积分兑换';   //7折
+				
+				
+
+              //  var vip4 = $api.byId('vip4');
+                vip4.innerHTML = ret.msg['vip4'];
+				vip4jifen.innerHTML = 180*ret.msg['Proportion']+' 积分兑换';   //6折
+				
+				
+
+
+            }
+			
+			
+          api.hideProgress();
+			
+          } else {
+           
+		   
+		   				api.toast({
+						   msg: '信息获取失败' ,                   
+						   duration: 3000,
+							location : 'middle' 
+						});
+				
+          api.hideProgress();			
+            return;
+          }
+      });
+    }	
+	
+	
+	
+  
+  
+  
+  
+  
+  
+  
+
+  var jifenbi = '';
+
+
+// 兑换积分
+  function exchange(tianshu){
+    var share = $api.val($api.byId('count'));    //兑换
+	var duihuantianshu = tianshu;    
+	var jifenbi = Proportion;    
+
+    api.ajax({
+        url: api_url+'/login/login/exchange.html',
+        method: 'get',
+        data: {
+            values: {
+				key: 'nineqingnetwork',   //安全码
+                uid: localStorage.getItem('user_id'),
+                share:duihuantianshu*jifenbi                 //消耗积分数
+            }
+        }
+    },function(ret, err){
+
+	
+        if (ret) {
+            if (ret.code == 0) {
+              api.toast({
+                  msg: ret.msg,
+                  duration: 5000,
+				 location : 'middle' 
+              });
+
+            }else {
+             getdata();   //获取会员积分
+              /*
+              alert( '成功兑换'+share+'天会员' );
+              */
+              api.toast({
+                  msg: '成功兑换'+duihuantianshu+'天会员',
+                  duration: 10000,
+				  location : 'middle' 
+              });
+ 
+		//传递数据
+			 api.sendEvent({
+			  name: 'newLoingdata',
+			  extra: {
+				}
+			});	
+
+
+
+            }
+
+
+          api.hideProgress();
+
+
+        } else {
+          api.hideProgress();
+          /*
+            alert( '网络错误' );
+            */
+            api.toast({
+                msg: '网络错误',
+                duration: 5000,
+				location : 'middle' 
+            });
+
+        }
+    });
+  }
+
+
+
+
+
+	
+ 	
+
+	
+	
+	
+	
+	
+	
+	
+	/*
+	
+  var bar = document.querySelectorAll(".aui-bar-btn");
+    if(bar){
+        for(var i=0; i<bar.length;i++){
+            var d = bar[i];
+            var tab = new auiTab({
+                element:bar[i],
+                repeatClick:true
+            },function(ret){
+                //alert( JSON.stringify( ret ) );
+                if(ret.dom.parentNode.getAttribute("type") && ret.dom.parentNode.getAttribute("type")=="count"){
+                    var count = parseInt(document.getElementById("count").value);
+                    if(ret.index==2)return;
+                    if(ret.index==1){
+                      if (document.getElementById("count").value<=1) {
+                        return;
+                      }
+                        document.getElementById("count").value = count-1;
+                    }
+                    if(ret.index==3){
+                        document.getElementById("count").value = count+1;
+                    }
+                }
+            });
+
+        }
+    }
+*/
+	
+</script>
+</html>

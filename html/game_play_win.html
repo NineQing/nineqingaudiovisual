@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+</head>
+<body>
+
+
+
+
+    <header class="aui-bar aui-bar-nav" id="aui-header" style="background: linear-gradient(to right,#f370af 0,#5515ee  100%);">
+        <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+            <span class="aui-iconfont aui-icon-left" style="color:#FFF"></span>
+        </a>
+        <div id="title" class="aui-title">播放 游戏直播</div>
+		
+		
+		        <a class="aui-btn aui-pull-right" tapmode onclick="toShezhi()">
+            <span class="aui-iconfont aui-icon-gear" style="color:#FFF"></span>
+        </a>
+
+    </header> 
+	
+
+
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+/////  初始化执行   S /////
+/////  apiready  一打开就执行的 函数
+  apiready = function(){
+  
+			  
+  api.setKeepScreenOn({
+    keepOn: true
+});
+
+
+
+  api.parseTapmode();
+  var header = $api.byId('aui-header');
+  $api.fixStatusBar(header);  
+  var headerPos = $api.offset(header);
+  var body_h = $api.offset($api.dom('body')).h;
+   
+   
+   
+
+  title.innerHTML = '正在播放：'+api.pageParam.zhubo; 
+		
+    api.openFrame({
+        name: 'game_play_frm',
+        url: 'game_play_frm.html',
+        bounces: false,    //禁止下拉
+        rect: {
+            x: 0,  
+            y: headerPos.h,
+            w: 'auto',
+            h: 'auto'
+        },
+
+        pageParam:{video:api.pageParam.video,video_flv:api.pageParam.video_flv,title:api.pageParam.title,zhubo:api.pageParam.nickname}
+    })
+
+
+  }
+
+/////  初始化执行   E /////
+
+
+
+
+      function toShezhi(){
+
+
+        api.openWin({
+            name: 'shezhi_win',
+            url: 'shezhi_win.html', 
+        });
+		
+		
+		
+	//打开页面时 关闭当前页
+		api.addEventListener({
+         name:'viewdisappear'
+     },function(){
+         api.closeWin({
+              name:api.winName
+         });
+     });
+
+    }
+
+
+
+//////////////////////   返回按钮  方法   closeWin    S //////////////////////
+  function closeWin(){
+    api.setScreenOrientation({
+        orientation: 'portrait_up'
+    });
+      api.closeWin({
+      });
+  }
+//////////////////////   返回按钮  方法   closeWin    E //////////////////////
+
+
+</script>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>公告</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="../Ryancss/artical.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 <section class="aui-flexView">
+
+            <section class="aui-scrollView">
+                <div class="aui-service-box"  id="articallist">
+				
+				<!--
+				<div>
+                    <div class="aui-service-circle">
+                        <span>时间</span>
+                    </div>
+                    <div class="aui-service-list">
+                        <h3>标题</h3>
+                        <a href="javascript:;" class="aui-news-item">
+                            <div class="aui-news-item-hd">
+                                <img src="图片地址" alt="">
+                            </div>
+                            <div class="aui-news-item-bd">
+                                <p>内容</p>
+                            </div>
+                        </a>
+                    </div>
+				</div>	
+-->
+              
+                </div>
+            </section>
+        </section>
+	
+	
+
+
+    </body>
+	
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	var api_url = localStorage.getItem('api_url');
+	apiready = function(){
+		
+		
+/*
+		 api.showProgress({
+			  title: '加载中',
+			  modal: false
+		 });
+	*/
+ 	
+	api.ajax({
+        url: api_url+'/app/Artical/getArtList.html',
+        method: 'get',
+        data: {
+            values: {
+             
+			key: 'nineqingnetwork'   //安全码
+			
+            }
+        }
+    },function(ret, err){
+		
+		
+		
+		
+		
+		api.hideProgress(); 
+		
+		
+			if(ret) {
+			
+			
+				
+				var artical_frm = $api.byId('articallist');//提现记录列表
+				
+				
+				data = ret.msg['articallist'];
+				
+				
+			/////////////会员过期时间获取  方法  formatDateTime  S   ////////////
+		function formatDateTime(timeStamp) {
+			var date = new Date();
+			date.setTime(timeStamp * 1000);
+			var y = date.getFullYear();
+			var m = date.getMonth() + 1;
+			m = m < 10 ? ('0' + m) : m;
+			var d = date.getDate();
+			d = d < 10 ? ('0' + d) : d;
+			var h = date.getHours();
+			h = h < 10 ? ('0' + h) : h;
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			minute = minute < 10 ? ('0' + minute) : minute;
+			second = second < 10 ? ('0' + second) : second;
+			return y + '-' + m + '-' + d   ;
+		//	return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second ;
+		};
+
+		/////////////会员过期时间获取  方法  formatDateTime  E   ////////////
+	
+					
+				
+				for(var i=0;i<data.length;i++){ 
+						
+				var time = data[i].time;   //先 艹
+				var s1 = formatDateTime(time);
+				var timestamp = Date.parse(new Date()) / 1000;
+				
+				var html=' 	<div>'+
+             '        <div class="aui-service-circle">'+
+             '            <span>'+s1+'</span>'+
+             '        </div>'+
+             '        <div class="aui-service-list">'+
+            '             <h3>'+data[i].title+'</h3>'+
+            '             <a value="'+data[i].id+'"   tapmode onclick="openWin('+data[i].id+')"  class="aui-news-item">'+
+           '                  <div class="aui-news-item-hd">'+
+           '                      <img src="'+api_url+''+data[i].picture+'" alt="">'+
+           '                  </div>'+
+           '                  <div class="aui-news-item-bd">'+
+           '                      <p>'+data[i].content+'</p>'+
+           '                  </div>'+
+          '               </a>'+
+          '           </div>'+
+		' 			</div>';	
+
+
+
+
+
+
+				
+							
+					$api.append(artical_frm,html);
+				}
+				
+				
+			}
+			
+
+		});
+   
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	////////////打开页面 方法  openWin   S   ////////////
+
+		function openWin(name) {
+
+		
+		
+		var id_is_url = name;    
+				
+			api.ajax({
+        url: api_url+'/app/Artical/getArtIsurl.html',
+        method: 'get',
+        data: {
+            values: {
+             id:id_is_url,
+			key: 'nineqingnetwork'   //安全码
+			
+            }
+        }
+    },function(ret, err){
+		
+
+		
+				
+				is_url = ret.msg['url'];
+		
+
+	
+		
+		if(is_url == '' ){
+		
+
+						
+			api.openWin({
+              name: 'artical_h5',
+              url: './artical_h5.html',
+              pageParam: {
+						url: api_url+'/app/Artical.html?id='+name,  
+              }
+          });
+		
+		}else{
+		
+					var delay = 0;
+					if(api.systemType != 'ios') {
+						delay = 300;
+					}
+					
+
+		  
+		  			api.openWin({
+              name: 'artical_h5',
+              url: './artical_h5.html',
+              pageParam: {
+						url: ret.msg['url'],  
+              }
+          });
+		  
+		  
+			
+		}
+			
+
+	
+	
+		
+
+	
+			
+			
+			
+
+		});
+		
+		
+
+
+			}
+		////////////打开页面 方法  openWin   e   ////////////
+
+
+	
+
+	
+	
+</script>
+	
+	
+	
+</html>

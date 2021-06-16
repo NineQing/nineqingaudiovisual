@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+
+		<link type="text/css" href="../../css/h5-aura1wdb.css" rel="stylesheet" />
+		<link type="text/css" href="../../css/h5-channel-aura.css" rel="stylesheet" />
+		<link type="text/css" href="../../css/h5-mine-aura1wdb.css" rel="stylesheet" />
+		<style>
+.m-sortList-wrap .tabs {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding-right: 40px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-size: 0;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}	
+		</style>
+	</head>
+	<body>
+
+		<div>
+
+			<div>
+				<div>
+
+					<div icon="c-tabNav-screen" title="筛选" cname="dianshiju">
+						<div class="m-box-items m-box-items-full">
+							<div>
+
+								<section name="m-tagSearch" class="m-sortList-wrap m-sliding sortList-border">								
+									<ul id="shaixuan1" class="tabs" style="overflow-x: auto;overflow-y: hidden;transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px) scale(1) translateZ(0px);">
+<!-- 分类 -->
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex( this,0);" class="c-sortlist-item selected ">全部</a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex( this,1 );" class="c-sortlist-item ">电影 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex( this,2 );" class="c-sortlist-item ">电视剧 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex( this,4 );" class="c-sortlist-item ">动漫 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex( this,3 );" class="c-sortlist-item ">综艺 </a></li>
+
+									</ul>
+									<ul id="shaixuan2" class="tabs" style="overflow-x: auto;overflow-y: hidden;transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px) scale(1) translateZ(0px);">
+<!-- 年代 -->
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,0);" class="c-sortlist-item selected ">全部</a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2020 );" class="c-sortlist-item ">2020 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2019 );" class="c-sortlist-item ">2019 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2018 );" class="c-sortlist-item ">2018 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2017 );" class="c-sortlist-item ">2017 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2016 );" class="c-sortlist-item ">2016 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2015 );" class="c-sortlist-item ">2015 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2014 );" class="c-sortlist-item ">2014 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex2( this,2013 );" class="c-sortlist-item ">2013 </a></li>
+
+
+									</ul>	
+									<ul id="shaixuan3" class="tabs" style="overflow-x: auto;overflow-y: hidden;transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px) scale(1) translateZ(0px);">
+<!-- 按啥 -->
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex3( this,0);" class="c-sortlist-item selected ">全部</a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex3( this,1 );" class="c-sortlist-item ">按时间最新 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex3( this,2 );" class="c-sortlist-item ">按人气最多 </a></li>
+<li style="pointer-events: auto;"><a onclick="setFrameGroupIndex3( this,3 );" class="c-sortlist-item ">按评分最高 </a></li>
+
+
+									</ul>									
+								</section>
+
+							</div>
+						</div>
+
+						<div name="m-searchList" class="m-box-items m-box-items-full">
+							<section class="m-pic m-pic-vertical">
+								<ul id="div_list_f" class="m-pic-list m-sliding-list">
+
+
+
+								</ul>
+							</section>
+
+						</div>
+
+						<div id="geng">
+
+						</div>
+						<div onclick="dingbu()" class="m-sideBar" style="">
+							<div>
+								<a href="javascript:void(0)" class="m-goTop"><i class="c-glyphicon c-glyphicon-arrowUp"></i><span>顶部</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+
+	<script type="text/x-dot-template" id="navcattpl">
+		{{~ it.data : value : index }}
+    <li>
+    <div tapmode onclick="bofang('{{= value. vod_id }}')" class="piclist-img">
+				<a  class="piclist-link" style='background-image: url("{{= value. vod_pic }}");'>
+					<div class="c-rt">
+						<i class="c-picicon c-picicon-pay"></i>
+					</div>
+					<div class="c-lb"><!----></div>
+					<div class="c-rb">
+						<span class="c-date">{{= value. vod_remarks }}</span>
+					</div>
+					<div class="c-lt"></div>
+					<div class="c-lrb"><!----></div>
+				</a>
+			</div>
+			<div class="piclist-title">
+				<div class="c-title">
+					<a onclick="">{{= value. vod_name }}</a>
+				</div>
+			</div>
+</li>
+    {{~}}
+
+</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.js"></script>
+	<script type="text/javascript">
+		var api_url = localStorage.getItem('api_url');
+		var djapi_url = localStorage.getItem('djapi_url');
+			var fltype=localStorage.setItem('fltype','0'); 
+			var flyear=localStorage.setItem('flyear','0');
+			var flpin=localStorage.setItem('flpin','0');		
+		var leixing = 0;
+		var yeshu = 1;
+		var shaixuan;
+		
+		apiready = function() {
+hqdy();
+			//下拉刷新
+			api.setCustomRefreshHeaderInfo({
+				bgColor: '#fff',
+				images: [
+					'widget://image/app/xiala/1.png',
+					'widget://image/app/xiala/2.png',
+					'widget://image/app/xiala/3.png',
+					'widget://image/app/xiala/4.png',
+					'widget://image/app/xiala/5.png',
+					'widget://image/app/xiala/6.png',
+					'widget://image/app/xiala/7.png',
+					'widget://image/app/xiala/8.png',
+				],
+				tips: {
+					pull: '下拉刷新！',
+					threshold: '松开立即刷新！',
+					load: '正在刷新'
+				}
+
+			}, function() {
+
+				hqdy();
+
+				//下拉刷新被触发，自动进入加载状态，使用 api.refreshHeaderLoadDone() 手动结束加载中状态
+				setTimeout(function() {
+					api.refreshHeaderLoadDone()
+				}, 3000);
+			});
+			//下拉刷新
+
+
+		};
+		//////////////////////   打开推荐影片播放页  方法         S //////////////////////
+		function bofang(url) {
+
+			////获取数据
+			var time = localStorage.getItem('user_time');
+			var user_id = localStorage.getItem('user_id');
+			var username = localStorage.getItem('user_name');
+			var timestamp = Date.parse(new Date()) / 1000;
+
+			///判断是否登录
+			if(user_id == 0) {
+
+				/*
+				api.alert({
+				    title: '温馨提示',
+				    msg: '请先登陆后使用',
+				});
+
+				*/
+				api.toast({
+					msg: '还没登陆！',
+					duration: 1000, 
+                location : 'middle' 
+				});
+
+				api.openWin({
+					name: 'login',
+					url: 'widget://html/login.html',
+					delay: 300,
+											
+						
+				bounces: false,
+				slidBackEnabled: true,
+				bgColor: '#000',
+				animation: {
+					type: "reveal", //动画类型（详见动画类型常量） 
+					subType: "from_top", //动画子类型（详见动画子类型常量）
+					duration: 400
+				},
+				vScrollBarEnabled: false
+						
+					
+					
+				});
+				return;
+
+			}
+
+			//判断是否会员
+			if(time > timestamp) {
+
+
+				
+						var delay = 0;
+						if(api.systemType != 'ios') {
+							delay = 300;
+						}
+						api.openWin({
+							name: 'play',
+							url: 'widget://html/play.html',
+							bounces: false,
+							delay: delay,
+							slidBackEnabled: true,
+							vScrollBarEnabled: false,
+						/*	pageParam: {
+								video: name
+							}
+							*/
+							pageParam:{id:url}
+							
+						});
+						
+				
+						
+
+
+
+			} else if(time == -1) { //判断是否永久会员	
+				
+						var delay = 0;
+						if(api.systemType != 'ios') {
+							delay = 300;
+						}
+						api.openWin({
+							name: 'play',
+							url: 'widget://html/play.html',
+							bounces: false,
+							delay: delay,
+							slidBackEnabled: true,
+							vScrollBarEnabled: false,
+						
+							pageParam:{id:url}
+						});
+
+							
+
+						
+				 
+
+			} else if(time < timestamp) {
+				VipExpiredHint(); //会员过期弹窗提示
+			}
+
+		}
+
+		//////////////////////   打开推荐影片播放页  方法        E //////////////////////
+
+		function dingbu() {
+			api.pageUp({
+				top: true
+			}, function(ret, err) {
+				//coding...
+			});
+		}
+
+		function setFrameGroupIndex(tag, onl) {
+
+			if (tag == $api.dom('#shaixuan1 a.c-sortlist-item selected')) return;
+			var eFootLis = $api.domAll('#shaixuan1 a'),
+				index = 0;
+			for (var i = 0, len = eFootLis.length; i < len; i++) {
+				if (tag == eFootLis[i]) {
+					index = i;
+				} else {
+					$api.removeCls(eFootLis[i], 'selected');
+				}
+			}
+			$api.addCls(eFootLis[index], 'selected');
+			if (shaixuan != index) {
+				yeshu = 1;
+			}
+			fltype=localStorage.setItem('fltype',onl);  
+			hqdy();
+
+		}
+		function setFrameGroupIndex2(tag, onl) {
+
+			if (tag == $api.dom('#shaixuan2 a.c-sortlist-item selected')) return;
+			var eFootLis = $api.domAll('#shaixuan2 a'),
+				index = 0;
+			for (var i = 0, len = eFootLis.length; i < len; i++) {
+				if (tag == eFootLis[i]) {
+					index = i;
+				} else {
+					$api.removeCls(eFootLis[i], 'selected');
+				}
+			}
+			$api.addCls(eFootLis[index], 'selected');
+			if (shaixuan != index) {
+				yeshu = 1;
+			}
+			flyear=localStorage.setItem('flyear',onl);  
+			hqdy();
+
+		}
+		function setFrameGroupIndex3(tag, onl) {
+
+			if (tag == $api.dom('#shaixuan3 a.c-sortlist-item selected')) return;
+			var eFootLis = $api.domAll('#shaixuan3 a'),
+				index = 0;
+			for (var i = 0, len = eFootLis.length; i < len; i++) {
+				if (tag == eFootLis[i]) {
+					index = i;
+				} else {
+					$api.removeCls(eFootLis[i], 'selected');
+				}
+			}
+			$api.addCls(eFootLis[index], 'selected');
+			if (shaixuan != index) {
+				yeshu = 1;
+			}
+			flpin=localStorage.setItem('flpin',onl);  
+			hqdy();
+
+		}		
+		function hqdy() {
+			var navid = $api.byId('div_list_f');
+			var navtpl = $api.byId('navcattpl');
+			var sd = $api.byId('geng');
+			var fltype=localStorage.getItem('fltype');
+			var flyear=localStorage.getItem('flyear');
+			var flpin=localStorage.getItem('flpin');
+			// 添加广告
+			api.ajax({
+				url: djapi_url + '/api.php/ysapp/fldsj',
+				data: {
+					values: {
+						fltype: fltype,
+						flyear: flyear,
+						flpin: flpin,
+					}
+				}
+			}, function(ret, err) {
+				if (ret) {
+					//渲染模板
+					//电视剧
+					if (ret.dsj.data.length > 0) {
+						var pagefn = doT.template(navtpl.text);
+						navid.innerHTML = pagefn(ret.dsj);
+						sd.innerHTML =
+							'<div onclick="jzgd()" class="m-box-items m-box-items-full"><section class="m-loading-info"><div class="c-info">点击加载更多... </div></section></div>';
+					} else {
+						navid.innerHTML = '';
+						sd.innerHTML =
+							'<section class="m-noRecord"><div class="c-icon-noRecord"></div> <div class="c-info">当前分类没有视频,请直接搜索您想看的视频!</div></section>';
+						return;
+					}
+
+					//      alert( JSON.stringify( ret ) );
+
+				}
+
+
+			});
+
+
+		}
+
+		function jzgd() {
+			var navid = $api.byId('div_list_f');
+			var navtpl = $api.byId('navcattpl');
+			var fltype=localStorage.getItem('fltype');
+			var flyear=localStorage.getItem('flyear');
+			var flpin=localStorage.getItem('flpin');			
+			// 添加广告
+			api.ajax({
+				url: djapi_url + '/api.php/ysapp/fldsjjzgd',
+				data: {
+					values: {
+						yema: yeshu + 1,
+						fltype: fltype,
+						flyear: flyear,
+						flpin: flpin,
+					}
+				}
+			}, function(ret, err) {
+				if (ret) {
+					//渲染模板
+					//电视剧
+					if (ret.code == 0) {
+						api.toast({
+							msg: ret.msg,
+							duration: 5000
+						});
+						return;
+					} else {
+						var pagefn = doT.template(navtpl.text);
+						navid.innerHTML += pagefn(ret.dsj);
+						//      alert( JSON.stringify( ret ) );
+						yeshu = yeshu + 1;
+					}
+				}
+
+
+			});
+
+
+		}
+//  会员过期 弹窗提示
+ function VipExpiredHint(){
+ 
+	var dialogBox = api.require('dialogBox');
+	dialogBox.alert({
+	tapClose:true,			//允许点击遮罩关闭弹窗
+    texts: {  
+        title: '操作失败',
+        content: '您的超级会员已过期',   //调用后台设置内容
+        leftBtnTitle: '等下',
+        rightBtnTitle: '升级'
+    },
+    styles: {
+			bg: '#fff',
+			w: 300,
+			corner:10,
+			title: {
+				marginT: 20,
+				icon: 'widget://Ryanimg/frame0/rrrr.png',
+				iconSize: 20,
+				titleSize: 14,
+				titleColor: '#999'
+			},
+			content: { 
+				marginT: 20,       //（可选项）数字类型；内容文本顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：20
+				marginB: 20,       //（可选项）数字类型；内容文本底端与 left/right 顶端的距离，如果 left/right 都不存在，则是到对话框底端的距离；默认：20
+				color: '#999',
+				size: 14 
+			},
+			left: {
+				marginB: 30,
+				marginL: 30,
+				w: 100,
+				h: 35,
+				corner: 2,
+				bg: '#eeeeee',
+				color: '#999',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+				size: 12
+			},
+			right: {
+				marginB: 30,
+				marginL: 40,
+				w: 100,
+				h: 35,
+				corner: 2,
+				bg: '#ff1679',
+				color: '#fff',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+				size: 12
+			}
+			
+			
+		
+		}
+	}, function(ret) {
+						
+																			
+					if (ret.eventType == 'left') {
+						var dialogBox = api.require('dialogBox');
+						dialogBox.close({
+							dialogName: 'alert'
+						});
+					} else if(ret.eventType == 'right') {
+																			
+						api.openWin({
+						name: 'upgrade_vip_win',
+						url: 'widget://html/upgrade_vip_win.html',
+						delay: 300
+					});
+																					     
+							    
+						var dialogBox = api.require('dialogBox');
+						dialogBox.close({
+						dialogName: 'alert'
+						});
+																					
+					}
+				});
+ 
+ }
+	</script>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <style>
+        body {
+            padding: 60px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" tapmode onclick="fnvideoPlayerPlay()" name="button">播放器测试 加载中…… </button>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+fnvideoPlayerPlay();
+api.setKeepScreenOn({
+    keepOn: true
+});
+
+
+    };
+
+    function fnvideoPlayerPlay() {
+        var videoPlayer = api.require('videoPlayer');
+        videoPlayer.play({
+            texts: {
+                head: {
+                    title: api.pageParam.title+' 播放'
+                }
+            },
+            styles: {
+                head: {								 //（可选项）JSON对象；播放器顶部导航条样式    	
+                    bg: 'rgba(0.5,0.5,0.5,0.7)',		 //（可选项）字符串类型；顶部导航条背景，支持#、rgb、rgba、img；默认：rgba(161,161,161,0.5)
+                    height: 44,							     //（可选项）数字类型；顶部导航条的高；默认：44
+                    titleSize: 15,							  //（可选项）数字类型；顶部标题字体大小；默认：20
+                    titleColor: '#fff',							 //（可选项）字符串类型；顶部标题字体颜色；默认：#fff
+                    backSize: 20,								//（可选项）数字类型；顶部返回按钮大小；默认：44
+                    backImg: 'widget://image/videoPlayer/back.png',		//（可选项）字符串类型；顶部返回按钮的背景图片，要求本地路径（widget://、fs://）；默认：返回小箭头图标
+                    setSize: 20,										//（可选项）数字类型；顶部右边设置按钮大小；默认：44
+                    setImg: 'widget://image/videoPlayer/more.png'			//（可选项）字符串类型；顶部右边设置按钮背景图片，要求本地路径（widget://、fs://）；默认：设置小图标
+                },		
+                foot: {							 //（可选项）JSON对象；播放器底部导航条样式    	
+                    bg: 'rgba(0.5,0.5,0.5,0.7)',			//（可选项）字符串类型；底部导航条背景，支持#、rgb、rgba、img；默认：rgba(161,161,161,0.5)
+                    height: 44,								//（可选项）数字类型；底部导航条的高；默认：44
+                    playSize: 20,							//（可选项）数字类型；底部播放/暂停按钮大小；默认：44
+                    playImg: 'widget://image/videoPlayer/play.png',			//（可选项）字符串类型；底部播放按钮的背景图片，要求本地路径（widget://、fs://）；默认：播放按钮图标
+                    pauseImg: 'widget://image/videoPlayer/pause.png',			//（可选项）字符串类型；底部暂停按钮的背景图片，要求本地路径（widget://、fs://）；默认：暂停按钮图标
+                    nextSize: 20,											//（可选项）数字类型；底部下一集按钮大小；默认：44
+					nextImg:'fs://img/back.png',  				//（可选项）字符串类型；底部下一集按钮的背景图片，要求本地路径（widget://、fs://）；默认：下一集按钮图标
+                    timeSize: 14,									 //（可选项）数字类型；底部时间标签大小；默认：14
+                    timeColor: '#fff',					    //（可选项）字符串类型；底部时间标签颜色，支持#、rgba、rgb；默认：#fff
+                    sliderImg: 'widget://image/videoPlayer/unfullscreen.png',					//（可选项）字符串类型；底部进度条滑块背景图片，要求本地路径（widget://、fs://）；默认：滑块小图标((在iOS上需要添加二倍图或者三倍图,否则会出现毛边))
+                    progressColor: '#696969',			 //（可选项）字符串类型；进度条背景色，支持#、rgba、rgb；默认：#696969
+                    progressSelected: '#1296db',			 //（可选项）字符串类型；滑动后的进度条背景色，支持#、rgb、rgba；默认：#76EE00
+                    verticalImg: "widget://image/videoPlayer/unfullscreen.png",		 //（可选项）字符串类型；底部竖屏按钮的背景图片，要求本地路径（widget://、fs://）；默认：竖屏按钮图标              
+                    horizontalImg: "widget://image/videoPlayer/fullscreen.png"			//（可选项）字符串类型；底部横屏按钮的背景图片，要求本地路径（widget://、fs://）；默认：横屏按钮图标
+                }
+            },
+			  
+            coverImg: "widget://image/videoPlayer/fullscreen.png",		//	（可选项）封面图路径，播放器打开尚未播放时的封面图，要求本地路径（widget://、fs://）
+            path: api.pageParam.video,		//	（可选项）文档的路径，支持网络和本地（fs://）路径，在 android 平台上不支持 widget	
+			seekBarDragable: true,		//	（可选项） 播放进度条是否可以拖动
+            autoPlay: true					//（可选项）打开时是否自动播放		默认值：true（自动播放）
+        }, function(ret, err) {
+            if (ret) {
+			
+			
+ // alert(JSON.stringify(ret));	    /**/															
+	
+
+				if(ret.eventType == 'show'){
+				
+				
+				
+				/*
+																api.toast({
+																	msg: '打开成功并显示',
+																	duration: 11000,
+																	location : 'middle' 
+																});
+				*/
+			
+				}else if(ret.eventType == 'back'){
+				
+				
+														/*		api.toast({
+																	msg: '返回',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+																*/
+			var videoPlayer = api.require('videoPlayer');
+			videoPlayer.close();
+				
+				}else if(ret.eventType == 'play'){
+				
+				
+																api.toast({
+																	msg: '播放',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				
+				}else if(ret.eventType == 'pause'){
+				
+				
+																api.toast({
+																	msg: '暂停',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				
+				}else if(ret.eventType == 'next'){
+				
+				
+																api.toast({
+																	msg: '下一集',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				
+				}else if(ret.eventType == 'failed'){
+				
+				
+																api.toast({
+																	msg: '播放失败',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				 
+				}
+
+
+
+
+            } else {
+    alert(JSON.stringify(err));
+            }
+        });
+    }
+</script>
+
+</html>

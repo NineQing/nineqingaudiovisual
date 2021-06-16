@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>广告管理 - FRM</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+     <link href="../../Ryancss/agent_ad_administration.css" rel="stylesheet" type="text/css"/>
+	 
+	 		
+	<style type="text/css">
+
+	   .display-block{
+	   display :block ;
+	   }
+	   
+	   .display-none{
+	   display :none ;
+	   }
+	   
+	
+	</style>
+			
+	 
+</head>
+<body>
+
+<section class="aui-flexView">
+	
+	<section class="aui-scrollView">
+		
+		
+		
+		
+		<div class="aui-welfare-box display-none" id="agent_ad_switch_zero">   <!--无权限-->
+			<div class="aui-flex">
+				<div class="aui-flex-box">
+					<h2>广告管理</h2>
+				</div>
+			</div>
+			<div class="aui-info-list">
+				<a href="#" class="aui-flex">
+
+					<div class="aui-flex-box">
+						<h4><em>完善个人信息会提高审核通过率！</em> <i> <span onclick="agent_ad_banner_sq()">申请广告权限</span></i></h4> 
+					</div>
+				</a>
+			<br>
+			<p>Tips:<br>审核中的广告不允许编辑删除;<br>审核通过的广告只允许删除;<br>驳回的允许修改后再次提交.</p>
+
+			</div>
+		</div>
+		
+
+		<div class="aui-welfare-box display-none" id="agent_ad_switch_one">    <!--开放-->
+			<div class="aui-flex">
+				<div class="aui-flex-box">
+					<h2>广告管理</h2>
+				</div>
+			</div>
+			<div class="aui-info-list">
+				<a href="#" class="aui-flex">
+
+					<div class="aui-flex-box">
+						<h4><em>您有 <span id="agent_ad_number">0</span> 个轮播广告使用权 ! </em><i>已使用 <span id="agent_ad_number_used">0</span> 个</i></h4> 
+					</div>
+				</a>
+			<br>
+			<p>Tips:<br>审核中的广告不允许操作;<br>审核通过的广告只允许删除;<br>驳回的允许修改后再次提交.</p>
+
+			</div>
+		</div>		
+		
+		
+
+
+		<div class="aui-welfare-box display-none" id="agent_ad_switch_two">    <!--审核中-->
+			<div class="aui-flex">
+				<div class="aui-flex-box">
+					<h2>广告管理</h2>
+				</div>
+			</div>
+			<div class="aui-info-list">
+				<a href="#" class="aui-flex">
+
+					<div class="aui-flex-box">
+					
+						<h4><em>完善个人信息会提高审核通过率！</em> <i> <span>审核中</span></i></h4> 
+					</div>
+				</a>
+			<br><br>
+				<p>我的个人资料:<br><br>
+						手机号码：<span  id="agent_phone"></span><br>
+						微信：<span  id="agent_weichat"></span><br>
+						提现支付宝姓名：<span  id="agent_zfb_name"></span><br>
+						提现支付宝账户：<span  id="agent_zfb"></span>
+				</p>
+
+			</div>
+		</div>		
+				
+		
+		
+		
+
+
+		<div class="aui-welfare-box display-none" id="agent_ad_switch_three">    <!--拒绝-->
+			<div class="aui-flex">
+				<div class="aui-flex-box">
+					<h2>广告管理</h2>
+				</div>
+			</div>
+			<div class="aui-info-list">
+				<a href="#" class="aui-flex">
+
+					<div class="aui-flex-box">
+					
+						<h4><em>完善个人信息会提高审核通过率！</em> <i> <span>申请被拒绝</span></i></h4>
+					</div>
+				</a>
+			<br><br>
+				<p>我的个人资料:<br><br>
+						手机号码：<span  id="agent_phone"></span><br>
+						微信：<span  id="agent_weichat"></span><br>
+						提现支付宝姓名：<span  id="agent_zfb_name"></span><br>
+						提现支付宝账户：<span  id="agent_zfb"></span>
+				</p>
+			</div>
+		</div>		
+				
+		
+		
+		
+		
+				
+		
+		
+		
+		
+		<div class="display-none"  id="ad_list">
+		
+			<!---广告列表-->
+			
+		</div>
+		
+
+	</section>
+	
+</section>
+
+
+
+
+</body>
+
+<script type="text/javascript" src="../../script/api.js" ></script>
+<script type="text/javascript">
+    var user_id = localStorage.getItem('user_id');
+    var api_url = localStorage.getItem('api_url');
+    apiready = function(){
+      api.parseTapmode();
+	  
+
+
+/*
+		 api.showProgress({
+			  title: '加载中',
+			  modal: false
+		 });
+	*/
+			
+				
+ 			//监听重新获取
+			api.addEventListener({
+				name: 'newAgentaddata'
+			}, function(ret, err) {
+				if(ret) {
+					GetData();
+					location.reload();
+				}
+			});
+			
+				
+	
+      GetData();   //获取数据
+
+
+	  
+
+									// 网络状态
+								api.addEventListener({
+									name:'offline'
+								}, function(ret, err){        
+
+									api.toast({
+									msg : '网络连接异常',
+									duration : 5000,
+									location : 'middle' 
+									});
+
+									  
+
+								});
+
+								api.addEventListener({
+									name:'online'
+								}, function(ret, err){        
+								
+									  api.toast({
+									  msg : '已经连接网络',
+									  duration : 2000,
+									  location : 'middle' 
+									  });
+										  
+														  
+								GetData();   //获取数据
+
+										  
+								});	
+
+
+
+
+
+
+
+
+
+    }
+  //  初始化结束
+
+
+
+
+
+
+
+    function GetData(){
+	
+/*
+		 api.showProgress({
+			  title: '加载中',
+			  modal: false
+		 });
+	*/
+	
+      api.ajax({
+          url: api_url+'/agent/agent/agent_ad_administration.html',
+          method: 'get',
+          data: {
+              values: {
+				  key: 'nineqingnetwork',   //安全码
+                  uid: localStorage.getItem('user_id')
+              }
+          }
+      },function(ret, err){
+          if (ret) {
+			if(ret.code == 718){
+			
+				api.hideProgress();   //关闭加载提示
+				
+
+				api.toast({
+						msg: ret.msg,
+						duration: 5000,
+					location : 'middle' 
+					});
+
+
+				return;							
+				
+			}else if (ret.code == 0) {
+			
+				api.hideProgress();   //关闭加载提示
+				
+
+				api.toast({
+						msg: ret.msg,
+						duration: 5000,
+					location : 'middle' 
+					});
+
+
+				return;			
+			
+			
+			
+			}else if (ret.code == 1) {
+			
+				//广告开放数量 权限
+                localStorage.setItem('agent_ad_switch',ret.msg['agent_ad_switch']);		//0N 1Y 2S 3J
+                localStorage.setItem('agent_ad_number',ret.msg['agent_ad_number']);
+                localStorage.setItem('agent_ad_number_used',ret.msg['agent_ad_number_used']);
+				
+                localStorage.setItem('agent_phone',ret.msg['agent_phone']);
+                localStorage.setItem('agent_weichat',ret.msg['agent_weichat']);
+                localStorage.setItem('agent_zfb',ret.msg['agent_zfb']);
+                localStorage.setItem('agent_zfb_name',ret.msg['agent_zfb_name']);
+				
+
+                agent_ad_number.innerHTML = localStorage.getItem('agent_ad_number');
+                agent_ad_number_used.innerHTML = localStorage.getItem('agent_ad_number_used');
+
+                agent_phone.innerHTML = localStorage.getItem('agent_phone');
+                agent_weichat.innerHTML = localStorage.getItem('agent_weichat');
+                agent_zfb.innerHTML = localStorage.getItem('agent_zfb');
+                agent_zfb_name.innerHTML = localStorage.getItem('agent_zfb_name');
+
+
+
+					if(localStorage.getItem('agent_ad_switch') == 0){   //无权限
+					
+						var obj = document.getElementById("agent_ad_switch_zero");
+						obj.setAttribute("class", "aui-welfare-box display-block");
+					
+					
+					}else if(localStorage.getItem('agent_ad_switch') == 1){   //开放
+					
+						var obj = document.getElementById("agent_ad_switch_one");
+						obj.setAttribute("class", "aui-welfare-box display-block");
+					
+						var obj = document.getElementById("ad_list");
+						obj.setAttribute("class", "display-block");
+					
+					}else if(localStorage.getItem('agent_ad_switch') == 2){   //审核中
+					
+					
+						var obj = document.getElementById("agent_ad_switch_two");
+						obj.setAttribute("class", "aui-welfare-box display-block");
+					
+					}else if(localStorage.getItem('agent_ad_switch') == 3){   //拒绝
+					
+						var obj = document.getElementById("agent_ad_switch_three");
+						obj.setAttribute("class", "aui-welfare-box display-block");
+					}
+
+
+			
+
+
+
+				var agent_ad_administration_frm = $api.byId('ad_list'); 
+				var data = ret.msg['ad_list'];
+				
+				
+				for(var i=0;i<data.length;i++){ 
+						
+				//使用状态	0N 1Y 2S 3J
+				var isAudit = data[i].audit;
+				if (isAudit == 0 ) {
+				
+					var ad_state = '无权限';  
+					var ad_operation = '未知';
+					var ad_onclick = 'tips';
+					var ad_onclick_css_one = 'ryan_one_n';
+					var ad_onclick_css_two = 'ryan_two_n';
+				
+				} else if (isAudit == 1 ) {
+				
+					var ad_state = '展示中';
+					var ad_operation = '删除';
+					var ad_onclick = 'del';
+					var ad_onclick_css_one = 'ryan_one_y';
+					var ad_onclick_css_two = 'ryan_two_y';
+					
+				} else if (isAudit == 2 ) {
+				
+					var ad_state = '审核中';
+					var ad_operation = '';
+					var ad_onclick = 'tips';
+					var ad_onclick_css_one = '';
+					var ad_onclick_css_two = 'ryan_two_s';
+					
+				} else if (isAudit == 3 ) {
+				
+					var ad_state = '驳回';
+					var ad_operation = '修改';
+					var ad_onclick = 'edit';
+					var ad_onclick_css_one = 'ryan_one_j';
+					var ad_onclick_css_two = 'ryan_two_j';
+				}
+
+
+				var img_url = data[i].picurl;
+				var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\/])+$/;  //http https 正则
+				//如果检测到链接
+				if(reg.test(img_url)){
+					var img = data[i].picurl;
+				}else{
+				
+					var img = api_url+'/'+data[i].picurl;
+				}
+
+
+
+				var html= 	'	<div class="aui-welfare-box" > '+
+							'		<span class="'+ad_onclick_css_one+'"  onclick="operation('+'\''+data[i].id+'\''+','+'\''+data[i].audit+'\''+','+'\''+data[i].name+'\''+')"  >'+ad_operation+'</span> '+
+							'		<span class="'+ad_onclick_css_two+'" >'+ad_state+'</span> '+
+							'		<span class="ryan_id" >'+data[i].id+'</span> '+
+							'		<div class="aui-flex"> '+
+							'			<div class="aui-flex-box"> '+
+							'				<h2>'+data[i].name+'</h2> '+
+							'			</div> '+
+							'		</div> '+
+							'		<p>'+data[i].linkurl+'</p> '+
+							'		<div class="aui-flex aui-flex-ad"> '+
+							'			<div class="aui-flex-box"> '+
+							'				<img src="'+img+'" > '+
+							'			</div> '+
+							'		</div> '+
+							'	</div>';
+
+		
+					$api.append(agent_ad_administration_frm,html);
+				}
+				
+
+
+
+				
+				api.hideProgress();   //关闭加载提示
+
+            }//信息获取END
+			
+				api.hideProgress();   //关闭加载提示
+		
+          } else {
+	
+				api.hideProgress();   //关闭加载提示
+					
+				api.toast({
+						msg: '数据加载异常',
+						duration: 5000,
+					location : 'middle' 
+					});
+
+
+            return;
+          }
+      });
+    }
+ 
+
+
+
+
+	//操作
+	function operation(id,audit,name){
+	
+
+		if(audit == 0){
+		
+				api.toast({
+						msg: '未知错误 无权操作',
+						duration: 5000,
+					location : 'middle' 
+					});
+		
+		}else if(audit == 1){
+		
+			del(id,name);
+					
+		}else if(audit == 2){
+				
+			//   审核中
+		
+		}else if(audit == 3){
+		
+		
+		
+						var delay = 0;
+						if(api.systemType != 'ios') {
+							delay = 300;
+						}
+						
+						
+						api.openWin({
+							  name: 'agent_ad_edit_win',
+							  url: 'widget://html/agent_settings/agent_ad_edit_win.html',
+							bounces: false,
+							delay: delay,
+							slidBackEnabled: true,
+							vScrollBarEnabled: false,
+						
+							pageParam:{ad_id:id,audit:audit,uid:localStorage.getItem('user_id')}
+						});
+					
+					
+					
+		
+		}
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /////////////申请权限 方法  agent_ad_banner_sq   S   ////////////
+
+		//获取数据
+		function agent_ad_banner_sq() {
+			var user_id = localStorage.getItem('user_id');
+			var user_name = localStorage.getItem('user_name');
+			var user_password = localStorage.getItem('password');
+			var user_power = localStorage.getItem('power'); //权力  用于判断管理员
+			//alert(user_time);
+
+			if(localStorage.getItem('user_id') < 1) {
+				//如果没登陆
+
+				api.toast({
+					msg: '亲爱的，您还没用登录哦！',
+					duration: 2000
+				});
+
+				api.openWin({
+					name: 'login',
+					url: './login.html',
+					delay: 300
+				});
+				return;
+
+			}
+			//普通用户登录检测
+			if(localStorage.getItem('user_name') != null&&localStorage.getItem('user_name') != undefined&&localStorage.getItem('user_name') != '') {
+
+				api.ajax({
+					url: api_url + '/login/login/veify',
+					method: 'POST',
+					data: {
+						values: {
+						key: 'nineqingnetwork',   //安全码
+							username: localStorage.getItem('user_name'),
+							passwd: localStorage.getItem('password'),
+						}
+					}
+				}, function(ret, err) {
+					if(ret) {
+						if(ret.code == 0) {
+							/*    api.hideProgress();
+             alert('账号或密码不正确');
+原弹窗提示*/
+             api.toast({
+                 msg: '密码不正确或无权限！',
+                 duration: 5000
+             });
+
+             
+							NoAgencyAuthority()
+
+							return;
+						} else if(ret.code == 1) {
+							/*       alert('登录成功');
+							      原弹窗提示  */
+							api.toast({
+								msg: '验证成功 正在登录',
+								duration: 5000
+							});
+
+							//alert( JSON.stringify( ret ) );
+						
+var delay = 0;
+							if(api.systemType != 'ios') {
+								delay = 300;
+							}
+							api.openWin({
+								name: 'agent_ad_banner_sq_win',
+								url: './agent_ad_banner_sq_win.html',
+								delay: 300,
+								pageParam: {
+									url: 'http://m.nineqing.com/index/banner/index.html'
+								},
+								bgColor: 'rgba(0,0,0,0)'
+							});
+
+						}
+					} else {
+						api.hideProgress();
+						/*   alert('网络错误！');
+						      原弹窗提示*/
+						api.toast({
+							msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+							duration: 5000
+						});
+
+						//alert( JSON.stringify( err ) );
+						return;
+					}
+				});
+
+			}
+
+			//管理员APP设置
+			if(localStorage.getItem('user_id') == 1) {
+
+				api.ajax({
+					url: api_url + '/login/login/veify',
+					method: 'POST',
+					data: {
+						values: {
+						key: 'nineqingnetwork',   //安全码
+							username: localStorage.getItem('user_name'),
+							passwd: localStorage.getItem('password'),
+						}
+					}
+				}, function(ret, err) {
+					if(ret) {
+						if(ret.code == 1) {
+							/*       alert('登录成功');
+							      原弹窗提示  */
+							api.toast({
+								msg: '管理员登录',
+								duration: 5000
+							});
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			}
+							api.openWin({
+								name: 'agent_ad_banner_sq_win',
+								url: './agent_ad_banner_sq_win.html',
+								delay: 300,
+								pageParam: {
+									url: 'http://m.nineqing.com/index/banner/index.html'
+								},
+								bgColor: 'rgba(0,0,0,0)'
+							});
+
+						} else {
+							api.hideProgress();
+							return;
+						}
+					}
+
+				});
+
+			}
+
+		}
+
+		/////////////申请权限 方法  agent_ad_administration_win   E   ////////////
+
+
+		/////////////团队管理 方法  tuandui_win   S   ////////////
+		function tuandui_win() {
+
+			  api.openWin({    
+
+				  name: 'tuandui_win',
+				  url: 'widget://html/tuandui_win.html',
+				  delay: 300,
+			//	    });
+							
+													
+								
+						bounces: false,
+						slidBackEnabled: true,
+						bgColor: '#000',
+						animation: {
+							type: "movein", //动画类型（详见动画类型常量）
+							subType: "from_right", //动画子类型（详见动画子类型常量）
+							duration: 400
+						},
+						vScrollBarEnabled: false
+								
+								
+			  });
+			  
+	  
+		}
+		/////////////团队管理 方法  tuandui_win   E   ////////////
+
+
+
+
+
+ // 删除提示
+ function del(id,name){
+
+ 
+	var dialogBox = api.require('dialogBox');
+	dialogBox.alert({
+	tapClose:true,			//允许点击遮罩关闭弹窗
+    texts: {  
+        title: '确认删除？',
+        content: name,   //调用后台设置内容
+        leftBtnTitle: '等等',
+        rightBtnTitle: '确认删除'        
+    },
+    styles: {
+			bg: '#fff',
+			w: 300,
+			corner:10,
+			title: {
+				marginT: 20,
+				icon: 'widget://Ryanimg/frame0/rrrr.png',
+				iconSize: 20,
+				titleSize: 14,
+				titleColor: '#999'
+			},
+			content: { 
+				marginT: 20,       //（可选项）数字类型；内容文本顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：20
+				marginB: 20,       //（可选项）数字类型；内容文本底端与 left/right 顶端的距离，如果 left/right 都不存在，则是到对话框底端的距离；默认：20
+				color: '#999',
+				size: 14 
+			},
+			left: {
+				marginB: 30,
+				marginL: 30,
+				w: 100,
+				h: 35,
+				corner: 2,
+				bg: '#eeeeee',
+				color: '#999',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+				size: 12
+			},
+			right: {
+				marginB: 30,
+				marginL: 40,
+				w: 100,
+				h: 35,
+				corner: 2,
+				bg: '#ff1679',
+				color: '#fff',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+				size: 12
+			}
+			
+		
+		}
+	}, function(ret) {
+																		  //  api.alert({
+																		 //       msg: JSON.stringify(ret)
+																		 //   });
+																			
+																			if (ret.eventType == 'left') {
+																				var dialogBox = api.require('dialogBox');
+																				dialogBox.close({
+																					dialogName: 'alert'
+																				});
+																			} else if(ret.eventType == 'right') {
+																			
+
+																						api.ajax({
+																							url: api_url+'/agent/agent/agent_ad_administration_del.html',
+																							method: 'get',
+																							data: {
+																							values: {
+																							key: 'nineqingnetwork',   //安全码
+																							uid: localStorage.getItem('user_id'),
+																							ad_id: id   			//删除的广告id
+																								}
+																							}	
+																						}, function(ret, err) {
+																						if(ret) {
+																								var dialogBox = api.require('dialogBox');
+																								dialogBox.close({
+																									dialogName: 'alert'
+																								});
+																								
+																								
+																								api.toast({
+																										msg: ret.msg,
+																										duration: 3000,
+																										location : 'middle' 
+																								});
+																										
+																								window.location.reload();
+																							//	var agent_ad_administration_frm = '';		//清空
+																							//	GetData();   //获取数据
+																								
+																								
+																						} else {
+
+																								api.toast({
+																									msg: '操作失败 稍后再试',
+																									duration: 3000,
+																									location : 'middle' 
+																								});
+																						}
+																					});	
+																							
+
+																							
+							    
+																					var dialogBox = api.require('dialogBox');
+																						dialogBox.close({
+																						dialogName: 'alert'
+																					});
+																					
+																			}
+																		});
+ 
+ }
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+
+</script>
+</html>

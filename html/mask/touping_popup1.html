@@ -1,0 +1,362 @@
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<title>touping</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+    <link rel="stylesheet" type="text/css" href="../../css/cdkey_found_dark.css" />
+    <style>
+    input {
+    outline-style: none;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px 20px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+    margin-top: 5px;
+}
+
+.covers_btn, .covers_btn2 {
+    width: 100%;
+    margin: 0 auto 20px;
+    height: 35px;
+    line-height: 35px;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+		background-color: #008eff;
+    box-shadow: 0 2px 5px 0px #057edf;
+    border-radius: 50px;
+}
+
+
+.leei{
+  display: block;
+  text-align: right;
+  color: #fff;
+  font-size: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-top: 0.5rem;
+  font-family: "Apple Braille";
+  font-style: normal;
+  margin-right: 10px;
+}
+
+
+ 	   .display-block{
+	   display :block ;
+	   }
+
+	   .display-none{
+	   display :none ;
+	   }
+    </style>
+
+
+</head>
+<body>
+
+		<div class="aui-cash-list" style="position: absolute; width: 100%; bottom: 10px;">
+
+			<div class="aui-card-coll-touping" style="height: 100%;">
+				<div class="aui-flex">
+					<div class="aui-cash-logo" >
+							<svg t="1576012225179" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2049" width="32" height="32"><path d="M853.015273 814.545455h-161.419637a34.909091 34.909091 0 0 1 0-69.818182h161.419637A54.690909 54.690909 0 0 0 907.636364 690.106182V264.075636A54.690909 54.690909 0 0 0 853.015273 209.454545H170.961455A54.667636 54.667636 0 0 0 116.363636 264.075636v426.030546A54.667636 54.667636 0 0 0 170.961455 744.727273h141.358545a34.909091 34.909091 0 0 1 0 69.818182H170.961455A124.555636 124.555636 0 0 1 46.545455 690.106182V264.075636A124.555636 124.555636 0 0 1 170.961455 139.636364h682.053818A124.578909 124.578909 0 0 1 977.454545 264.075636v426.030546A124.578909 124.578909 0 0 1 853.015273 814.545455zM674.909091 907.636364H349.090909l162.909091-209.454546 162.909091 209.454546z" fill="#ffffff" p-id="2050"></path></svg>
+    			</div>
+					<div class="aui-flex-box">
+						<h2 style="color:#fff" id="title">投屏</h2>
+					</div>
+					<span class="aui-signing"  onclick="ClosePopup()" >
+          		<svg t="1571602624207" class="aui-signing" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="52589" width="20" height="20"><path d="M512.001 15.678C237.414 15.678 14.82 238.273 14.82 512.86S237.414 1010.04 512 1010.04s497.18-222.593 497.18-497.18S786.589 15.678 512.002 15.678z m213.211 645.937c17.798 17.803 17.798 46.657 0 64.456-17.798 17.797-46.658 17.797-64.456 0L512.001 577.315 363.241 726.07c-17.799 17.797-46.652 17.797-64.45 0-17.804-17.799-17.804-46.653 0-64.456L447.545 512.86 298.79 364.104c-17.803-17.798-17.803-46.657 0-64.455 17.799-17.798 46.652-17.798 64.45 0l148.761 148.755 148.755-148.755c17.798-17.798 46.658-17.798 64.456 0 17.798 17.798 17.798 46.657 0 64.455L576.456 512.86l148.756 148.755z m0 0" p-id="52590" fill="#ffffff"></path></svg>
+          </span>
+				</div>
+
+
+
+
+				<div class="leei" style="padding-top: 1.5rem;padding-bottom: 1rem;" >注意：手机和接收端需在同一Wifi网络</div>
+
+
+				<!--  未连接  准备搜索设备-->
+				<div class="display-block" style=" margin-bottom: 30px; ">
+
+					<div style="margin: 20px auto; width: 78px;text-align: center;   font-size: 0.8rem;  color: #fff;" id="touping_ico">
+					</div>
+
+				<!--搜索到设备 准备链接-->
+				<span id="deviceList">
+						<!--
+						<div class="covers_btn display-block" onclick="GetData(1)" >
+								<svg t="1576131814746"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4460" width="12" height="12"><path d="M512 149.965c-199.947 0-380.965 81.039-511.994 212.077l96.02 96.019C202.474 351.582 349.542 285.723 512 285.723s309.526 65.859 415.975 172.338l96.02-96.019C892.965 231.004 711.947 149.965 512 149.965z" p-id="4461" fill="#ffffff"></path><path d="M160.004 522.05l95.979 95.989C321.512 552.51 412.021 512 512 512s190.487 40.51 256.017 106.039l95.979-95.989C773.917 431.951 649.458 376.242 512 376.242c-137.459 0-261.896 55.709-351.996 145.808z" p-id="4462" fill="#ffffff"></path><path d="M320.002 682.038L512 874.035l191.998-191.997c-49.13-49.14-117.02-79.529-191.998-79.529s-142.868 30.389-191.998 79.529z" p-id="4463" fill="#ffffff"></path></svg>
+
+							完美网服 </div>-->
+				</span>
+
+
+
+
+
+					<span style="color: #fff; font-size: 0.7rem; text-align: center; width: 100%; display: block;"  id="tips" >正在搜索可用设备</span>
+				</div>
+
+
+				<!--  搜索到设备 准备链接
+				<div class="leei" style="  padding-top: 1.5rem;padding-bottom: 1rem;">注意：手机和TV端需在同一WIFI网络</div>
+				<div class="display-block"  id="LinkState" style=" margin-bottom: 30px; ">
+				<div style="margin: 20px auto; width: 78px;text-align: center;   font-size: 0.8rem;  color: #fff;"  id="Loadicon">
+				<svg t="1576018855187" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9674" width="20" height="20"><path d="M380.8 944H115.2C78.4 944 48 913.6 48 876.8V339.2C48 302.4 78.4 272 115.2 272h265.6c36.8 0 67.2 30.4 67.2 67.2v537.6c0 36.8-30.4 67.2-67.2 67.2zM115.2 304C96 304 80 320 80 339.2v537.6C80 896 96 912 115.2 912h265.6c19.2 0 35.2-16 35.2-35.2V339.2c0-19.2-16-35.2-35.2-35.2H115.2z" fill="#ffffff" p-id="9675"></path><path d="M432 432H80c-9.6 0-16-6.4-16-16s6.4-16 16-16h352c9.6 0 16 6.4 16 16s-6.4 16-16 16zM432 816H80c-9.6 0-16-6.4-16-16s6.4-16 16-16h352c9.6 0 16 6.4 16 16s-6.4 16-16 16zM272 880h-48c-9.6 0-16-6.4-16-16s6.4-16 16-16h48c9.6 0 16 6.4 16 16s-6.4 16-16 16zM224 336h128v32h-128zM160 336h32v32h-32z" fill="#ffffff" p-id="9676"></path><path d="M888 656H496c-9.6 0-16-6.4-16-16s6.4-16 16-16h392c22.4 0 40-17.6 40-40V187.2c0-11.2-3.2-22.4-11.2-30.4-8-8-17.6-12.8-28.8-12.8H332.8c-24 0-44.8 19.2-44.8 44.8V224c0 9.6-6.4 16-16 16s-16-6.4-16-16v-36.8c1.6-41.6 35.2-75.2 76.8-75.2H889.6c19.2 0 38.4 9.6 51.2 24 12.8 14.4 20.8 33.6 19.2 52.8v395.2c0 40-32 72-72 72zM844.8 753.6h-1.6l-224-32-121.6 16c-8 1.6-16-4.8-17.6-14.4-1.6-8 4.8-16 14.4-17.6l123.2-16h4.8l227.2 32c8 1.6 14.4 9.6 14.4 17.6-4.8 8-11.2 14.4-19.2 14.4z" fill="#ffffff" p-id="9677"></path><path d="M624 720c-9.6 0-16-6.4-16-16v-32c0-9.6 6.4-16 16-16s16 6.4 16 16v32c0 9.6-6.4 16-16 16z" fill="#ffffff" p-id="9678"></path></svg>
+				</div>
+				<span style="color: #fff; font-size: 0.7rem; text-align: center; width: 100%; display: block;" id="Loadtext">正在搜索可用设备 …</span>
+				</div>
+-->
+
+
+
+
+
+
+		  	</div>
+
+
+		</div>
+
+
+
+
+
+
+    </body>
+    <script type="text/javascript" src="../../script/api.js"></script>
+    <script type="text/javascript" src="../../script/zepto.js"></script>
+    <script type="text/javascript">
+		var touping;
+    var deviceIndex;
+	var TVURL = "";
+	var deviceList1 = "";
+    var toupingState = 0;
+	var index1;
+    apiready = function(){
+
+			//  alert(JSON.stringify(api.pageParam.url));
+			api.parseTapmode();
+			touping = api.require('LBAirDrop');
+
+			touping_ico.innerHTML = '	<svg t="1576018855187" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9674" width="20" height="20"><path d="M380.8 944H115.2C78.4 944 48 913.6 48 876.8V339.2C48 302.4 78.4 272 115.2 272h265.6c36.8 0 67.2 30.4 67.2 67.2v537.6c0 36.8-30.4 67.2-67.2 67.2zM115.2 304C96 304 80 320 80 339.2v537.6C80 896 96 912 115.2 912h265.6c19.2 0 35.2-16 35.2-35.2V339.2c0-19.2-16-35.2-35.2-35.2H115.2z" fill="#ffffff" p-id="9675"></path><path d="M432 432H80c-9.6 0-16-6.4-16-16s6.4-16 16-16h352c9.6 0 16 6.4 16 16s-6.4 16-16 16zM432 816H80c-9.6 0-16-6.4-16-16s6.4-16 16-16h352c9.6 0 16 6.4 16 16s-6.4 16-16 16zM272 880h-48c-9.6 0-16-6.4-16-16s6.4-16 16-16h48c9.6 0 16 6.4 16 16s-6.4 16-16 16zM224 336h128v32h-128zM160 336h32v32h-32z" fill="#ffffff" p-id="9676"></path><path d="M888 656H496c-9.6 0-16-6.4-16-16s6.4-16 16-16h392c22.4 0 40-17.6 40-40V187.2c0-11.2-3.2-22.4-11.2-30.4-8-8-17.6-12.8-28.8-12.8H332.8c-24 0-44.8 19.2-44.8 44.8V224c0 9.6-6.4 16-16 16s-16-6.4-16-16v-36.8c1.6-41.6 35.2-75.2 76.8-75.2H889.6c19.2 0 38.4 9.6 51.2 24 12.8 14.4 20.8 33.6 19.2 52.8v395.2c0 40-32 72-72 72zM844.8 753.6h-1.6l-224-32-121.6 16c-8 1.6-16-4.8-17.6-14.4-1.6-8 4.8-16 14.4-17.6l123.2-16h4.8l227.2 32c8 1.6 14.4 9.6 14.4 17.6-4.8 8-11.2 14.4-19.2 14.4z" fill="#ffffff" p-id="9677"></path><path d="M624 720c-9.6 0-16-6.4-16-16v-32c0-9.6 6.4-16 16-16s16 6.4 16 16v32c0 9.6-6.4 16-16 16z" fill="#ffffff" p-id="9678"></path></svg>';
+
+			browse1();
+				//	 ShowData();
+        }
+
+
+
+
+
+
+
+
+				    function browse1() {
+					   tips.innerHTML = '正在搜索可用设备';
+				        touping.searchList(function(ret, err) {
+								//	 alert( JSON.stringify( ret ) );
+				            if (ret) {
+							var arr = [];
+							var deviceList = ret.data;
+							for (var i = 0; i < ret.data.length; i++) {
+							    arr.push(ret.data[i]["receviverPackageName"]);							
+                            }
+							if (arr.length > 0) {
+							tips.innerHTML = '';
+							stop();
+                    api.actionSheet({
+                     title: '请选择接收设备',
+                    cancelTitle: '取消',
+                    buttons: arr
+                    }, function(ret, err) {
+                      var index = ret.buttonIndex;
+					   index1=index-1;
+                      uid1 = deviceList[index - 1]['tvUID'];
+                    // stopBrowse(); //停止搜索方法
+                     play(uid1); //链接设备
+                });	
+      }
+				                //showDeviceList(deviceList,arr);
+				            } else {
+												tips.innerHTML = '未搜索到可用设备，请确认当前局域网内是否有可投屏设备';
+				            }
+				        });
+				    }
+
+				    function showDeviceList(deviceList,arr) {
+
+						//	alert(JSON.stringify(deviceList));
+
+				        for (var i = 0; i < arr.length; i++) {
+				            var item = '<div class="covers_btn display-block"  onclick="choiceDevice('+i+')">  <svg t="1576131814746"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4460" width="12" height="12"><path d="M512 149.965c-199.947 0-380.965 81.039-511.994 212.077l96.02 96.019C202.474 351.582 349.542 285.723 512 285.723s309.526 65.859 415.975 172.338l96.02-96.019C892.965 231.004 711.947 149.965 512 149.965z" p-id="4461" fill="#ffffff"></path><path d="M160.004 522.05l95.979 95.989C321.512 552.51 412.021 512 512 512s190.487 40.51 256.017 106.039l95.979-95.989C773.917 431.951 649.458 376.242 512 376.242c-137.459 0-261.896 55.709-351.996 145.808z" p-id="4462" fill="#ffffff"></path><path d="M320.002 682.038L512 874.035l191.998-191.997c-49.13-49.14-117.02-79.529-191.998-79.529s-142.868 30.389-191.998 79.529z" p-id="4463" fill="#ffffff"></path></svg>  '+arr[i]+' </div>';
+
+
+
+				            $api.byId('deviceList').insertAdjacentHTML('beforeEnd', item);
+				        }
+				    }
+
+				    function choiceDevice(tvid,index) {
+						 //var deviceList=localStorage.getItem('deviceList');
+				        // deviceIndex = tvid;
+						 index1=index;
+								deviceList.innerHTML = '';
+								touping_ico.innerHTML = '<svg t="1576231457670" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2552" width="16" height="16"><path d="M512 149.965c-199.947 0-380.965 81.039-511.994 212.077l96.02 96.019C202.474 351.582 349.542 285.723 512 285.723s309.526 65.859 415.975 172.338l96.02-96.019C892.965 231.004 711.947 149.965 512 149.965z" p-id="2553" fill="#ffffff"></path><path d="M160.004 522.05l95.979 95.989C321.512 552.51 412.021 512 512 512s190.487 40.51 256.017 106.039l95.979-95.989C773.917 431.951 649.458 376.242 512 376.242c-137.459 0-261.896 55.709-351.996 145.808z" p-id="2554" fill="#ffffff"></path><path d="M320.002 682.038L512 874.035l191.998-191.997c-49.13-49.14-117.02-79.529-191.998-79.529s-142.868 30.389-191.998 79.529z" p-id="2555" fill="#ffffff"></path></svg>';
+				        tips.innerHTML = '正在投屏播放： '+api.pageParam.video_name;
+								//title.innerHTML = ;
+
+								  start();
+
+				    }
+
+							function Start(){
+								  //定时
+									var interval = setInterval(function(){
+
+									        console.log('设备连接状态：   '+toupingState +'地址：' + api.pageParam.JieXiOkUrl );
+
+													if( toupingState == 1){
+															clearInterval(interval);  		//清除定时器
+													}else{
+
+															  play();
+
+													}
+
+
+									},1000 );
+
+							}
+
+
+
+
+
+
+
+						function play(deviceIndex) {
+						touping_ico.innerHTML = '<svg t="1576231457670" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2552" width="16" height="16"><path d="M512 149.965c-199.947 0-380.965 81.039-511.994 212.077l96.02 96.019C202.474 351.582 349.542 285.723 512 285.723s309.526 65.859 415.975 172.338l96.02-96.019C892.965 231.004 711.947 149.965 512 149.965z" p-id="2553" fill="#ffffff"></path><path d="M160.004 522.05l95.979 95.989C321.512 552.51 412.021 512 512 512s190.487 40.51 256.017 106.039l95.979-95.989C773.917 431.951 649.458 376.242 512 376.242c-137.459 0-261.896 55.709-351.996 145.808z" p-id="2554" fill="#ffffff"></path><path d="M320.002 682.038L512 874.035l191.998-191.997c-49.13-49.14-117.02-79.529-191.998-79.529s-142.868 30.389-191.998 79.529z" p-id="2555" fill="#ffffff"></path></svg>';
+				        tips.innerHTML = '正在投屏播放： '+api.pageParam.video_name;
+						touping = api.require('LBAirDrop');
+						if(api.systemType == 'android'){
+				           touping.connect({
+				            uid: deviceIndex,
+				            
+				        }, function(ret) {
+
+				           //  alert(JSON.stringify(ret));
+											if(ret){
+											tips.innerHTML = '连接成功 ';
+											    toupingState = 1;
+													playUrl();
+													
+											}else{
+												tips.innerHTML = '连接失败 ';
+											}
+
+
+				        });						
+						}else if(api.systemType == 'ios') {
+				        touping.connect({
+				            index: index1,
+				        }, function(ret) {
+
+				            // alert(JSON.stringify(ret.result));
+											if(ret){
+											tips.innerHTML = '连接成功 ';
+											       toupingState = 1;
+													playUrl();
+											}else{
+												tips.innerHTML = '连接失败 ';		
+											}
+
+
+				        });						
+						}
+
+				    }
+
+				    function playUrl() {
+					touping = api.require('LBAirDrop');
+				        touping.open({
+						    videoType: 'online',
+				            path: api.pageParam.JieXiOkUrl,
+				        }, function(ret, err) {
+				          //  alert(JSON.stringify(ret));
+												if(ret){
+												tips.innerHTML = '播放成功 ';
+													toupingState = 1;
+												}else{
+												tips.innerHTML = '播放失败 ';
+													toupingState = 0;
+												}
+				        });
+
+				    }
+
+				    function stop() {
+					touping = api.require('LBAirDrop');
+				        touping.stopBrowse(function(ret, err) {
+
+				          //  alert(JSON.stringify(ret));
+
+				        });
+				    }
+
+
+
+
+
+						function playOk() {
+
+				    }
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+				function ShowData(){
+
+              if(localStorage.getItem('jx_Interface_one')  != ''){
+                var obj = document.getElementById("btnshow_one");
+                       obj.setAttribute("class", 'covers_btn display-block');
+              }
+				}
+
+
+//开始播放
+  function GetData(type){
+
+
+        //  alert(JSON.stringify(play_url));
+	api.closeFrame();
+  }
+*/
+
+
+    //关闭页面
+    function ClosePopup(){
+	stop();
+    	api.closeFrame();
+    }
+
+
+    </script>
+    </html>

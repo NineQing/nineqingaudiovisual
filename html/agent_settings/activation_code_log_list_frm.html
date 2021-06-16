@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>激活码批次 - FRM</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="../../Ryancss/activation_code_log_list_frm.css" rel="stylesheet" type="text/css"/>
+
+    </head> 
+    <body>
+
+	
+<div class="tab-panel-item tab-active"  id="activation_code_log_list">
+
+		<!--			<a href="javascript:;" class="aui-flex b-line">
+						<div class="aui-flex-box">
+							<h1><em>数学</em>【公开课】解题能力提升课程</h1>
+							<p>生成时间：13:00-16:00</p>
+	
+						</div>
+						<div class="aui-right-seep">
+							<div class="aui-seep-text">使用进度：<em>2</em>/8</div>
+							<div class="aui-seep-res">
+								<div class="aui-seep-info" style="width:25%"></div>
+							</div>
+						</div>
+					</a>
+-->
+				</div>
+
+
+    </body>  
+	
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	var api_url = localStorage.getItem('api_url');
+
+	apiready = function(){
+		
+
+		
+	/*	
+				api.showProgress({
+				    title: '正在加载',
+				    text: '请稍等',
+				    modal: false
+				});
+				
+ 	*/	
+
+		GetData();
+   
+						// 网络状态
+		api.addEventListener({
+			name:'offline'
+		}, function(ret, err){        
+
+			api.toast({
+			msg : '网络连接异常',
+			duration : 5000,
+			location : 'middle' 
+			});
+
+		});
+		
+
+		api.addEventListener({
+			name:'online'
+		}, function(ret, err){        
+		
+			  api.toast({
+			  msg : '已经连接网络',
+			  duration : 2000,
+			  location : 'middle' 
+			  });
+				  
+			//获取数据
+			   GetData();
+
+				  
+		});	
+				
+
+
+			//监听重新获取
+			api.addEventListener({
+				name: 'newLoingdata'
+			}, function(ret, err) {
+				if(ret) {
+					GetData();
+					location.reload();
+				}
+			});
+			
+
+
+
+
+
+				
+	}
+	
+	
+
+
+    
+function GetData(){
+
+		api.ajax({
+            url: api_url+'/agent/agent/agent_activation_code_log_list.html',
+			method: 'get',
+			data: {
+				values: {
+				
+					key: 'nineqingnetwork',   //安全码
+					uid: localStorage.getItem('user_id')
+				}
+			}
+		}, function(ret, err) {
+		
+			if(ret) {
+
+				var activation_code_log_list_frm = $api.byId('activation_code_log_list');//提现记录列表
+				
+			//	localStorage.setItem('activation_code_list_copy',ret.msg['activation_code_log_list']);   //激活码列表写入本地
+				
+				data = ret.msg['activation_code_log_list'];
+				
+				
+			/////////////会员过期时间获取  方法  formatDateTime  S   ////////////
+		function formatDateTime(timeStamp) {
+			var date = new Date();
+			date.setTime(timeStamp * 1000);
+			var y = date.getFullYear();
+			var m = date.getMonth() + 1;
+			m = m < 10 ? ('0' + m) : m;
+			var d = date.getDate();
+			d = d < 10 ? ('0' + d) : d;
+			var h = date.getHours();
+			h = h < 10 ? ('0' + h) : h;
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			minute = minute < 10 ? ('0' + minute) : minute;
+			second = second < 10 ? ('0' + second) : second;
+			return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second ;
+		};
+
+		/////////////会员过期时间获取  方法  formatDateTime  E   ////////////
+	
+					
+				
+				for(var i=0;i<data.length;i++){
+						
+				var time = data[i].time;   //先 艹
+				var s1 = formatDateTime(time);
+				var timestamp = Date.parse(new Date()) / 1000; 
+				
+				
+				var Percentage = (data[i].invalid / data[i].number)*100 ; 
+				
+			/*	//使用状态
+				var isUse = data[i].y;
+				if (isUse == 1 ) {
+				
+					var Use = '已用';
+					var coss =  'rtdian';
+					var cosc =  'rbdian';
+					var coss_text =  '';
+					var cosc_text =  '';
+				
+				} else{
+				
+					var Use = '使用';
+					var coss =  's';
+					var cosc =  'c';
+					var coss_text =  '赠';
+					var cosc_text =  '复制';
+				}
+				
+				*/
+				
+				var html= 	'		<a  onclick="open_activation_code_log_list('+'\''+data[i].time+'\''+')" class="aui-flex b-line">'+
+							'			<div class="aui-flex-box">'+
+							'				<h1> <em>'+data[i].name+'</em>批次：'+data[i].time+'</h1>'+
+							'				<p>生成时间：'+s1+'</p>'+
+							'			</div>'+
+							'			<div class="aui-right-seep">'+
+							'				<div class="aui-seep-text">使用进度：<em>'+data[i].invalid+'</em>/'+data[i].number+'</div>'+
+							'				<div class="aui-seep-res">'+
+							'					<div class="aui-seep-info" style="width:'+Percentage+'%"></div>'+
+							'				</div>'+
+		//					'				<div class="aui-seep-text">¥：'+data[i].money+'</div>'+
+							'			</div>'+
+							'		</a>';
+								
+						
+
+					
+
+
+
+
+						
+							
+					$api.append(activation_code_log_list_frm,html);
+				}
+				
+				
+				
+				
+					api.hideProgress(); 
+				
+				
+			}
+			
+
+
+			
+			
+
+		}); 
+
+   
+   /////判断是否已有 提现申请
+
+
+
+
+}
+
+
+
+ //打开激活码详细列表
+    function open_activation_code_log_list(time){
+	
+		localStorage.setItem('activation_code_query_time',time);				//时间写入
+		
+		
+/*		  api.toast({
+			  msg : localStorage.getItem('activation_code_query_time'),
+			  duration : 2000,
+			  location : 'middle' 
+			  });
+
+*/
+
+			  api.openWin({    
+
+				  name: 'activation_code_list_win',
+				  url: 'widget://html/agent_settings/activation_code_list_win.html',
+				  delay: 300,
+ 
+						bounces: false,
+						slidBackEnabled: true,
+						bgColor: '#000',
+						animation: {
+							type: "movein", //动画类型（详见动画类型常量）
+							subType: "from_right", //动画子类型（详见动画子类型常量）
+							duration: 400
+						},
+						vScrollBarEnabled: false
+								
+								
+			  });
+
+
+    
+    }
+
+
+
+
+																		
+		
+
+
+		//延时执行
+	    function delayed(){	
+		
+                  api.sendEvent({
+                    name: 'newLoingdata',
+                    extra: {
+                    }
+                  });
+				  
+                  api.closeWin();
+
+				}
+
+
+
+
+
+
+
+</script>
+	
+	
+	
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="A6040039208372" security="true" version="0.0.1"> 
+ <name>玖卿云视听</name> 
+ <description>Example For APICloud.</description> 
+ <author email="developer@apicloud.com" href="http://www.apicloud.com">Developer</author>  
+ <content src="Ryanindex.html"/>  <preference name="pageBounce" value="false"/> 
+ <preference name="appCertificateVerify" value="false"/> 
+ <preference name="appBackground" value="rgba(0,0,0,0.0)"/>  
+ <preference name="windowBackground" value="rgba(0,0,0,0.0)"/> 
+ <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/> 
+ <preference name="hScrollBarEnabled" value="false"/>  
+ <preference name="vScrollBarEnabled" value="false"/> 
+ <preference name="autoLaunch" value="false"/> 
+ <preference name="fullScreen" value="false"/>  
+ <preference name="autoUpdate" value="false"/> 
+ <preference name="smartUpdate" value="true"/>  
+ <preference name="debug" value="false"/> 
+ <preference name="statusBarAppearance" value="true"/>  
+ <permission name="readPhoneState"/>      
+ <permission name="fileSystem"/> 
+ <permission name="internet"/>    
+ <preference name="backgroundMode" value="remote-notification|voip"/> 
+ <preference name="customRefreshHeader" value="UIPullRefreshMotive"/>
+ <preference value="^weixin://,^mqq://,^wechat://,^http://,^https://,^mqqwpaopenid://,^mqqwpa://,^mqqapi://,^mqqbrowser://,^browser://,^mttbrowser://,^﻿webBrowser//" name="forbiddenSchemes"/>
+ <!-- <feature name="QQPlus">    <param name="urlScheme" value="tencent101489014"/>  
+ <param name="apiKey" value="101489014"/>  
+ </feature>-->
+<meta-data name="Mob-AppKey" value="2eadfb3e930ec"/>
+<meta-data name="Mob-AppSecret" value="fd69b3e56913b2fe5c093cb6e4e92ed8"/> 
+ <feature name="wx"> 
+ <param name="urlScheme" value="wx25a3d2d50c360ad3"/>
+ <param name="apiKey" value="wx25a3d2d50c360ad3"/> 
+ <param name="apiSecret" value="eed5e407e579f626a70abbc77837d5ff"/>
+ </feature>
+    <feature name="LBAirDrop">
+        <param name="appID" value="14236"/>
+        <param name="AppSecret" value="0aadc67a9919b3f38434721ab9a53070"/>
+        <param name="appID_android" value="14236"/>
+        <param name="AppSecret_android" value="0aadc67a9919b3f38434721ab9a53070"/>
+    </feature> 
+ <feature name="pushGeTui">   
+ <param name="ios_appkey" value="ZihnSs7bAT80utJQDrb4r5"/> 
+ <param name="ios_appid" value="NYsP6c7iht9YAmqhZrtku6"/>   
+ <param name="ios_appsecret" value="815a4df6f91b3ac2"/>    
+ <param name="android_appid" value="9ffO4SzFpr7xG5znjZart1"/>   
+ <param name="android_appsecret" value="AfAnnRHuMr9HBhHEwsNdH5"/>  
+ <param name="android_appkey" value="jLUAd2PuKK8TWSBRYkqnnA"/>  
+ <param name="android_groupid" value=""/>
+ </feature>
+ </widget>

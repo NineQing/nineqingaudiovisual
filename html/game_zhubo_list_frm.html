@@ -1,0 +1,423 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" href="../Ryancss/base.css">
+    <link rel="stylesheet" href="../Ryancss/game_zhibo.css">
+    <style>
+
+      /*新加空提示信息*/
+
+      .m-noRecord {
+        padding: .395rem 0 0;
+        text-align: center;
+    }
+
+    .m-noRecord .c-icon-noRecord {
+        background: url(../image/app/Loading2.gif) no-repeat;
+        background-size: cover;
+      width: 15rem;
+      height: 10rem;
+      /* margin: .485rem auto 0; */
+      margin: 0 auto;
+    }
+    .m-noRecord .c-info {
+        background: linear-gradient(to right, #ffd74c, #c7752e);
+        -webkit-background-clip: text;
+        color: transparent;
+        /* color: #cecfce;  */
+        line-height: 4rem;
+        padding: .25rem 0;
+        font-size: .8rem;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+    <div class="aui-tab" style=" background: #fff; ">
+            <div class="tab-panel">
+                <div class="tab-panel-item tab-active">
+                    <div class="tab-item">
+                        <a class="aui-flex b-line">
+                            <div class="aui-flex-iphone">
+                                <img src="data:image/png;base64,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">
+                            </div>
+                            <div class="aui-flex-box">
+                              <p>
+                                  <em class="aui-group-three" style=" font-size: 12px; "> 游戏在线直播</em>
+                              </p>
+                                <h3 style=" font-size: 10px; ">各类游戏 海量主播</h3>
+                                <p>
+                                    <em class="aui-group-two" style=" font-size: 12px; ">实时更新</em> <em class="aui-group-two" style=" font-size: 12px; ">知名主播</em>
+                                </p>
+
+                            </div>
+                            <div class="aui-flex-support" style=" font-size: 12px; " onclick="baocuo()"  >报错</div>
+                        </a>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+  <div class="wrap">
+    <!-- 游戏 -->
+    <div class="game-page-zhubo">
+
+      <!-- 视频列表 -->
+    <div class="game-list-wrap-zhubo" id="liveList">
+      <ul class="clearfix" id="div_list">
+
+        <!--加载提示-->
+        <section class="m-noRecord"><div class="c-icon-noRecord"></div> <div class="c-info">奋力加载中...</div></section>
+        <!--加载提示-->
+		
+
+      </ul>
+    </div>
+    <!-- 视频列表 end-->
+
+    </div>
+    <!-- 游戏 end-->
+  </div>
+</body>
+<script type="text/x-dot-template" id="template">
+{{~ it : value : index }}
+
+/*
+    <li onclick="openWin('{{= value. video }}')">
+      <div class="video-mask-box">
+        <img src="{{= value. img }}" alt="" class="game-pic">
+      </div>
+      <div class="til">{{= value. name }}</div>
+      <div class="detail clearfix">
+        <p class="anchor clearfix">
+          <i class="icon-m icon-ic_man"></i><span>{{= value. nickname }}</span>
+        </p>
+      </div>
+    </li>
+*/
+    <li>
+      <div class="game-a" onclick="openWin('{{= value. video }}','{{= value. name }}','{{= value. nickname }}')">
+        <img src="{{= value. img }}" alt="">
+          <em class="aui-group-three" style=" font-size: 12px; "> {{= value. name }}</em>
+        <p>
+            <em class="aui-group-one" style=" font-size: 12px; ">主播：</em> <em class="aui-group-two" style=" font-size: 12px; ">{{= value. nickname }}</em>
+        </p><br>
+      </div>
+    </li>
+
+
+{{~}}
+</script>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+  var i = 1;
+
+  /////  初始化执行   S /////
+  /////  apiready  一打开就执行的 函数
+
+  apiready = function(){
+  
+  /*
+    api.showProgress({
+        title: '加载中...',
+        modal: false
+    });
+	*/
+	
+	
+    getList();
+
+    api.addEventListener({
+        name:'scrolltobottom',
+        extra:{
+            threshold:0
+        }
+    }, function(ret, err){
+      showData();
+    });
+
+  }
+
+/////  初始化执行   E /////
+
+
+//////////////////////   获取游戏直播间列表  方法   getList    S //////////////////////
+  function getList(){
+    var div_list = $api.byId('div_list');
+    var template = $api.byId('template');
+    api.ajax({
+        url: 'http://m.nineqing.com/api/gamezhibo.php',
+        method: 'get',
+        data: {
+            values: {
+                lx: 'hqzb',
+                ys: i,
+                id: api.pageParam.id
+            }
+        }
+    },function(ret, err){
+        if (ret) {
+            //alert( JSON.stringify( ret ) );
+            var pagefn = doT.template(template.text);
+            div_list.innerHTML = pagefn(ret);
+            api.hideProgress();
+        } else {
+          api.hideProgress();
+            //alert( JSON.stringify( err ) );
+        }
+    });
+
+
+  }
+//////////////////////   获取游戏直播间列表  方法   getList    E //////////////////////
+
+//////////////////////   ***  方法   showData    S //////////////////////
+  function showData(){
+    i = i+1;
+    var div_list = $api.byId('div_list');
+    var template = $api.byId('template');
+    api.ajax({
+        url: 'http://m.nineqing.com/api/gamezhibo.php',
+        method: 'get',
+        data: {
+            values: {
+              lx: 'hqzb',
+              ys: i,
+              id: api.pageParam.id
+            }
+        }
+    },function(ret, err){
+        if (ret) {
+            //alert( JSON.stringify( ret ) );
+            var pagefn = doT.template(template.text);
+            div_list.innerHTML += pagefn(ret);
+        } else {
+            //alert( JSON.stringify( err ) );
+        }
+    });
+
+  }
+//////////////////////   ***  方法   showData    E //////////////////////
+
+
+//////////////////////   打开直播间  方法         S //////////////////////
+  function openWin(name,title,nickname){
+
+ 				//播放器判断
+				//1 本地播放器(V1)   2 本地播放器(V2)
+				if(localStorage.getItem('Player_selection') == 1){		
+				
+                                         var delay = 0;
+                                         if(api.systemType != 'ios'){
+                                             delay = 300;
+                                         }
+                                         api.openWin({
+                                             name: 'game_play_win',
+                                             url: 'game_play_win.html',
+                                             bounces:false,
+                                             delay: delay,
+                                             slidBackEnabled:true,
+                                             vScrollBarEnabled:false,
+                                             pageParam:{video:'http://alhls.cdn.zhanqi.tv/zqlive/'+name+'.m3u8',video_flv:'https://dlhdl-cdn.zhanqi.tv/zqlive/'+name+'.flv',title:title,zhubo:nickname}
+                                         });
+
+
+							
+				}else if(localStorage.getItem('Player_selection') == 2){
+				
+						 	fnvideoPlayerPlay('https://dlhdl-cdn.zhanqi.tv/zqlive/'+name+'.flv',title);
+				
+				}
+				
+
+
+
+
+    }
+//////////////////////   打开直播间  方法        E //////////////////////
+
+
+
+
+
+
+
+
+    function fnvideoPlayerPlay(video,title) {
+        var videoPlayer = api.require('videoPlayer');
+		videoPlayer.forward({
+			seconds: 30
+		});
+        videoPlayer.play({
+      /*      texts: {
+                head: {
+                    title: title+'播放'
+                }
+            },*/
+            styles: {
+                head: {								 //（可选项）JSON对象；播放器顶部导航条样式    	
+                    bg: 'rgba(0.5,0.5,0.5,0.7)',		 //（可选项）字符串类型；顶部导航条背景，支持#、rgb、rgba、img；默认：rgba(161,161,161,0.5)
+                    height: 44,							     //（可选项）数字类型；顶部导航条的高；默认：44
+                    titleSize: 15,							  //（可选项）数字类型；顶部标题字体大小；默认：20
+                    titleColor: '#fff',							 //（可选项）字符串类型；顶部标题字体颜色；默认：#fff
+                    backSize: 25,								//（可选项）数字类型；顶部返回按钮大小；默认：44
+                    backImg: 'widget://Ryanimg/user/Close.png',		//（可选项）字符串类型；顶部返回按钮的背景图片，要求本地路径（widget://、fs://）；默认：返回小箭头图标
+                    setSize: 25,										//（可选项）数字类型；顶部右边设置按钮大小；默认：44
+                    setImg: 'widget://Ryanimg/user/setup.png'			//（可选项）字符串类型；顶部右边设置按钮背景图片，要求本地路径（widget://、fs://）；默认：设置小图标
+                },		
+                foot: {							 //（可选项）JSON对象；播放器底部导航条样式    	
+                    bg: 'rgba(0.5,0.5,0.5,0.7)',			//（可选项）字符串类型；底部导航条背景，支持#、rgb、rgba、img；默认：rgba(161,161,161,0.5)
+                    height: 44,								//（可选项）数字类型；底部导航条的高；默认：44
+                    playSize: 25,							//（可选项）数字类型；底部播放/暂停按钮大小；默认：44
+                    playImg: 'widget://Ryanimg/user/play.png',			//（可选项）字符串类型；底部播放按钮的背景图片，要求本地路径（widget://、fs://）；默认：播放按钮图标
+                    pauseImg: 'widget://Ryanimg/user/pause.png',			//（可选项）字符串类型；底部暂停按钮的背景图片，要求本地路径（widget://、fs://）；默认：暂停按钮图标
+                    nextSize: 25,											//（可选项）数字类型；底部下一集按钮大小；默认：44
+					nextImg:'widget://Ryanimg/user/pns.png',  				//（可选项）字符串类型；底部下一集按钮的背景图片，要求本地路径（widget://、fs://）；默认：下一集按钮图标
+                    timeSize: 14,									 //（可选项）数字类型；底部时间标签大小；默认：14
+                    timeColor: '#fff',					    //（可选项）字符串类型；底部时间标签颜色，支持#、rgba、rgb；默认：#fff
+                    sliderImg: 'widget://image/videoPlayer/unfullscreen.png',					//（可选项）字符串类型；底部进度条滑块背景图片，要求本地路径（widget://、fs://）；默认：滑块小图标((在iOS上需要添加二倍图或者三倍图,否则会出现毛边))
+                    progressColor: '#696969',			 //（可选项）字符串类型；进度条背景色，支持#、rgba、rgb；默认：#696969
+                    progressSelected: '#1296db',			 //（可选项）字符串类型；滑动后的进度条背景色，支持#、rgb、rgba；默认：#76EE00
+                    verticalImg: "widget://Ryanimg/user/ExitFullScreen.png",		 //（可选项）字符串类型；底部竖屏按钮的背景图片，要求本地路径（widget://、fs://）；默认：竖屏按钮图标              
+                    horizontalImg: "widget://Ryanimg/user/fullscreen.png"			//（可选项）字符串类型；底部横屏按钮的背景图片，要求本地路径（widget://、fs://）；默认：横屏按钮图标
+                }
+            },
+			  
+            coverImg: "widget://image/videoPlayer/fullscreen.png",		//	（可选项）封面图路径，播放器打开尚未播放时的封面图，要求本地路径（widget://、fs://）
+            path: video,		//	（可选项）文档的路径，支持网络和本地（fs://）路径，在 android 平台上不支持 widget	
+			seekBarDragable: true,		//	（可选项） 播放进度条是否可以拖动
+			autorotation: false,	//	（可选项）视频播放页面是否支持自动旋转（横竖屏），若为 false 则手动点击右下角按钮旋转
+            autoPlay: true					//（可选项）打开时是否自动播放		默认值：true（自动播放）
+        }, function(ret, err) {
+            if (ret) {
+			
+			
+ // alert(JSON.stringify(ret));	    /**/															
+	
+
+				if(ret.eventType == 'show'){
+				
+				
+				/*
+																api.toast({
+																	msg: '打开成功并显示',
+																	duration: 11000,
+																	location : 'middle' 
+																});
+				*/
+			
+				}else if(ret.eventType == 'back'){
+				
+				
+														/*		api.toast({
+																	msg: '返回',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+																*/
+			var videoPlayer = api.require('videoPlayer');
+			videoPlayer.close();
+				
+				}else if(ret.eventType == 'play'){
+				
+				
+																api.toast({
+																	msg: '播放',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				
+				}else if(ret.eventType == 'pause'){
+				
+				
+																api.toast({
+																	msg: '暂停',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				
+				}else if(ret.eventType == 'next'){
+				
+				
+																api.toast({
+																	msg: '下一集',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				
+				}else if(ret.eventType == 'failed'){
+				
+				
+																api.toast({
+																	msg: '播放失败',
+																	duration: 1000,
+																	location : 'middle' 
+																});
+				
+				
+				 
+				}
+
+ 
+
+
+            } else {
+    alert(JSON.stringify(err));
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////    报错按钮打开 方法 baocuo  S  //////////////////////
+    function baocuo(){
+
+          api.toast({
+              msg: '开发中'
+          });
+    }
+//////////////////////    报错按钮打开 方法 baocuo  E  //////////////////////
+
+
+
+</script>
+</html>

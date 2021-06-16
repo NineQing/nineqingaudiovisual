@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<link type="text/css" href="../css/h5-aura.css" rel="stylesheet" />
+		<link type="text/css" href="../css/h5-channel-aura.css" rel="stylesheet" />
+		<link type="text/css" href="../css/h5-play-aura.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/play.css"/>
+	    <script type="text/javascript" src="../script/ik2021.js"></script>	
+
+	</head>
+	<style>
+		.aui-flexView {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.aui-scrollView {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+.aui-navBar {
+    height: 44px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background: linear-gradient(to right,#f370af,#5515ee);
+	color: #fff;
+}
+.aui-navBar-item {
+    height: 44px;
+    min-width: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    padding: 0 0rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #808080;
+    position: relative;
+}
+
+.aui-navBar-item:first-child {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-right: -25%;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.aui-navBar-item:last-child {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+    -ms-flex-order: 3;
+    order: 3;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.aui-center {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 44px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: none;
+    float: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+
+.icon-return{
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACh0lEQVRoQ+3ZMW8TMRQH8PcOsTBQISExVCIRCwgWFvZ+hZYBpIrEcTYkBsTGlI2VDamL3YEBpWJoR1BJaOlXYEzyDYp0bMRGRjnJoDuWs/1e3EbKeHf55b33vzsb4YJ98IJ54RKce8XZV1gIcQ8AviDiD2vtC631pzZFYQ2WUt611p4CwM0VcqqU2soSXIN1ztdKqTfZgRuw75RSz9tg3bHsWjomlh04NpYVOAWWDbjf7z8oimLipbH7bUopJdvO7L/Hk8+wwyLiCSLe8H6cww4BwGYFTo0lbWkKLBmYCksCrsNaa99rrZ/FmFnS0GrCdrvd3mg0MqEDqu58yVKaAzZZSwshHgLAsX/rcW2csrJVtaNXeIWdIuL16qJU2OgVrsMCwEGn03mSamaThVYTtizLp+PxeJkioJKFFldslJbmjA0O5o4NCm7AHpZluUM5s1FCSwjxCAA++7ceADiczWaPJ5PJL6qAihJaUspdY8w+Il7xLsASG6SlhRA/EfGa91BxNJ/Pd7hVNtiT1mAwOAeADXdCa637Hi0Wi3zBUsptY8wHRLzqwIh/nlbzbWmna0roLEOrmo11QQd9W1oHdFDwOrR3cLCH/uuFn0uQRQE7dMPKJHl6RwNzRUcF/w9N9VIRHVyhazbLDihWP5KAHbphOzQ5OhmYCzopmAM6OZgaTQL20FMAuOUtHESfaTLwCn3HWnuWEk0KpkCTg1OjWYArtDHmKyJu+jMdeh+KDdghh8NhZ7lcfvPRoXcaWYFToNmBY6NZgj20m+nb3pr3W631yzY7GWzBDtXr9TaLojjz0N+VUvezBXvoPQBw0Fda649Zg9vg6o5l3dKhse58l+AY/yqnc/4GvNDoTFOq8FwAAAAASUVORK5CYII=");
+
+}
+
+	</style>
+	<body>
+		
+			<header class="aui-navBar aui-navBar-fixed" id="aui-header">
+				<a onclick="closeWin()" class="aui-navBar-item">
+					<i class="icon icon-return"></i>
+				</a>
+				<div class="aui-center">
+					<span class="aui-center-title1" id="title" style="font-size: 0.18rem;">播放中心</span>
+				</div>
+				<a class="aui-navBar-item">
+					<i class="icon icon-sys"></i>
+				</a>
+			</header>
+		
+
+		<img height="200px" />
+		<!--<iframe src="http://zhys.123cf.top" width="100%" height="100%"></iframe>-->
+
+
+		<section class="m-video-extendBar iqiyi-down-load-extend">
+			<div class="m-video-pp">
+
+			</div>
+			<div class="m-video-pindaoType hide">电视剧</div>
+
+
+			</div>
+			<div class="m-video-action">
+				<div onclick="toup()" class="video-action-btn iqiyi-down-load">
+					<a class="video-load">
+						<i class="c-playPage-down"></i>
+						<span class="c-info">投屏</span>
+					</a>
+				</div>
+				<!-- 分享弹出层 video-action-btn 追加类名称selected -->
+				<div id="fenxan" onclick="fenx()" class="video-action-btn" >
+					<a class="video-collect">
+						<i class="c-playPage-icon c-playPage-share"></i>
+						<span class="c-info">分享</span>
+					</a>
+				</div>
+				<!--更多video-action-btn 追加类 selected -->
+				<div id="gengd" onclick="hx()" class="video-action-btn">
+					<a class="video-collect ">
+						<i class="c-playPage-icon c-playPage-dowmload "></i>
+						<span class="c-info">换线</span>
+					</a>
+				</div>
+			</div>
+			<div class="m-toast-layer m-player-toast dn"></div>
+		</section>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="m-box" id="seleInfo">
+			<div class="m-box-items m-box-items-full">
+				<section onclick="xuanji()" class="m-title m-title-anthology">
+					<h3 class="c-title-des">下方选择集数：</h3>
+					<span class="c-des"> 当前播放集数：<em id="xsbfy">---</em> </span>
+				</section>
+			</div>
+		</div>
+
+		<div id="xuanji">
+<!-- <section name="m-digit" class="m-album-num clearfix">
+<script type="text/x-dot-template" id="Index_two_template">
+{{~ it.msg : value : index }}
+   <a tapmode class='c-album-item' onclick ="toBanners('{{= value. url }}','{{= value. title }}')">
+   <span class='num'> {{= value. title }} </span>
+   <div class='c-rt'></div><span class='album-current hide'><i class='c-glyphicon c-glyphicon-albumPlay'></i></span>
+</a>
+{{~}}
+</script>
+</section> -->
+		</div>
+
+
+	</body>
+
+
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript" src="../script/tencent.js"></script>
+	<script type="text/javascript" src="../script/date.min.js"></script>
+	<script type="text/javascript">
+
+		var data; //
+		var api_url = localStorage.getItem('api_url');
+		apiready = function() {
+$api.byId('xsbfy').innerHTML = 1;
+var header = $api.byId('aui-header');
+    $api.fixStatusBar(header);
+	var headerPos = $api.offset(header);
+	var body_h = $api.offset($api.dom('body')).h;
+
+
+					var browser = api.require('webBrowser');
+					browser.openView({
+						url: api.pageParam.url,
+						rect: {
+							x: 0,
+							y: headerPos.h,
+							w: 'auto',
+							h: 200,
+						}
+					}, function(ret, err) {
+						switch (ret.state) {
+							case 0:
+								break;
+							case 1:
+								break;
+							case 2:
+								break;
+							case 3:
+								break;
+							case 4:
+								break;
+							default:
+								break;
+						}
+					});		
+                tencent();
+				setTimeout(function(){		//延迟执行
+				//上传播放记录
+				record_play_history();
+				}, 10000);
+
+			api.setScreenOrientation({
+					orientation: 'portrait_up'
+			});
+
+	//监听播放状态
+      api.addEventListener({
+          name: 'keyback'
+      }, function(ret, err) {
+        api.setScreenOrientation({
+            orientation: 'portrait_up'
+        });
+var browser = api.require('webBrowser');
+browser.historyBack(
+    function(ret, err) {
+        if (!ret.status) {
+            api.closeWin();
+        }
+    }
+);
+		
+      });
+  api.addEventListener({
+      name: 'cutline'
+  }, function(ret, err) {
+ 		 		var cutlineNmae = ret.value['cutlineNmae'];
+				var bfurl = ret.value['url'];
+				huanxian(bfurl);
+		//	 alert(JSON.stringify('提交播放地址：'+api.pageParam.primary_url+'获取资源地址'));
+			//先关闭解析窗口
+
+
+
+  });	
+
+
+		};
+
+		function toup() {
+		//如果 投屏设备连接状态 已经连接
+            api.openFrame({
+                name: 'touping_popup',
+                url: 'widget://html/mask/touping_popup.html',
+                bounces: false,
+                allowEdit: true,
+                bgColor: 'rgba(0,0,0,0.8)',
+                rect: {
+                    x: 0,
+                    y: 0,
+                    w: api.winWidth,
+                    h: api.winHeight
+                },
+                animation: {
+                    type: 'fade',
+                    subType: 'from_top'
+                },
+                pageParam: {
+                    JieXiOkUrl: api.pageParam.srcUrl,
+                    video_name: api.pageParam.title
+                }
+            })
+
+		}
+
+	function record_play_history(){
+//	 alert(api.pageParam.title);
+	  api.ajax({
+	      url: api_url+'/login/login/playjilu',
+           method: 'post',
+	      data:{
+	      	values:{
+	      		uid: localStorage.getItem('user_id'),
+	      		title: api.pageParam.title,
+	      		url: api.pageParam.srcUrl,
+	     // 		time: new Date().format('yyyy-MM-dd hh:mm:ss'),
+	      		ping: getPing(api.pageParam.srcUrl)
+	      	}
+	      }
+      },function(ret,err){
+      });
+	}
+	function getPing(url){
+		if(url.indexOf("youku.com")>0){
+			return '优酷';
+		}else if(url.indexOf("iqiyi.com")>0){
+			return '爱奇艺';
+		}else if(url.indexOf("v.qq.com")>0){
+			return "腾讯"
+    }else if(url.indexOf("tv.sohu.com")>0){
+			return "搜狐"
+    }else if(url.indexOf("fun.tv")>0){
+      return "风行"
+    }else if(url.indexOf("pptv.com")>0){
+      return "pptv"
+    }else if(url.indexOf("mgtv.com")>0){
+      return "芒果"
+    }else if(url.indexOf("1905.com")>0){
+      return "M1905"
+    }else if(url.indexOf("baofeng.com")>0){
+      return "暴风"
+    }else if(url.indexOf("le.com")>0){
+      return "乐视"
+    }else if(url.indexOf("xxooweizhiurl.com")>0){
+      return "未知"
+		}
+
+	}
+		function fenx() {
+        api.openWin({
+            name: 'share_win',
+            url: 'share_win.html',
+        });
+
+        api.addEventListener({
+          name:'viewdisappear'
+      },function(){
+          api.closeWin({
+               name:api.winName
+          });
+      });
+
+		}
+
+		function closeWin() {
+			api.closeWin({});
+		}
+
+		function hx() {
+      api.actionSheet({
+          title: localStorage.getItem('app_name')+' VIP线路',
+          cancelTitle: '取消',
+          buttons: [localStorage.getItem('jx_url1_name'), localStorage.getItem('jx_url2_name'),localStorage.getItem('jx_url3_name'), localStorage.getItem('jx_url4_name'), localStorage.getItem('jx_url5_name'), localStorage.getItem('jx_url6_name'), localStorage.getItem('jx_url7_name'), localStorage.getItem('jx_url8_name'), localStorage.getItem('jx_url9_name')]
+       }, function(ret, err) {
+          var index = ret.buttonIndex;
+          if (ret.buttonIndex==1) {
+            vipHuanxian(localStorage.getItem('jx_url1'));
+          }
+          if (ret.buttonIndex==2) {
+            vipHuanxian(localStorage.getItem('jx_url2'));
+          }
+          if (ret.buttonIndex==3) {
+            vipHuanxian(localStorage.getItem('jx_url3'));
+          }
+          if (ret.buttonIndex==4) {
+            vipHuanxian(localStorage.getItem('jx_url4'));
+          }
+          if (ret.buttonIndex==5) {
+            vipHuanxian(localStorage.getItem('jx_url5'));
+          }
+          if (ret.buttonIndex==6) {
+            vipHuanxian(localStorage.getItem('jx_url6'));
+          }
+          if (ret.buttonIndex==7) {
+            vipHuanxian(localStorage.getItem('jx_url7'));
+          }
+          if (ret.buttonIndex==8) {
+            vipHuanxian(localStorage.getItem('jx_url8'));
+          }
+          if (ret.buttonIndex==9) {
+            vipHuanxian(localStorage.getItem('jx_url9'));
+          }
+      });
+		}
+    function vipHuanxian(jiekou){
+      api.hideProgress();
+      var browser = api.require('webBrowser');
+      browser.loadUrl({
+          url: jiekou+api.pageParam.srcUrl
+      });
+
+
+
+    }	
+
+		function toBanners(url, id) {
+		$api.byId('xsbfy').innerHTML = id;
+			var browser = api.require('webBrowser');
+			browser.loadUrl({
+				url: localStorage.getItem('jx_url1')+url
+			});
+		}
+	</script>
+
+</html>

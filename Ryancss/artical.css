@@ -1,0 +1,336 @@
+/* 公共样式表css */
+html,body {
+    color: #333;
+    margin: 0;
+    font-family: "Myriad Set Pro","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a, label, button, input, select {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+    border: 0;
+}
+
+body {
+    background: #f7f7f7;
+    color: #666;
+}
+
+html, body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, button, fieldset, form, input, legend, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #08acee;
+}
+
+button {
+    outline: 0;
+}
+
+img {
+    border: 0;
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #666;
+}
+
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearfix {
+}
+
+/* 必要布局样式css */
+.aui-flexView {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.aui-scrollView {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    /* margin-top: -44px; */
+}
+
+.aui-navBar {
+    height: 44px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 1002;
+    background: #ffffff;
+}
+
+.aui-navBar:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #e8e8e8;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.aui-navBar-item {
+    height: 44px;
+    min-width: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    padding: 0 0.9rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #a0a0a0;
+    position: relative;
+}
+
+.aui-navBar-item:first-child {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-right: -25%;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.aui-navBar-item:last-child {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+    -ms-flex-order: 3;
+    order: 3;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.aui-center {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 44px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.aui-center-title {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 0.95rem;
+    color: #3c3c3c;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: none;
+    float: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+
+.icon-return{
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADqUlEQVRoQ+WbTUzTcBTA3ysQo/iJMRCiiXLwYmKMO+HFJW7VrTFhsSPGGGOiyAVvcBa9gieMH3gxxqixRYhQSrZhOHnQg2dvysGLmngwgA76TDcHE9pu9PNP28uSre366+/1//H+rwhbZOOF7DUieAAA7xsJMqoqfbNz6WjnIL+PSaQu9HAcN1r5XyL6AsU/p/L5N183ey3MAydS2T6Og5H1YKRRf16V74YK2Ay2BKnBmZwqvQ0NsCUs0HBOkQc2C6vvz2RIJwSxnwMcMgayD8sksCUs0WBuWr5tx2zlGKYM82lxEBBvGQFpQAMFRR52AsuUYV4QhwCw30tYZoAtYTW4WVCle07NMhPSSSE7ggB9hmZdhg3csDWsdqOgjj12y2zghnlBHAXAHmOz3sAGZtgMlspbrxdmgzKMvCA+MjJbZoWrBVV+6nYYV5/Pz34Y+bT4BBCvbJgI+ATrZ0hbwiLCpZwiv/TSrJ8hjUlBfI6AFw2AVgDosl+wnhvOZrMNPxfomRksIWTzU9K4H2Y9N1yGBQkBMgbP7DJw2O03rGeG4/F4Y1PzgVdmsITYVVAkxU+znhn+BzuBAIKR2SBhXTdsDQtFQsgEZdZ1w7FYrKmlrWPc2CwU9e9z01I+iDB2feChw+5v7VAAIbkBiOg3AJ5nAdaVkE6lUttWcOekGazGwbnClDwXtFlXQlqHXeaaZxAwvqGBAlgkpDRLsI4Mt7fHdhw7cfgjIh4lAkBcG5YTwCICJXKK/I4Vs44Mx2KxPS1tRz4j4N7SiYiA9Jwvov75C4HOsghr23BS6H6BQP+NjXVgIlokTTs9O/P6A2tmHRlOprsfIlKvAdQCACVZtWvbcCvPNx9v3D2PiC1GjRWrz69tYP3Azs7O7bv2HfwECIe2ErSjjIdVH6y31KHqlipWa42yQjXwqBc6VEPLaujITB4q0JGaHq6DZjLb4ahbshpJ1cpnBZn1cNQt1YY2zlgSUbiSeFU3wjInHao0bb3QoUrEV0NbrSuFballdWYWpcW0NegILZeuRrj1gri3a8SedUu1Mh5BVQEEBqzfkEgVtVQiIFJlSxXoSBWm1QXtUp2lZ5OHWg2W2e+RKi6t3ASr8mE3KmoDbaXNTFtBE8CdvCIZlhjXE1lMAusX7lVVPLPAJWiTN1pKJjUtk1PHJuqxWr0P08BW0JrN0mLmgcvQ617UApjXlpZPzs6O/wid4dURWVq8DoD39Vfxig1LXXOTk983C6vv/xfo2w1bF4urlgAAAABJRU5ErkJggg==");
+
+}
+
+.icon-sys{
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADAElEQVRoQ+2Xv2sUQRTH35s9LoUiirExoFHCubszp4iGiKIWgoWiIAg2FhGblDb+ITZKGsVKG0EQO4WgaDQo/rjZuZyCiYo/KklxKHLuPFmJx+Vyl50dbXYz09778fm+79vZPYRVdnCV6QUnuOiOO4edwwWbgFvpghm6TI5z2DlcsAm4lS6Yoe7ScivtVrpgE3ArXTBD3S3tVtqtdMEm0Helfd/fwxjbzxhraa2fKqVe/A/t1Wp1u9b6IBENep73rFarPQQA/a+1wzDcDQAHFus86se7THAQBFsZY3cRkXdB1OI4PlGv19/bwHHO1yLiTQA43plPRF8Q8bSU8rFN3YTX87w7AFDtyn8dx/HJbt4lgpPpE9EDABjq0/wTIh6q1WrvssCNjIysGxgYuIeIo33yfgDAMSnlVJa6NrxLBHPO5xBxeKWmRPQmiqIdWcCEEImzZ1Lq/gSAzVEUfTOtzTlvIGIlC29bsO/7w6VSac6kWavVGmo0Gp9NYpMYIUQiYkNafBzHp+r1+u20uOR3W962YM75OCJeM2lGRONRFF03ieWc70LElyaxWutLSqkLJrG2vG3BQogJALhi0kxrPaGUmjSJDcNwjDH2xCQWACallAlH6rHlbQsOgmCf53nTqZ2Sd4jWY0qpGZNYznkZEZPnM/VkGaQtb+elhUKIVz2u925QKaXcCQCUqmAxQAhxFQDOpcQvNJvNbfPz8wuGda14l9zSQoi9RDSDiD0/SIiI4jgenZ2dfW4I9SesUqkMlsvltwCwfoW881LKZDDGx4Z3mbAwDI8wxm4AwKbOzkT0lYjOKqXuGxN1BAohAiK6hYhBV/53IroYRdFlm7pZeXs66fv+xlKpdBgAkg+RX4j4gYimsrwje8EvPs9HiWgLIq4hoo9a62nbr7e/PbLwur+HNmuVpxzncJ7csmF1DttMLU85zuE8uWXD6hy2mVqecpzDeXLLhtU5bDO1POU4h/Pklg2rc9hmannKcQ7nyS0bVuewzdTylOMczpNbNqy/AeG8SEwBoWOoAAAAAElFTkSuQmCC");
+
+}
+
+.aui-service-box{
+    padding:30px 15px;
+}
+
+.aui-service-list{
+    background:#fff;
+    position:relative;
+    padding:15px;
+    box-shadow: 0 1px 16px 0 rgba(0,0,0,.1);
+    border-radius:3px;
+    margin-bottom: 30px;
+}
+
+.aui-service-list h3{
+    font-size:0.9rem;
+    color:#252525;
+    font-weight:normal;
+    padding-bottom:15px;
+}
+
+.aui-service-circle{
+    background:#dfdfdf;
+    padding: 5px 10px;
+    color:#fff;
+    font-size:0.85rem;
+    width: 150px;
+    margin:0 auto;
+    text-align:center;
+    border-radius: 50px;
+    margin-bottom: 15px;
+}
+
+.aui-news-item {
+    padding: 0;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.aui-news-item:before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #ffffff;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    left: 20px;
+}
+
+.aui-news-item-hd {
+    margin-right: .8em;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.aui-news-item-hd img {
+    width: 100%;
+    max-height: 100%;
+    vertical-align: top;
+}
+
+.aui-news-item-bd {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+.aui-news-item-bd h4 {
+    font-weight: 400;
+    font-size: 16px;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+.aui-news-item-bd p {
+    color: #848689;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
